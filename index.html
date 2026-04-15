@@ -636,6 +636,86 @@
     @media (max-width: 400px) {
       .skills-section { grid-template-columns: 1fr; }
     }
+
+    
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.88); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .delay-1 { transition-delay: 0.1s !important; }
+    .delay-2 { transition-delay: 0.2s !important; }
+    .delay-3 { transition-delay: 0.3s !important; }
+    .delay-4 { transition-delay: 0.4s !important; }
+    .delay-5 { transition-delay: 0.5s !important; }
+    .delay-6 { transition-delay: 0.6s !important; }
+
+    /* ── TYPEWRITER ── */
+    .typewriter-wrap { display: inline-block; }
+    #typewriter-text { border-right: 3px solid var(--accent2); padding-right: 4px; animation: blink 0.8s step-end infinite; }
+    @keyframes blink { 0%,100% { border-color: var(--accent2); } 50% { border-color: transparent; } }
+
+    /* ── GLITCH on logo ── */
+    .nav-logo { position: relative; display: inline-block; }
+    .nav-logo:hover { animation: glitch-logo 0.4s steps(2) infinite; }
+    @keyframes glitch-logo {
+      0% { text-shadow: 2px 0 var(--accent), -2px 0 var(--accent2); }
+      25% { text-shadow: -2px 0 var(--accent), 2px 0 var(--accent2); }
+      50% { text-shadow: 2px 2px var(--accent), -2px -2px var(--accent2); }
+      100% { text-shadow: none; }
+    }
+
+    /* ── CARD HOVER LIFT ── */
+    .exp-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(108,99,255,0.12); }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(108,99,255,0.15); }
+    .about-card:hover { transform: translateY(-2px); }
+    .edu-card:hover { transform: translateY(-2px); }
+
+    /* ── SHINE on project cards ── */
+    .proj-card { position: relative; overflow: hidden; }
+    .proj-card::after {
+      content: ''; position: absolute; top: -50%; left: -75%;
+      width: 50%; height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+      transform: skewX(-20deg); transition: left 0.6s ease;
+    }
+    .proj-card:hover::after { left: 125%; }
+
+    /* ── PARTICLES ── */
+    .particle {
+      position: absolute; width: 2px; height: 2px;
+      background: var(--accent2); border-radius: 50%;
+      opacity: 0; pointer-events: none;
+      animation: particle-float linear infinite;
+    }
+    @keyframes particle-float {
+      0% { opacity: 0; transform: translateY(0) scale(0); }
+      15% { opacity: 0.7; transform: translateY(-30px) scale(1); }
+      85% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-150px) scale(0.3); }
+    }
+
+    /* ── NAV SCROLL ── */
+    nav.scrolled { box-shadow: 0 2px 40px rgba(0,0,0,0.6); }
+
+    /* ── SKILL ROW HOVER ── */
+    .skill-row { position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .skill-row:hover { transform: translateX(4px); border-color: var(--border-hover); }
+
+    /* ── CONTACT ITEM ── */
+    .contact-item { transition: transform 0.2s, border-color 0.2s; }
+    .contact-item:hover { transform: translateX(4px); }
+
+    /* ── SECTION LABEL ANIMATE ── */
+    .section-label { position: relative; display: inline-block; }
+
+    @media (max-width: 700px) {
+    }
   </style>
 </head>
 <body>
@@ -655,12 +735,13 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" style="position:relative;">
+    <div id="particles-container" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
     <div class="hero-inner">
       <div class="hero-badge">Disponible para proyectos</div>
       <h1>
         Thomas Lehmann
-        <span class="line2">Paid Media &amp; Negocios</span>
+        <span class="line2"><span id="typewriter-text"></span></span>
       </h1>
       <p class="hero-sub">
         <strong>Estrategia digital integral</strong> · Google &amp; Meta Ads · Transformación de negocios
@@ -680,9 +761,9 @@
   <hr class="section-divider" />
 
   <!-- SOBRE MÍ -->
-  <section class="section" id="sobre">
+  <section class="section reveal" id="sobre">
     <div class="section-label">Sobre mí</div>
-    <div class="section-title">Desde el concepto hasta la ejecucíon</div>
+    <div class="section-title">Más que un especialista,<br>una visión completa</div>
     <div class="about-layout">
       <div class="about-text">
         <p>
@@ -741,12 +822,12 @@
   <hr class="section-divider" />
 
   <!-- EXPERIENCIA -->
-  <section class="section" id="experiencia">
+  <section class="section reveal" id="experiencia">
     <div class="section-label">Experiencia</div>
     <div class="section-title">Trayectoria profesional</div>
     <div class="exp-list">
 
-      <div class="exp-card">
+      <div class="exp-card reveal delay-1">
         <div class="exp-header">
           <div class="exp-title">Responsable de Google Ads</div>
           <div class="exp-date">Reciente · Buenos Aires</div>
@@ -766,7 +847,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card reveal delay-2">
         <div class="exp-header">
           <div class="exp-title">Co-fundador y Director</div>
           <div class="exp-date">Agencia propia</div>
@@ -788,7 +869,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card reveal delay-3">
         <div class="exp-header">
           <div class="exp-title">Consultor de Idioma &amp; Proyectos de IA</div>
           <div class="exp-date">Mar del Plata</div>
@@ -813,12 +894,12 @@
   <hr class="section-divider" />
 
   <!-- PROYECTOS -->
-  <section class="section" id="proyectos">
+  <section class="section reveal" id="proyectos">
     <div class="section-label">Proyectos</div>
     <div class="section-title">Trabajo destacado</div>
     <div class="projects-grid">
 
-      <div class="proj-card">
+      <div class="proj-card reveal-scale delay-1">
         <div class="proj-visual v1">🏋️</div>
         <div class="proj-body">
           <h4>Technogym — Campañas de Performance</h4>
@@ -827,7 +908,7 @@
         </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal-scale delay-2">
         <div class="proj-visual v2">🚀</div>
         <div class="proj-body">
           <h4>Vantra — Ecosistema digital 360°</h4>
@@ -836,7 +917,7 @@
         </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal-scale delay-3">
         <div class="proj-visual v3">🤖</div>
         <div class="proj-body">
           <h4>ReplaceIT — IA &amp; Inversión internacional</h4>
@@ -845,7 +926,7 @@
         </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal-scale delay-4">
         <div class="proj-visual v4">📊</div>
         <div class="proj-body">
           <h4>Estrategia de conversión integral</h4>
@@ -900,7 +981,7 @@
   <hr class="section-divider" />
 
   <!-- EDUCACIÓN -->
-  <section class="section" id="educacion">
+  <section class="section reveal" id="educacion">
     <div class="section-label">Educación</div>
     <div class="section-title">Formación académica</div>
     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
@@ -945,7 +1026,7 @@
       <div class="section-label" style="margin-bottom: 1rem;">Idiomas</div>
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
         <div style="background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 12px; flex: 1; min-width: 160px;">
-          <svg width="36" height="24" viewBox="0 0 5 3" style="border-radius:3px;flex-shrink:0;"><rect width="5" height="3" fill="#000"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#FFCE00"/></svg>
+          <svg width="36" height="24" viewBox="0 0 5 3" style="border-radius:3px;flex-shrink:0;"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>
           <div>
             <div style="font-size: 14px; font-weight: 500; color: var(--text);">Alemán</div>
             <div style="font-size: 12px; color: var(--accent2);">Avanzado · Nativo escolar</div>
@@ -972,7 +1053,7 @@
   <hr class="section-divider" />
 
   <!-- CONTACTO -->
-  <section class="section" id="contacto">
+  <section class="section reveal" id="contacto">
     <div class="section-label">Contacto</div>
     <div class="section-title">Hablemos de tu próximo proyecto</div>
     <div class="contact-layout">
@@ -1022,13 +1103,91 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>© 20256Thomas Lehmann</span>
+    <span>© 2025 Thomas Lehmann</span>
     <span>
       <a href="mailto:adsbythomas@gmail.com">adsbythomas@gmail.com</a>
       &nbsp;·&nbsp;
       <a href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank">LinkedIn</a>
     </span>
   </footer>
+
+
+<script>
+  
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .exp-card, .proj-card, .about-card, .skill-row, .contact-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); ring.classList.add('hovering'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); ring.classList.remove('hovering'); });
+  });
+
+  // ── TYPEWRITER ──
+  const words = ['Paid Media & Negocios', 'Google & Meta Ads', 'Estrategia Digital', 'Transformación de negocios'];
+  let wi = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter-text');
+  function type() {
+    const word = words[wi];
+    if (!deleting) {
+      tw.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      tw.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(type, 300); return; }
+    }
+    setTimeout(type, deleting ? 50 : 80);
+  }
+  setTimeout(type, 1000);
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── NAV SCROLL ──
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── PARTICLES ──
+  const pc = document.getElementById('particles-container');
+  function spawnParticle() {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.bottom = '0';
+    const dur = 4 + Math.random() * 6;
+    const delay = Math.random() * 5;
+    p.style.animationDuration = dur + 's';
+    p.style.animationDelay = delay + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+    pc.appendChild(p);
+    setTimeout(() => p.remove(), (dur + delay) * 1000);
+  }
+  for (let i = 0; i < 25; i++) spawnParticle();
+  setInterval(spawnParticle, 800);
+
+  // ── CARD TILT on mouse ──
+  document.querySelectorAll('.proj-card, .exp-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
 
 </body>
 </html>
