@@ -3,1548 +3,1337 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thomas Lehmann — Estrategia Digital · Paid Media · Negocios</title>
-  <meta name="description" content="Thomas Lehmann — Especialista en estrategia digital, Google & Meta Ads y transformación de negocios. Buenos Aires, Argentina." />
+  <title>Thomas Lehmann | Growth Interface</title>
+  <meta name="description" content="Portfolio experimental de Thomas Lehmann: estrategia digital, paid media, automatizacion, IA y sistemas de crecimiento." />
+  <meta name="theme-color" content="#05030d" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%2300f6ff'/%3E%3Cstop offset='.48' stop-color='%23ff2bd6'/%3E%3Cstop offset='1' stop-color='%23ccff00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='url(%23g)'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial Black,Arial' font-size='20' fill='%2305030d'%3ETL%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      /* Sophisticated dark canvas */
-      --bg:        #0b0c0e;
-      --bg-soft:   #101216;
-      --surface:   #14171c;
-      --surface-2: #191d23;
-      --surface-3: #20242b;
-      --line:      rgba(236, 232, 220, 0.07);
-      --line-2:    rgba(236, 232, 220, 0.12);
-
-      /* Refined warm gold accent */
-      --gold:      #c9a978;
-      --gold-2:    #d9bd8e;
-      --gold-deep: #8a7048;
-      --gold-glow: rgba(201, 169, 120, 0.18);
-
-      /* Editorial ink */
-      --ink:       #ecebe6;
-      --ink-2:     #cfcec7;
-      --ink-mute:  #8a8a86;
-      --ink-faint: #56565a;
-
-      /* Type system */
-      --serif:  'Fraunces', 'Times New Roman', serif;
-      --sans:   'Inter', system-ui, sans-serif;
-      --mono:   'JetBrains Mono', ui-monospace, monospace;
-
-      --r-1: 2px;
-      --r-2: 4px;
-
-      --max: 1180px;
-      --gutter: 2.25rem;
+      --void: #05030d;
+      --void-2: #090617;
+      --panel: rgba(12, 10, 30, .72);
+      --panel-2: rgba(255, 255, 255, .055);
+      --ink: #f8fbff;
+      --muted: #aeb8cf;
+      --dim: #68718b;
+      --line: rgba(255, 255, 255, .14);
+      --hot: #ff2bd6;
+      --acid: #ccff00;
+      --cyan: #00f6ff;
+      --orange: #ff8a00;
+      --violet: #7b2cff;
+      --blue: #2d7dff;
+      --red: #ff335f;
+      --shadow: 0 32px 120px rgba(0, 0, 0, .55);
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --sans: "Inter", system-ui, sans-serif;
+      --display: "Archivo Black", Impact, sans-serif;
+      --mx: 50vw;
+      --my: 50vh;
     }
 
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--void); }
     body {
-      background: var(--bg);
+      margin: 0;
+      min-height: 100vh;
       color: var(--ink);
       font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.7;
-      min-height: 100vh;
       overflow-x: hidden;
-      font-weight: 400;
-      letter-spacing: -0.005em;
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(0,246,255,.16), transparent 18rem),
+        radial-gradient(circle at 12% 18%, rgba(255,43,214,.18), transparent 25rem),
+        radial-gradient(circle at 86% 12%, rgba(204,255,0,.14), transparent 22rem),
+        linear-gradient(135deg, #05030d 0%, #0b0520 44%, #040817 100%);
     }
-
-    /* Subtle film grain overlay */
     body::before {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 1;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      opacity: 1; mix-blend-mode: overlay;
-    }
-
-    /* Aurora glow */
-    body::after {
-      content: '';
-      position: fixed; pointer-events: none; z-index: 0;
-      top: -300px; left: 50%; transform: translateX(-50%);
-      width: 1100px; height: 700px;
-      background: radial-gradient(ellipse at center, rgba(201,169,120,0.10), transparent 60%);
-      filter: blur(40px);
-    }
-
-    a { color: inherit; }
-
-    ::selection { background: var(--gold); color: #0b0c0e; }
-
-    /* ───── reusable type ───── */
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: inline-flex; align-items: center; gap: 10px;
-    }
-    .eyebrow::before {
-      content: ''; width: 24px; height: 1px; background: var(--gold);
-    }
-    .display {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-style: normal;
-      letter-spacing: -0.025em;
-      line-height: 0.98;
-    }
-    .italic-accent { font-style: italic; color: var(--gold-2); font-weight: 300; }
-
-    /* ───── progress bar ───── */
-    .scroll-progress {
-      position: fixed; top: 0; left: 0; right: 0; height: 2px;
-      background: transparent; z-index: 200;
-    }
-    .scroll-progress-bar {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-2));
-      transition: width 0.05s linear;
-    }
-
-    /* ───── nav ───── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 var(--gutter); height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(11,12,14,0.72);
-      border-bottom: 1px solid transparent;
-      backdrop-filter: saturate(140%) blur(14px);
-      -webkit-backdrop-filter: saturate(140%) blur(14px);
-      transition: border-color 0.3s, background 0.3s;
-    }
-    nav.scrolled {
-      border-bottom-color: var(--line);
-      background: rgba(11,12,14,0.88);
-    }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-      display: inline-flex; align-items: baseline; gap: 2px;
-    }
-    .nav-logo i { font-style: italic; color: var(--gold); }
-    .nav-logo .dot { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-    .nav-links a {
-      color: var(--ink-mute);
-      font-size: 13px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a:not(.nav-cta)::after {
-      content: ''; position: absolute; bottom: -6px; left: 0; right: 100%;
-      height: 1px; background: var(--gold); transition: right 0.3s ease;
-    }
-    .nav-links a:not(.nav-cta):hover { color: var(--ink); }
-    .nav-links a:not(.nav-cta):hover::after { right: 0; }
-    .nav-cta {
-      color: var(--ink) !important;
-      border: 1px solid var(--line-2);
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 12px !important;
-      transition: all 0.25s;
-    }
-    .nav-cta:hover { background: var(--gold); color: #0b0c0e !important; border-color: var(--gold); }
-    .nav-toggle { display: none; }
-
-    /* ───── hero ───── */
-    .hero {
-      position: relative; z-index: 2;
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 9rem var(--gutter) 5rem;
-      max-width: var(--max); margin: 0 auto;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: radial-gradient(ellipse at 30% 40%, black 30%, transparent 70%);
-      -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 30%, transparent 70%);
-      opacity: 0.5;
+      content: "";
+      position: fixed;
+      inset: 0;
       pointer-events: none;
+      z-index: 90;
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 4px),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
+      opacity: .11;
     }
-    .hero-inner { max-width: 980px; width: 100%; position: relative; }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.042) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.042) 1px, transparent 1px);
+      background-size: 74px 74px;
+      mask-image: radial-gradient(circle at 50% 28%, black, transparent 68%);
+    }
 
-    .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 1rem 2rem;
-      margin-bottom: 3rem;
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; color: inherit; }
+    ::selection { background: var(--acid); color: #05030d; }
+
+    #neural-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: .88;
+    }
+    .site { position: relative; z-index: 2; }
+    .wrap { width: min(1220px, calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      inset: 14px 14px auto;
+      min-height: 68px;
+      z-index: 80;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid var(--line);
+      background: rgba(5, 3, 13, .62);
+      backdrop-filter: blur(24px) saturate(160%);
+      box-shadow: var(--shadow);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      color: #05030d;
+      background: conic-gradient(from 120deg, var(--acid), var(--cyan), var(--hot), var(--orange), var(--acid));
+      font-family: var(--display);
+      letter-spacing: 0;
+      box-shadow: 0 0 34px rgba(0,246,255,.25);
+    }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .nav-links a {
+      padding: 12px 11px;
+      color: var(--muted);
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.18em;
+      font-weight: 800;
       text-transform: uppercase;
-      color: var(--ink-mute);
+      letter-spacing: .08em;
+      transition: color .2s ease, background .2s ease;
     }
-    .hero-meta-item { display: inline-flex; align-items: center; gap: 8px; }
-    .hero-meta-item::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
-    .pulse { animation: pulse 1.8s ease-in-out infinite; }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,120,0.5); }
-      50%      { box-shadow: 0 0 0 8px rgba(201,169,120,0); }
-    }
-
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(64px, 11vw, 148px);
-      font-weight: 300;
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-      animation: rise 0.8s ease both;
-    }
-    .hero h1 .lh-first { display: block; }
-    .hero h1 .lh-last  { display: block; font-style: italic; font-weight: 300; color: var(--ink); }
-    .hero h1 .accent-mark {
-      display: inline-block;
-      color: var(--gold);
-      font-style: italic;
-      font-weight: 400;
-    }
-
-    @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-
-    .hero-tagline {
-      font-family: var(--serif); font-style: italic; font-weight: 300;
-      font-size: clamp(20px, 2.4vw, 28px);
-      color: var(--ink-2);
-      line-height: 1.4;
-      max-width: 720px;
-      margin-bottom: 2rem;
-      animation: fade 0.7s 0.15s ease both;
-    }
-    .hero-tagline span { color: var(--gold); font-style: normal; font-weight: 400; }
-
-    .hero-desc {
-      font-size: 16px;
-      color: var(--ink-mute);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      animation: fade 0.7s 0.25s ease both;
-    }
-
-    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; animation: fade 0.7s 0.35s ease both; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,.08); }
+    .nav-actions { justify-self: end; display: flex; align-items: center; gap: 8px; }
 
     .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 28px;
-      font-size: 13px; font-weight: 500;
-      text-decoration: none;
-      border-radius: 999px;
-      transition: all 0.25s ease;
-      letter-spacing: 0.01em;
-    }
-    .btn-primary {
-      background: var(--gold); color: #0b0c0e;
-      border: 1px solid var(--gold);
-    }
-    .btn-primary:hover { background: var(--gold-2); border-color: var(--gold-2); transform: translateY(-1px); box-shadow: 0 12px 30px -8px rgba(201,169,120,0.4); }
-    .btn-ghost {
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--line-2);
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-    .btn-arrow { transition: transform 0.25s; }
-    .btn:hover .btn-arrow { transform: translateX(4px); }
-
-    /* hero stats strip */
-    .hero-stats {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      margin-top: 4rem;
-      border-top: 1px solid var(--line);
-      animation: fade 0.7s 0.45s ease both;
-    }
-    .hs {
-      padding: 1.75rem 0 0;
-      border-right: 1px solid var(--line);
-    }
-    .hs:last-child { border-right: none; }
-    .hs:nth-child(n+2) { padding-left: 1.5rem; }
-    .hs-num {
-      font-family: var(--serif);
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 400;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 17px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
       color: var(--ink);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
     }
-    .hs-num .small { font-size: 0.55em; color: var(--gold); margin-left: 4px; vertical-align: super; }
-    .hs-label {
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 32px rgba(0,246,255,.2);
+    }
+    .btn.primary {
+      color: #05030d;
+      background: var(--acid);
+      border-color: var(--acid);
+      box-shadow: 0 0 34px rgba(204,255,0,.25);
+    }
+    .btn.primary:hover { background: var(--cyan); border-color: var(--cyan); }
+    .btn.hot { color: #05030d; background: var(--hot); border-color: var(--hot); }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 132px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 24px;
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      box-shadow: 0 0 20px currentColor;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: var(--display);
+      line-height: .88;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(56px, 10.6vw, 156px);
+      max-width: 980px;
+      filter: drop-shadow(0 0 34px rgba(255,43,214,.18));
+    }
+    h2 { font-size: clamp(42px, 6.8vw, 94px); }
+    h3 { font-size: clamp(28px, 3.5vw, 52px); }
+    p { margin: 0; color: var(--muted); line-height: 1.62; font-size: 17px; }
+    .lead { max-width: 760px; color: #dfe7ff; font-size: clamp(19px, 2.15vw, 27px); }
+    .glitch {
+      position: relative;
+      display: inline-block;
+      color: var(--ink);
+      text-shadow: 4px 0 var(--hot), -4px 0 var(--cyan);
+      animation: glitch 2.7s steps(1) infinite;
+    }
+    @keyframes glitch {
+      0%, 90%, 100% { transform: none; text-shadow: 4px 0 var(--hot), -4px 0 var(--cyan); }
+      91% { transform: translate(3px, -2px) skewX(8deg); text-shadow: -6px 0 var(--acid), 6px 0 var(--hot); }
+      94% { transform: translate(-2px, 2px) skewX(-7deg); text-shadow: 5px 0 var(--cyan), -5px 0 var(--orange); }
+    }
+    .hero-copy {
+      display: grid;
+      gap: 24px;
+      padding-bottom: 28px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-marquee {
+      grid-column: 1 / -1;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(12px);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    .marquee-track span {
+      padding: 16px 26px;
+      white-space: nowrap;
+      font-family: var(--display);
+      font-size: clamp(20px, 3vw, 42px);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.7);
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .command-deck {
+      min-height: 680px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(0,246,255,.13), transparent 30%),
+        linear-gradient(315deg, rgba(255,43,214,.15), transparent 34%),
+        rgba(8, 6, 20, .72);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .deck-top, .panel-top {
+      height: 54px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 0 16px;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .deck-screen {
+      min-height: 626px;
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(204,255,0,.12), transparent 22rem),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: auto, 34px 34px, 34px 34px;
+    }
+    .core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 172px;
+      height: 172px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      color: #05030d;
+      background: var(--acid);
+      border-radius: 50%;
+      font-family: var(--display);
+      font-size: 56px;
+      box-shadow: 0 0 70px rgba(204,255,0,.45);
+      z-index: 4;
+    }
+    .core::after {
+      content: "GROWTH";
+      position: absolute;
+      bottom: 34px;
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
+      letter-spacing: .18em;
+    }
+    .ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin var(--speed) linear infinite;
+    }
+    .ring.one { width: 330px; height: 330px; --speed: 18s; border-color: rgba(0,246,255,.34); }
+    .ring.two { width: 480px; height: 480px; --speed: 28s; border-color: rgba(255,43,214,.28); animation-direction: reverse; }
+    .ring.three { width: 620px; height: 620px; --speed: 42s; border-color: rgba(204,255,0,.22); }
+    @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .node {
+      position: absolute;
+      width: 146px;
+      min-height: 104px;
+      padding: 13px;
+      display: grid;
+      align-content: space-between;
+      gap: 10px;
+      border: 1px solid color-mix(in srgb, var(--node) 66%, white 0%);
+      background: rgba(5,3,13,.8);
+      box-shadow: 0 0 34px color-mix(in srgb, var(--node) 22%, transparent);
+      transition: transform .2s ease;
+    }
+    .node b { font-family: var(--mono); font-size: 13px; color: var(--node); text-transform: uppercase; }
+    .node span { color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .node.web { left: 8%; top: 12%; --node: var(--cyan); }
+    .node.ads { right: 8%; top: 18%; --node: var(--hot); }
+    .node.ia { left: 10%; bottom: 13%; --node: var(--acid); }
+    .node.crm { right: 13%; bottom: 12%; --node: var(--orange); }
+    .deck-chip {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      width: min(460px, calc(100% - 28px));
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: rgba(5,3,13,.72);
+      backdrop-filter: blur(14px);
+    }
+    .deck-chip strong { display: block; font-size: 13px; }
+    .deck-chip span { color: var(--muted); font-size: 12px; }
+    .blink {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--hot);
+      box-shadow: 0 0 0 0 rgba(255,43,214,.55);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 18px rgba(255,43,214,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,43,214,0); }
     }
 
-    /* ───── section frame ───── */
     .section {
-      position: relative; z-index: 2;
-      padding: 7rem var(--gutter);
-      max-width: var(--max); margin: 0 auto;
+      padding: 108px 0;
+      position: relative;
     }
     .section-head {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      gap: 2rem; margin-bottom: 4rem;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr .46fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 34px;
     }
-    .section-head-left .eyebrow { margin-bottom: 1.25rem; }
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(40px, 5.5vw, 72px);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      max-width: 720px;
-    }
-    .section-title em { font-style: italic; color: var(--gold-2); font-weight: 300; }
-    .section-aside {
-      max-width: 320px; color: var(--ink-mute);
-      font-size: 14px; line-height: 1.7;
-      border-left: 1px solid var(--line-2);
-      padding-left: 1.25rem;
-    }
+    .section-head p { max-width: 460px; }
 
-    .divider {
-      height: 1px;
-      max-width: var(--max);
-      margin: 0 auto;
-      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    .ai-lab {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 16px;
     }
-
-    /* ───── about ───── */
-    .about-layout {
-      display: grid; grid-template-columns: 1.25fr 1fr;
-      gap: 4rem; align-items: start;
-    }
-    .about-text p {
-      color: var(--ink-2);
-      font-size: 17px; line-height: 1.75;
-      margin-bottom: 1.25rem;
-      font-weight: 400;
-    }
-    .about-text p:first-child {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: 22px;
-      line-height: 1.5;
-      color: var(--ink);
-      margin-bottom: 1.75rem;
-    }
-    .about-text p:first-child::first-letter {
-      font-size: 3.4em;
-      float: left;
-      line-height: 0.85;
-      padding: 6px 12px 0 0;
-      color: var(--gold);
-      font-weight: 400;
-    }
-    .about-text strong { color: var(--ink); font-weight: 600; }
-    .about-text em { font-style: italic; color: var(--gold-2); }
-
-    .about-cards {
-      display: grid; grid-template-columns: 1fr; gap: 1px;
-      background: var(--line);
+    .lab-controls, .lab-output, .radar, .stack-machine, .case-card, .contact-panel {
       border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
     }
-    .ac {
-      background: var(--bg-soft);
-      padding: 1.1rem 1.25rem;
-      display: flex; align-items: center; gap: 14px;
-      transition: background 0.25s, padding-left 0.25s;
-      position: relative;
-    }
-    .ac::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 2px; background: var(--gold);
-      transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
-    }
-    .ac:hover { background: var(--surface); padding-left: 1.5rem; }
-    .ac:hover::before { transform: scaleY(1); transform-origin: top; }
-    .ac svg { stroke: var(--gold); flex-shrink: 0; }
-    .ac h4 { font-family: var(--sans); font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
-    .ac p { font-size: 12px; color: var(--ink-mute); line-height: 1.5; }
-
-    /* ───── metrics ───── */
-    .metrics {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--line);
+    .lab-controls { padding: 18px; display: grid; gap: 12px; align-content: start; }
+    .control {
+      min-height: 86px;
       border: 1px solid var(--line);
-      margin-top: 1rem;
-    }
-    .metric {
-      background: var(--bg-soft);
-      padding: 2.5rem 1.75rem;
-      position: relative; overflow: hidden;
-      transition: background 0.3s;
-    }
-    .metric:hover { background: var(--surface); }
-    .metric::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: var(--gold);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.5s ease;
-    }
-    .metric:hover::after { transform: scaleX(1); }
-    .metric-num {
-      font-family: var(--serif);
-      font-size: clamp(40px, 5vw, 64px);
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 0.75rem;
-    }
-    .metric-num span { color: var(--gold); }
-    .metric-num sup { font-size: 0.4em; color: var(--gold); top: -0.6em; }
-    .metric-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      line-height: 1.5;
-    }
-
-    /* ───── experience timeline ───── */
-    .exp-list { display: flex; flex-direction: column; gap: 0; position: relative; }
-    .exp-list::before {
-      content: ''; position: absolute;
-      left: 110px; top: 8px; bottom: 8px;
-      width: 1px; background: var(--line-2);
-    }
-    .exp-card {
-      display: grid; grid-template-columns: 110px 1fr;
-      gap: 2rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      transition: padding-left 0.3s;
-    }
-    .exp-card:last-child { border-bottom: none; }
-    .exp-card::after {
-      content: ''; position: absolute; left: 105px; top: 3rem;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--gold);
-      transition: all 0.3s;
-    }
-    .exp-card:hover::after { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-glow); }
-
-    .exp-side {
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-mute);
-      padding-top: 0.6rem;
-    }
-    .exp-side .dot { color: var(--gold); }
-
-    .exp-body { padding-left: 2rem; }
-    .exp-role {
-      font-family: var(--serif);
-      font-size: clamp(24px, 2.6vw, 32px);
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 6px;
-    }
-    .exp-company {
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--gold-2);
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 1rem;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .exp-company::after { content: ''; width: 30px; height: 1px; background: var(--gold-deep); }
-
-    .exp-result {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(201,169,120,0.06);
-      border: 1px solid rgba(201,169,120,0.22);
-      color: var(--gold-2);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 7px 14px;
-      border-radius: 999px;
-      margin-bottom: 1.25rem;
-    }
-    .exp-result svg { stroke: var(--gold-2); }
-
-    .exp-desc {
-      font-size: 15px;
-      color: var(--ink-mute);
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-      max-width: 700px;
-    }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      background: transparent;
-      color: var(--ink-2);
-      font-size: 11px;
-      padding: 5px 12px;
-      border: 1px solid var(--line-2);
-      border-radius: 999px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-    .tag:hover { color: var(--gold); border-color: var(--gold); }
-
-    /* ───── projects ───── */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .proj {
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: var(--r-2);
-      overflow: hidden;
-      transition: all 0.4s ease;
-      position: relative;
-      cursor: pointer;
-    }
-    .proj:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold-deep);
-      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,169,120,0.18);
-    }
-    .proj-visual {
-      height: 200px;
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      border-bottom: 1px solid var(--line);
-    }
-    .proj-visual::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(201,169,120,0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,169,120,0.07) 1px, transparent 1px);
-      background-size: 24px 24px;
-      opacity: 0.6;
-    }
-    .pv-1 { background: radial-gradient(ellipse at 30% 30%, #1a1f26, #0d1014); }
-    .pv-2 { background: radial-gradient(ellipse at 70% 30%, #1d1a16, #0e0d0a); }
-    .pv-3 { background: radial-gradient(ellipse at 50% 70%, #181a1f, #0c0d10); }
-    .pv-4 { background: radial-gradient(ellipse at 30% 70%, #1c1916, #0d0c0a); }
-
-    .proj-num {
-      position: absolute; top: 1rem; left: 1.25rem;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      z-index: 2;
-    }
-    .proj-icon {
-      position: relative; z-index: 1;
-      width: 64px; height: 64px;
-      border: 1px solid var(--line-2);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(11,12,14,0.5);
-      backdrop-filter: blur(4px);
-      transition: transform 0.5s ease, border-color 0.4s;
-    }
-    .proj:hover .proj-icon { transform: scale(1.1) rotate(-6deg); border-color: var(--gold); }
-    .proj-icon svg { stroke: var(--gold); }
-
-    .proj-bigtype {
-      position: absolute; bottom: -28px; right: -8px;
-      font-family: var(--serif);
-      font-size: 160px; font-weight: 700; line-height: 1;
-      color: rgba(201,169,120,0.045);
-      letter-spacing: -0.05em;
-      pointer-events: none;
-      transition: color 0.4s, transform 0.6s;
-    }
-    .proj:hover .proj-bigtype { color: rgba(201,169,120,0.1); transform: translateY(-4px); }
-
-    .proj-body { padding: 1.75rem 1.75rem 1.5rem; }
-    .proj-cat {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-faint); margin-bottom: 0.6rem;
-    }
-    .proj-body h4 {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      transition: color 0.25s;
-    }
-    .proj:hover h4 { color: var(--gold-2); }
-    .proj-body p { font-size: 13.5px; color: var(--ink-mute); line-height: 1.65; margin-bottom: 1rem; }
-    .proj-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      margin-top: 4px;
-    }
-    .proj-link svg { transition: transform 0.25s; }
-    .proj:hover .proj-link svg { transform: translateX(4px); }
-
-    /* ───── skills ───── */
-    .skills-section {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--line);
-      border: 1px solid var(--line);
-    }
-    .sg {
-      background: var(--bg-soft);
-      padding: 2rem 1.75rem;
-      transition: background 0.3s;
-    }
-    .sg:hover { background: var(--surface); }
-    .sg-num {
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.18em; color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .sg h3 {
-      font-family: var(--serif);
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--line);
-    }
-    .sg h3 em { font-style: italic; color: var(--gold-2); }
-    .skills-list { display: flex; flex-direction: column; }
-    .skill-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 11px 0;
-      font-size: 13.5px;
-      color: var(--ink-2);
-      border-bottom: 1px dashed var(--line);
-      cursor: default;
-      transition: color 0.2s, padding-left 0.2s;
-    }
-    .skill-row:last-child { border-bottom: none; }
-    .skill-row:hover { color: var(--gold); padding-left: 4px; }
-    .skill-name { display: flex; align-items: center; gap: 10px; }
-    .skill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; background: var(--gold); }
-    .skill-bar {
-      width: 60px; height: 2px;
-      background: var(--surface-3);
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-bar::after {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: var(--lvl, 80%);
-      background: linear-gradient(90deg, var(--gold-deep), var(--gold));
-    }
-
-    /* ───── education ───── */
-    .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
-    .edu-card {
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: var(--r-2);
-      padding: 1.75rem 2rem;
-      display: grid; grid-template-columns: auto 1fr;
-      gap: 1.5rem; align-items: flex-start;
-      transition: all 0.3s;
-      position: relative;
-    }
-    .edu-card:hover {
-      background: var(--surface);
-      border-color: var(--gold-deep);
-      transform: translateX(4px);
-    }
-    .edu-icon {
-      width: 56px; height: 56px;
-      border: 1px solid var(--line-2);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      background: var(--bg);
-      transition: all 0.3s;
-    }
-    .edu-card:hover .edu-icon { border-color: var(--gold); }
-    .edu-icon svg { stroke: var(--gold); }
-    .edu-body h4 {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.015em;
-      margin-bottom: 4px;
-      line-height: 1.2;
-    }
-    .edu-school {
-      font-size: 12.5px;
-      color: var(--gold-2);
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.02em;
-    }
-    .edu-body p { font-size: 14px; color: var(--ink-mute); line-height: 1.7; }
-    .badge-active {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; color: var(--gold-2);
-      padding: 4px 12px; margin-top: 0.85rem;
-      border: 1px solid rgba(201,169,120,0.25);
-      border-radius: 999px;
-      font-weight: 500;
-    }
-    .badge-active::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--gold); border-radius: 50%;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    /* ───── languages ───── */
-    .lang-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .lang {
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: var(--r-2);
-      padding: 1.5rem 1.5rem;
-      display: flex; align-items: center; gap: 1rem;
-      transition: all 0.3s;
-    }
-    .lang:hover {
-      border-color: var(--gold-deep);
-      background: var(--surface);
-      transform: translateY(-2px);
-    }
-    .lang-flag {
-      width: 44px; height: 32px;
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      flex-shrink: 0; overflow: hidden;
-    }
-    .lang-name {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 2px;
-      letter-spacing: -0.015em;
-    }
-    .lang-level {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* ───── contact ───── */
-    .contact-section {
-      position: relative;
-      padding: 7rem var(--gutter);
-      max-width: var(--max);
-      margin: 0 auto;
-    }
-    .contact-hero {
+      background: rgba(255,255,255,.052);
+      padding: 14px;
       text-align: left;
-      max-width: 900px;
-      margin-bottom: 4rem;
+      cursor: pointer;
+      display: grid;
+      gap: 5px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
-    .contact-hero .display {
-      font-size: clamp(50px, 8vw, 110px);
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
+    .control:hover, .control.active {
+      transform: translateX(7px);
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
     }
-    .contact-hero .display em { font-style: italic; color: var(--gold-2); }
-
-    .contact-layout {
-      display: grid; grid-template-columns: 1.4fr 1fr;
-      gap: 3rem; align-items: start;
-    }
-    .contact-items {
-      display: flex; flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: var(--r-2);
+    .control b { color: var(--ink); font-size: 15px; }
+    .control span { color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .lab-output {
+      min-height: 540px;
+      display: grid;
+      grid-template-rows: auto 1fr;
       overflow: hidden;
     }
-    .ci {
-      display: flex; align-items: center; gap: 16px;
-      padding: 1.25rem 1.5rem;
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      transition: all 0.25s;
-      background: var(--bg-soft);
-      position: relative;
+    .output-body {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 18px;
+      padding: 18px;
     }
-    .ci:last-child { border-bottom: none; }
-    .ci::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 0; background: var(--gold);
-      transition: width 0.3s;
+    .pitch-card {
+      border: 1px solid color-mix(in srgb, var(--accent) 56%, transparent);
+      background: rgba(5,3,13,.76);
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      box-shadow: 0 0 48px color-mix(in srgb, var(--accent) 18%, transparent);
     }
-    .ci:hover { background: var(--surface); padding-left: 2rem; }
-    .ci:hover::before { width: 3px; }
-    .ci-icon {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(201,169,120,0.06);
-      border: 1px solid rgba(201,169,120,0.18);
-      border-radius: 50%;
-      flex-shrink: 0;
-      transition: all 0.25s;
+    .pitch-card b { color: var(--accent); font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .pitch-card h3 { font-size: clamp(30px, 4vw, 58px); color: var(--ink); }
+    .mission-list { display: grid; gap: 8px; }
+    .mission-list div {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
     }
-    .ci:hover .ci-icon { background: var(--gold); border-color: var(--gold); }
-    .ci:hover .ci-icon svg { stroke: #0b0c0e; }
-    .ci-icon svg { stroke: var(--gold); transition: stroke 0.25s; }
-    .ci-info label {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-mute);
-      display: block; margin-bottom: 4px;
+    .mission-list div::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 6px;
+      background: var(--accent);
+      box-shadow: 0 0 16px var(--accent);
     }
-    .ci-info span {
-      font-size: 15px; color: var(--ink); font-weight: 500;
-    }
-    .ci-arrow {
-      margin-left: auto;
-      color: var(--ink-faint);
-      transition: transform 0.3s, color 0.3s;
-    }
-    .ci:hover .ci-arrow { color: var(--gold); transform: translateX(4px); }
-
-    .avail-box {
-      background: var(--bg-soft);
+    .holo-preview {
       border: 1px solid var(--line);
-      border-radius: var(--r-2);
-      padding: 2rem 1.75rem;
-      position: relative; overflow: hidden;
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.055) 1px, transparent 1px),
+        #070512;
+      background-size: 28px 28px;
     }
-    .avail-box::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-2));
+    .holo-preview::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: conic-gradient(from 0deg, transparent, color-mix(in srgb, var(--accent) 42%, transparent), transparent 34%);
+      animation: holo 6s linear infinite;
+      opacity: .65;
     }
-    .avail-box h3 {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+    @keyframes holo { to { transform: rotate(360deg); } }
+    .orbit-ui {
+      position: absolute;
+      inset: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+      background: rgba(5,3,13,.68);
     }
-    .avail-box h3 em { font-style: italic; color: var(--gold-2); }
-    .avail-box p { font-size: 14px; color: var(--ink-mute); line-height: 1.7; margin-bottom: 1.5rem; }
-    .avail-tags { display: flex; flex-direction: column; gap: 12px; }
-    .avail-tag {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 13px;
-      color: var(--ink-2);
-      line-height: 1.55;
+    .orbit-ui strong {
+      font-family: var(--display);
+      font-size: clamp(54px, 9vw, 110px);
+      line-height: .82;
+      text-align: center;
+      color: var(--accent);
+      filter: drop-shadow(0 0 30px color-mix(in srgb, var(--accent) 40%, transparent));
     }
-    .avail-tag svg { stroke: var(--gold); flex-shrink: 0; margin-top: 4px; }
+    .orbit-ui span {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-align: center;
+    }
 
-    /* ───── footer ───── */
-    footer {
-      position: relative; z-index: 2;
-      border-top: 1px solid var(--line);
-      padding: 3rem var(--gutter) 2rem;
-      max-width: var(--max);
-      margin: 0 auto;
+    .radar-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 16px;
     }
-    .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--line);
+    .radar { min-height: 650px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+    .radar-screen {
+      position: relative;
+      overflow: hidden;
+      min-height: 596px;
+      background:
+        radial-gradient(circle at center, transparent 0 18%, rgba(0,246,255,.09) 18% 18.4%, transparent 18.4% 32%, rgba(0,246,255,.08) 32% 32.4%, transparent 32.4% 47%, rgba(0,246,255,.07) 47% 47.4%, transparent 47.4%),
+        linear-gradient(90deg, transparent 49.8%, rgba(0,246,255,.18) 50%, transparent 50.2%),
+        linear-gradient(180deg, transparent 49.8%, rgba(0,246,255,.18) 50%, transparent 50.2%);
     }
-    .footer-brand {
-      font-family: var(--serif);
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
+    .sweep {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 50%;
+      height: 50%;
+      transform-origin: 0 0;
+      background: linear-gradient(50deg, rgba(204,255,0,.34), transparent 55%);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      animation: radarSweep 4s linear infinite;
     }
-    .footer-brand em { font-style: italic; color: var(--gold-2); }
-    .footer-tag { font-size: 13px; color: var(--ink-mute); max-width: 360px; line-height: 1.7; }
-    .footer-col h5 {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1rem;
+    @keyframes radarSweep { to { transform: rotate(360deg); } }
+    .blip {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--c);
+      background: color-mix(in srgb, var(--c) 25%, transparent);
+      box-shadow: 0 0 22px var(--c);
+      transform: translate(-50%, -50%);
+      animation: blip 1.8s ease-in-out infinite;
     }
-    .footer-col a, .footer-col span {
-      display: block;
-      font-size: 13px;
-      color: var(--ink-2);
-      text-decoration: none;
-      padding: 4px 0;
-      transition: color 0.2s;
+    @keyframes blip { 50% { transform: translate(-50%, -50%) scale(1.9); opacity: .36; } }
+    .radar-card {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: min(360px, calc(100% - 36px));
+      border: 1px solid var(--line);
+      background: rgba(5,3,13,.78);
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      backdrop-filter: blur(14px);
     }
-    .footer-col a:hover { color: var(--gold); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: 1.5rem;
-      font-size: 11px; color: var(--ink-faint);
-      font-family: var(--mono); letter-spacing: 0.12em;
+    .radar-card b { color: var(--acid); font-family: var(--mono); text-transform: uppercase; }
+    .radar-card span { color: var(--muted); line-height: 1.45; }
+    .radar-side { display: grid; gap: 16px; }
+    .signal-card {
+      min-height: 151px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.052);
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 16px;
+    }
+    .signal-card strong {
+      font-family: var(--display);
+      font-size: 40px;
+      color: var(--c);
+      line-height: .9;
+    }
+    .signal-card span { color: var(--muted); }
+
+    .stack-section {
+      background:
+        radial-gradient(circle at 22% 22%, rgba(255,138,0,.14), transparent 24rem),
+        radial-gradient(circle at 80% 72%, rgba(45,125,255,.14), transparent 26rem);
+    }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 16px;
+    }
+    .stack-machine { padding: 18px; display: grid; gap: 14px; align-content: start; }
+    .stack-toggle {
+      min-height: 112px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      padding: 15px;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      gap: 8px;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .stack-toggle:hover, .stack-toggle.active {
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      transform: translateX(7px);
+    }
+    .stack-toggle b { color: var(--accent); font-family: var(--mono); text-transform: uppercase; }
+    .stack-toggle span { color: var(--muted); font-size: 13px; }
+    .stack-output {
+      border: 1px solid var(--line);
+      background: rgba(5,3,13,.72);
+      box-shadow: var(--shadow);
+      min-height: 638px;
+      padding: 22px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      overflow: hidden;
+    }
+    .stack-score {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .score-orb {
+      width: 164px;
+      height: 164px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--acid) calc(var(--score) * 1%), rgba(255,255,255,.08) 0);
+      position: relative;
+      color: #05030d;
+      font-family: var(--display);
+      font-size: 46px;
+    }
+    .score-orb::before {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+    .score-orb span { position: relative; z-index: 1; }
+    .score-copy h3 { font-size: clamp(30px, 4vw, 62px); }
+    .build-lines { display: grid; gap: 10px; align-content: start; }
+    .build-line {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+    }
+    .build-line b { color: var(--acid); font-family: var(--mono); }
+    .build-line span { color: var(--muted); line-height: 1.42; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .time-box {
+      min-height: 118px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.052);
+      padding: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .time-box b { font-family: var(--display); font-size: 22px; color: var(--cyan); }
+    .time-box span { color: var(--muted); font-size: 12px; line-height: 1.32; }
+
+    .cases {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .case-card {
+      min-height: 360px;
+      padding: 17px;
+      display: grid;
+      align-content: space-between;
+      gap: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .case-card:hover {
+      transform: translateY(-7px) rotate(.5deg);
+      border-color: var(--c);
+    }
+    .case-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 24%, color-mix(in srgb, var(--c) 22%, transparent), transparent 34%),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: auto, 24px 24px, 24px 24px;
+      opacity: .9;
+    }
+    .case-card > * { position: relative; z-index: 1; }
+    .case-num {
+      color: var(--c);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+    .case-card h3 { font-size: 34px; }
+    .case-card p { font-size: 14px; }
+    .case-chip {
+      width: max-content;
+      max-width: 100%;
+      padding: 8px 10px;
+      border: 1px solid color-mix(in srgb, var(--c) 58%, transparent);
+      color: var(--c);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 900;
       text-transform: uppercase;
-      flex-wrap: wrap; gap: 0.5rem;
     }
 
-    /* ───── reveal on scroll ───── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
+    .contact {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      padding: 112px 0 52px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: end;
+    }
+    .contact-copy { display: grid; gap: 26px; }
+    .contact-copy h2 { font-size: clamp(48px, 8vw, 118px); }
+    .contact-panel { padding: 16px; display: grid; gap: 10px; }
+    .contact-link, .copy-card {
+      min-height: 74px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.052);
+      padding: 15px;
+      display: grid;
+      gap: 5px;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .contact-link:hover, .copy-card:hover {
+      border-color: var(--cyan);
+      background: rgba(0,246,255,.08);
+      transform: translateX(5px);
+    }
+    .contact-link b, .copy-card b { color: var(--ink); }
+    .contact-link span, .copy-card span { color: var(--muted); overflow-wrap: anywhere; }
+    .copy-card { cursor: pointer; text-align: left; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-    /* ───── responsive ───── */
-    @media (max-width: 880px) {
-      :root { --gutter: 1.25rem; }
-      .nav-links { gap: 1.25rem; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding: 7rem var(--gutter) 4rem; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); }
-      .hs:nth-child(2) { border-right: none; }
-      .hs:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: 1.5rem; }
-      .section { padding: 5rem var(--gutter); }
-      .section-head { flex-direction: column; align-items: flex-start; }
-      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .metrics { grid-template-columns: repeat(2, 1fr); }
-      .skills-section { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .contact-layout { grid-template-columns: 1fr; }
-      .lang-grid { grid-template-columns: 1fr; }
-      .exp-list::before { left: 6px; }
-      .exp-card { grid-template-columns: 1fr; gap: 0.5rem; padding-left: 30px; }
-      .exp-card::after { left: 1px; top: 1.25rem; }
-      .exp-side { padding-top: 0; }
-      .exp-body { padding-left: 0; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .hero-layout, .section-head, .ai-lab, .output-body, .radar-grid, .stack-grid, .contact-grid { grid-template-columns: 1fr; }
+      .command-deck { min-height: 580px; }
+      .deck-screen { min-height: 526px; }
+      .cases { grid-template-columns: repeat(2, 1fr); }
+      .stack-score { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: calc(100% - 24px); }
+      .nav { inset: 8px 8px auto; min-height: 58px; padding: 8px 10px; }
+      .brand span:not(.brand-mark) { display: none; }
+      .nav-actions .btn { min-height: 40px; padding: 0 11px; font-size: 11px; }
+      .hero { padding-top: 98px; }
+      h1 { font-size: clamp(48px, 15vw, 74px); line-height: .94; }
+      h2 { font-size: clamp(36px, 12vw, 54px); line-height: .94; }
+      .lead { font-size: 18px; }
+      .command-deck { min-height: 500px; }
+      .deck-screen { min-height: 446px; }
+      .core { width: 112px; height: 112px; font-size: 36px; }
+      .core::after { display: none; }
+      .ring.one { width: 220px; height: 220px; }
+      .ring.two { width: 310px; height: 310px; }
+      .ring.three { width: 430px; height: 430px; }
+      .node { width: 112px; min-height: 82px; padding: 9px; }
+      .node b { font-size: 11px; }
+      .node span { display: none; }
+      .section { padding: 74px 0; }
+      .output-body, .lab-output { display: block; }
+      .holo-preview { min-height: 320px; margin-top: 14px; }
+      .orbit-ui { inset: 18px; }
+      .radar-screen { min-height: 420px; }
+      .score-orb { width: 128px; height: 128px; font-size: 34px; }
+      .build-line { grid-template-columns: 1fr; }
+      .cases, .timeline { grid-template-columns: 1fr; }
+      .case-card { min-height: 280px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
 
-  <div class="scroll-progress"><div class="scroll-progress-bar" id="progress"></div></div>
-
-  <nav id="main-nav">
-    <a href="#top" class="nav-logo">Thomas <i>Lehmann</i><span class="dot">.</span></a>
-    <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contacto" class="nav-cta">Contacto →</a></li>
-    </ul>
-  </nav>
-
-  <!-- ─────────── HERO ─────────── -->
-  <section class="hero" id="top">
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-      <div class="hero-meta">
-        <span class="hero-meta-item pulse">Disponible · 2026</span>
-        <span class="hero-meta-item">Buenos Aires · ARG</span>
-        <span class="hero-meta-item">Universidad Austral</span>
+  <div class="site">
+    <nav class="nav" aria-label="Navegacion principal">
+      <a class="brand" href="#inicio" aria-label="Inicio Thomas Lehmann">
+        <span class="brand-mark">TL</span>
+        <span>Thomas Lehmann / Growth Interface</span>
+      </a>
+      <div class="nav-links">
+        <a href="#lab">AI Lab</a>
+        <a href="#radar">Radar</a>
+        <a href="#stack">Stack</a>
+        <a href="#casos">Casos</a>
+        <a href="#contacto">Contacto</a>
       </div>
-
-      <h1>
-        <span class="lh-first">Thomas</span>
-        <span class="lh-last">Lehmann<span class="accent-mark">.</span></span>
-      </h1>
-
-      <p class="hero-tagline">
-        Estrategia digital integral, <span>paid media</span> y transformación de negocios. Convierto operaciones tradicionales en <span>ecosistemas que escalan</span>.
-      </p>
-
-      <p class="hero-desc">
-        Diseño y ejecuto la maquinaria completa: web, CRM, campañas de Google &amp; Meta Ads, contenido y automatización con IA. Foco obsesivo en métricas y retorno.
-      </p>
-
-      <div class="hero-cta">
-        <a href="#contacto" class="btn btn-primary">
-          Iniciar conversación
-          <svg class="btn-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#proyectos" class="btn btn-ghost">
-          Ver proyectos
-          <svg class="btn-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div class="nav-actions">
+        <button class="btn" type="button" id="chaosBtn">Chaos</button>
+        <a class="btn primary" href="https://wa.me/5491170218400" target="_blank" rel="noopener">WhatsApp</a>
       </div>
+    </nav>
 
-      <div class="hero-stats">
-        <div class="hs">
-          <div class="hs-num">3<span class="small">+</span></div>
-          <div class="hs-label">Años en digital</div>
-        </div>
-        <div class="hs">
-          <div class="hs-num">20<span class="small">leads</span></div>
-          <div class="hs-label">$250 USD · 1 mes</div>
-        </div>
-        <div class="hs">
-          <div class="hs-num">3</div>
-          <div class="hs-label">Idiomas avanzados</div>
-        </div>
-        <div class="hs">
-          <div class="hs-num">360°</div>
-          <div class="hs-label">Estrategia full-stack</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─────────── SOBRE ─────────── -->
-  <section class="section reveal" id="sobre">
-    <div class="section-head">
-      <div class="section-head-left">
-        <div class="eyebrow">01 / Sobre mí</div>
-        <h2 class="section-title">Del concepto<br>al <em>resultado medible</em>.</h2>
-      </div>
-      <div class="section-aside">
-        Estudiante avanzado de Negocios Digitales con experiencia real en agencias, grandes marcas y emprendimiento. Estratega y ejecutor.
-      </div>
-    </div>
-
-    <div class="about-layout">
-      <div class="about-text">
-        <p>
-          Soy estudiante de <strong>Licenciatura en Negocios Digitales en la Universidad Austral</strong>, con experiencia operativa en agencias, marcas globales y proyectos propios. Me muevo cómodo entre estrategia, ejecución técnica y liderazgo.
-        </p>
-        <p>
-          Más allá del marketing digital, manejo conocimientos en <strong>legislación argentina aplicada a negocios</strong>, sigo de cerca <em>mercados financieros y activos de inversión</em>, y soy un apasionado del <strong>mundo automotriz global</strong>.
-        </p>
-        <p>
-          Mi enfoque siempre apunta al mismo norte: combinar <strong>tecnología, creatividad y datos</strong> para producir resultados tangibles, no presentaciones bonitas.
-        </p>
-      </div>
-
-      <div class="about-cards">
-        <div class="ac">
-          <svg width="18" height="18" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <div><h4>Buenos Aires, Argentina</h4><p>Remoto y presencial · LATAM &amp; EU</p></div>
-        </div>
-        <div class="ac">
-          <svg width="18" height="18" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M9 8a3 3 0 1 1 3 3v2"/></svg>
-          <div><h4>IA aplicada a negocios</h4><p>Automatización, análisis y producción</p></div>
-        </div>
-        <div class="ac">
-          <svg width="18" height="18" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
-          <div><h4>Legislación argentina</h4><p>Marco legal para negocios digitales</p></div>
-        </div>
-        <div class="ac">
-          <svg width="18" height="18" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          <div><h4>Mercados &amp; finanzas</h4><p>Activos, equity e inversión</p></div>
-        </div>
-        <div class="ac">
-          <svg width="18" height="18" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 13l2-7h14l2 7M5 13h14v6H5z"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></svg>
-          <div><h4>Industria automotriz</h4><p>Mercado global y tendencias</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Métricas / impacto -->
-    <div class="metrics" style="margin-top: 4rem;">
-      <div class="metric">
-        <div class="metric-num">20<sup>+</sup></div>
-        <div class="metric-label">Leads generados<br>con $250 USD pauta</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">3<span>.0x</span></div>
-        <div class="metric-label">Stack: Google, Meta<br>&amp; automatización</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">360°</div>
-        <div class="metric-label">Web · CRM · Ads<br>Contenido · Estrategia</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">3</div>
-        <div class="metric-label">Idiomas profesionales<br>ES · DE · EN</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─────────── EXPERIENCIA ─────────── -->
-  <section class="section reveal" id="experiencia">
-    <div class="section-head">
-      <div class="section-head-left">
-        <div class="eyebrow">02 / Trayectoria</div>
-        <h2 class="section-title">Experiencia<br>en <em>el campo de juego</em>.</h2>
-      </div>
-      <div class="section-aside">
-        Tres frentes simultáneos: agencia propia, marca premium internacional y consultoría con foco en IA.
-      </div>
-    </div>
-
-    <div class="exp-list">
-      <article class="exp-card">
-        <div class="exp-side">2025 <span class="dot">·</span> AR</div>
-        <div class="exp-body">
-          <h3 class="exp-role">Responsable de Google Ads</h3>
-          <div class="exp-company">Technogym Argentina</div>
-          <div class="exp-result">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-            20 leads calificados con $250 USD de pauta en un mes
+    <main id="inicio">
+      <section class="hero">
+        <div class="wrap hero-layout">
+          <div class="hero-copy">
+            <div class="eyebrow">Portfolio mutante / Paid media / IA / negocios</div>
+            <h1>Thomas <span class="glitch">Lehmann</span></h1>
+            <p class="lead">No es un CV. Es una consola viva para vender ideas, detectar oportunidades, imaginar funnels y mostrar que una pagina web tambien puede pensar, moverse y convertir.</p>
+            <p>Growth, Google Ads, Meta Ads, CRM, automatizacion, contenido, IA y estrategia digital. Buenos Aires conectado con LATAM, Europa y cualquier negocio que quiera salir del modo planilla.</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#lab">Activar laboratorio</a>
+              <a class="btn" href="#stack">Simular stack</a>
+              <a class="btn hot" href="#contacto">Contratar señal</a>
+            </div>
           </div>
-          <p class="exp-desc">
-            Gestión integral de campañas Google Ads para la filial argentina de la marca líder mundial en equipamiento fitness premium. Creación, segmentación avanzada, optimización de presupuestos y maximización del ROI en un mercado de alta gama.
-          </p>
-          <div class="tags">
-            <span class="tag">Google Ads</span>
-            <span class="tag">Performance</span>
-            <span class="tag">Lead Gen</span>
-            <span class="tag">Segmentación</span>
-            <span class="tag">Budget mgmt</span>
+
+          <aside class="command-deck" aria-label="Mapa interactivo de habilidades">
+            <div class="deck-top">
+              <span>THOMAS.OS / LIVE SIGNAL</span>
+              <span id="deckReadout">MOUSE: IDLE</span>
+            </div>
+            <div class="deck-screen" id="deck">
+              <div class="ring one"></div>
+              <div class="ring two"></div>
+              <div class="ring three"></div>
+              <div class="node web"><b>Web</b><span>Interfaces que explican rapido y convierten.</span></div>
+              <div class="node ads"><b>Ads</b><span>Google y Meta como motores de demanda.</span></div>
+              <div class="node ia"><b>IA</b><span>Automatizacion, analisis y produccion.</span></div>
+              <div class="node crm"><b>CRM</b><span>Seguimiento comercial sin oportunidades perdidas.</span></div>
+              <div class="core">TL</div>
+              <div class="deck-chip">
+                <div><strong>Move el mouse sobre el reactor</strong><span>La pagina cambia la escena segun tu señal.</span></div>
+                <i class="blink"></i>
+              </div>
+            </div>
+          </aside>
+
+          <div class="hero-marquee" aria-hidden="true">
+            <div class="marquee-track">
+              <span>GOOGLE ADS</span><span>META ADS</span><span>CRM</span><span>IA</span><span>FUNNELS</span><span>WEB EXPERIMENTAL</span><span>LEAD GEN</span>
+              <span>GOOGLE ADS</span><span>META ADS</span><span>CRM</span><span>IA</span><span>FUNNELS</span><span>WEB EXPERIMENTAL</span><span>LEAD GEN</span>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      <article class="exp-card">
-        <div class="exp-side">2024 <span class="dot">·</span> Founder</div>
-        <div class="exp-body">
-          <h3 class="exp-role">Co-fundador &amp; Director</h3>
-          <div class="exp-company">Vantra · Agencia de Transformación Digital</div>
-          <p class="exp-desc">
-            Co-creación y dirección de una agencia digital orientada a transformar negocios tradicionales en ecosistemas 100% digitales. Servicios integrales: web, CRM, campañas en Google y Meta, producción de contenido, estrategia de negocio. Liderazgo de equipo y administración de recursos.
-          </p>
-          <div class="tags">
-            <span class="tag">Web</span>
-            <span class="tag">CRM</span>
-            <span class="tag">Meta Ads</span>
-            <span class="tag">Google Ads</span>
-            <span class="tag">Estrategia</span>
-            <span class="tag">Liderazgo</span>
+      <section class="section reveal" id="lab">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / AI pitch lab</div>
+              <h2>Un generador de enfoque para vender mejor.</h2>
+            </div>
+            <p>Elegis una mision y la pagina reescribe el posicionamiento, arma prioridades y cambia el holograma. No es decoracion: es una forma rapida de entender como piensa Thomas.</p>
+          </div>
+
+          <div class="ai-lab">
+            <div class="lab-controls" role="tablist" aria-label="Misiones de crecimiento">
+              <button class="control active" type="button" data-mission="premium" style="--accent: var(--cyan)" aria-selected="true"><b>Marca premium con baja demanda</b><span>Cuando el producto es bueno pero poca gente correcta lo descubre.</span></button>
+              <button class="control" type="button" data-mission="chaos" style="--accent: var(--hot)" aria-selected="false"><b>Negocio tradicional en caos digital</b><span>Cuando hay WhatsApp, planillas, leads y cero sistema.</span></button>
+              <button class="control" type="button" data-mission="dach" style="--accent: var(--acid)" aria-selected="false"><b>Proyecto DACH / internacional</b><span>Aleman, ingles, capital, IA y comunicacion precisa.</span></button>
+              <button class="control" type="button" data-mission="automation" style="--accent: var(--orange)" aria-selected="false"><b>Operacion que necesita IA</b><span>Cuando repetir tareas humanas ya es demasiado caro.</span></button>
+            </div>
+
+            <div class="lab-output">
+              <div class="panel-top"><span id="missionCode">MISSION / PREMIUM</span><span id="missionScore">FIT 94%</span></div>
+              <div class="output-body">
+                <article class="pitch-card" id="pitchCard" style="--accent: var(--cyan)">
+                  <b id="missionKicker">Paid media con precision</b>
+                  <h3 id="missionTitle">Convertir deseo premium en consultas reales.</h3>
+                  <p id="missionText">La estrategia combina Google Ads, lectura de intencion, landing clara y seguimiento comercial. El objetivo no es comprar clicks: es construir un circuito donde cada consulta tenga contexto, valor y proximo paso.</p>
+                  <div class="mission-list" id="missionList"></div>
+                </article>
+                <div class="holo-preview" id="holo" style="--accent: var(--cyan)">
+                  <div class="orbit-ui">
+                    <strong id="holoWord">LEADS<br>WITH<br>INTENT</strong>
+                    <span id="holoCaption">Signal design for premium demand</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      <article class="exp-card">
-        <div class="exp-side">2023 <span class="dot">·</span> MdQ</div>
-        <div class="exp-body">
-          <h3 class="exp-role">Consultor Idioma &amp; Proyectos IA</h3>
-          <div class="exp-company">ReplaceIT · Mar del Plata</div>
-          <p class="exp-desc">
-            Consultoría en alemán para proyectos de inversión generados mediante inteligencia artificial. Puente entre clientes internacionales de habla alemana y el equipo técnico local, asegurando precisión en proyectos de alto valor estratégico.
-          </p>
-          <div class="tags">
-            <span class="tag">Alemán</span>
-            <span class="tag">IA</span>
-            <span class="tag">Consultoría</span>
-            <span class="tag">Inversión</span>
+      <section class="section reveal" id="radar">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">02 / opportunity radar</div>
+              <h2>Un radar para encontrar donde crece el negocio.</h2>
+            </div>
+            <p>La web muestra cuatro señales comerciales: demanda, conversion, seguimiento y automatizacion. Es el mapa mental de una consultoria convertido en interfaz.</p>
+          </div>
+
+          <div class="radar-grid">
+            <div class="radar">
+              <div class="panel-top"><span>RADAR / BUSINESS SIGNALS</span><span id="radarMode">SCAN ACTIVE</span></div>
+              <div class="radar-screen">
+                <div class="sweep"></div>
+                <i class="blip" style="--x: 28%; --y: 36%; --c: var(--cyan)"></i>
+                <i class="blip" style="--x: 68%; --y: 28%; --c: var(--hot)"></i>
+                <i class="blip" style="--x: 44%; --y: 70%; --c: var(--acid)"></i>
+                <i class="blip" style="--x: 74%; --y: 66%; --c: var(--orange)"></i>
+                <div class="radar-card">
+                  <b id="radarTitle">Señal detectada: conversion</b>
+                  <span id="radarText">Una buena pagina no solo se ve distinta. Hace que la persona entienda, confie y avance sin friccion.</span>
+                </div>
+              </div>
+            </div>
+            <div class="radar-side">
+              <button class="signal-card" type="button" data-signal="demand" style="--c: var(--hot)"><strong>01</strong><span>Demanda: campañas que encuentran personas con intencion y mensaje correcto.</span></button>
+              <button class="signal-card" type="button" data-signal="conversion" style="--c: var(--cyan)"><strong>02</strong><span>Conversion: paginas que convierten atencion en accion medible.</span></button>
+              <button class="signal-card" type="button" data-signal="follow" style="--c: var(--acid)"><strong>03</strong><span>Seguimiento: CRM para que ningun lead muera en el inbox.</span></button>
+              <button class="signal-card" type="button" data-signal="auto" style="--c: var(--orange)"><strong>04</strong><span>Automatizacion: IA y procesos para producir mas con menos friccion.</span></button>
+            </div>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+      </section>
 
-  <div class="divider"></div>
+      <section class="section stack-section reveal" id="stack">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">03 / stack simulator</div>
+              <h2>Arma una maquina de crecimiento en vivo.</h2>
+            </div>
+            <p>Tocá modulos. La pagina calcula un score inventado pero util: cuanto mas conectado esta el sistema, mas fuerte se vuelve el plan.</p>
+          </div>
 
-  <!-- ─────────── PROYECTOS ─────────── -->
-  <section class="section reveal" id="proyectos">
-    <div class="section-head">
-      <div class="section-head-left">
-        <div class="eyebrow">03 / Selección</div>
-        <h2 class="section-title">Trabajo <em>destacado</em>.</h2>
+          <div class="stack-grid">
+            <div class="stack-machine" aria-label="Modulos de stack">
+              <button class="stack-toggle active" type="button" data-stack="ads" style="--accent: var(--hot)"><b>Paid media</b><span>Google Ads, Meta Ads, segmentacion y demanda.</span></button>
+              <button class="stack-toggle active" type="button" data-stack="web" style="--accent: var(--cyan)"><b>Web interface</b><span>Landing, portfolio, funnel y experiencia visual.</span></button>
+              <button class="stack-toggle active" type="button" data-stack="crm" style="--accent: var(--acid)"><b>CRM memory</b><span>Pipeline, estados, proximo paso y lectura comercial.</span></button>
+              <button class="stack-toggle active" type="button" data-stack="ai" style="--accent: var(--orange)"><b>AI layer</b><span>Automatizacion, analisis, contenido y velocidad.</span></button>
+              <button class="stack-toggle" type="button" data-stack="dach" style="--accent: var(--blue)"><b>DACH signal</b><span>Aleman, ingles y proyectos internacionales.</span></button>
+            </div>
+
+            <div class="stack-output">
+              <div class="stack-score">
+                <div class="score-orb" id="scoreOrb" style="--score: 88"><span id="scoreNum">88</span></div>
+                <div class="score-copy">
+                  <div class="eyebrow">System score</div>
+                  <h3 id="scoreTitle">Sistema casi completo.</h3>
+                  <p id="scoreText">Hay demanda, pagina, seguimiento e IA. Esto permite probar mensajes, capturar oportunidades y aprender con velocidad.</p>
+                </div>
+              </div>
+              <div class="build-lines" id="buildLines"></div>
+              <div class="timeline">
+                <div class="time-box"><b>DIA 1</b><span>Diagnostico brutal: oferta, cliente, canal y bloqueo.</span></div>
+                <div class="time-box"><b>S1</b><span>Landing, tracking, CRM y primer experimento.</span></div>
+                <div class="time-box"><b>S2-3</b><span>Iteracion con datos reales, creatividad y presupuesto.</span></div>
+                <div class="time-box"><b>D30</b><span>Lectura de señales y siguiente apuesta.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="casos">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">04 / proof fragments</div>
+              <h2>Casos, skills y obsesiones en formato señal.</h2>
+            </div>
+            <p>Una mezcla rara a proposito: performance, agencia, IA, idioma, finanzas, autos y negocio. El punto es mostrar rango.</p>
+          </div>
+
+          <div class="cases">
+            <article class="case-card" style="--c: var(--hot)">
+              <div class="case-num">01 / TECHNOGYM</div>
+              <div><h3>20 leads con USD 250.</h3><p>Google Ads para mercado premium. Presupuesto chico, intencion alta y foco en calidad.</p></div>
+              <div class="case-chip">Performance</div>
+            </article>
+            <article class="case-card" style="--c: var(--cyan)">
+              <div class="case-num">02 / VANTRA</div>
+              <div><h3>Agencia como laboratorio.</h3><p>Web, CRM, anuncios, contenido y estrategia para digitalizar negocios tradicionales.</p></div>
+              <div class="case-chip">Founder mode</div>
+            </article>
+            <article class="case-card" style="--c: var(--acid)">
+              <div class="case-num">03 / DACH + IA</div>
+              <div><h3>Aleman, IA y capital.</h3><p>Consultoria bilingue para proyectos de inversion generados con inteligencia artificial.</p></div>
+              <div class="case-chip">International</div>
+            </article>
+            <article class="case-card" style="--c: var(--orange)">
+              <div class="case-num">04 / OBSESIONES</div>
+              <div><h3>Finanzas, autos y leyes.</h3><p>Lectura de mercado, contexto legal argentino y cultura automotriz global aplicada a negocios.</p></div>
+              <div class="case-chip">Range</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contacto">
+        <div class="wrap contact-grid">
+          <div class="contact-copy reveal">
+            <div class="eyebrow">05 / contact portal</div>
+            <h2>Mandame una señal.</h2>
+            <p class="lead">Si queres una web que no parezca una plantilla, una estrategia de ads, una automatizacion con IA o simplemente romper la normalidad de tu presencia digital, este es el portal.</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:adsbythomas@gmail.com">Email directo</a>
+              <a class="btn hot" href="https://wa.me/5491170218400" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+          <aside class="contact-panel reveal">
+            <a class="contact-link" href="mailto:adsbythomas@gmail.com"><b>Email</b><span>adsbythomas@gmail.com</span></a>
+            <a class="contact-link" href="https://wa.me/5491170218400" target="_blank" rel="noopener"><b>WhatsApp</b><span>+54 9 11 7021-8400</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/thomas-lehmann--</span></a>
+            <button class="copy-card" type="button" id="copyPitch"><b>Copiar pitch instantaneo</b><span>Un mensaje listo para abrir conversacion con Thomas.</span></button>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-row">
+        <span>Thomas Lehmann / Buenos Aires / 2026</span>
+        <span>Growth interface, paid media, IA, CRM, web y negocios.</span>
       </div>
-      <div class="section-aside">
-        Cuatro casos representativos: paid media performance, ecosistema digital, IA aplicada a inversión y diseño de funnels.
-      </div>
-    </div>
+    </footer>
+  </div>
 
-    <div class="projects-grid">
-      <article class="proj">
-        <div class="proj-visual pv-1">
-          <span class="proj-num">01 — Performance</span>
-          <div class="proj-icon">
-            <svg width="28" height="28" fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          </div>
-          <div class="proj-bigtype">01</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-cat">Google Ads · Premium B2C</div>
-          <h4>Technogym — Paid Performance</h4>
-          <p>20 leads calificados con $250 USD de presupuesto mensual en Google Ads para el mercado premium argentino del fitness.</p>
-          <div class="tags" style="margin-bottom: 1rem;">
-            <span class="tag">Google Ads</span>
-            <span class="tag">Lead Gen</span>
-            <span class="tag">Premium</span>
-          </div>
-          <span class="proj-link">Caso de estudio
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </article>
+  <script>
+    const root = document.documentElement;
+    const canvas = document.getElementById("neural-bg");
+    const ctx = canvas.getContext("2d");
+    const pointer = { x: innerWidth / 2, y: innerHeight / 2, active: false };
+    let particles = [];
+    let cw = 0;
+    let ch = 0;
+    let chaos = false;
 
-      <article class="proj">
-        <div class="proj-visual pv-2">
-          <span class="proj-num">02 — Ecosistema</span>
-          <div class="proj-icon">
-            <svg width="28" height="28" fill="none" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="proj-bigtype">02</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-cat">Agencia · Full-stack</div>
-          <h4>Vantra — Ecosistema 360°</h4>
-          <p>Agencia propia que transforma negocios tradicionales con web, CRM, paid media y contenido bajo una sola estrategia integrada.</p>
-          <div class="tags" style="margin-bottom: 1rem;">
-            <span class="tag">Web</span>
-            <span class="tag">CRM</span>
-            <span class="tag">Meta &amp; Google</span>
-          </div>
-          <span class="proj-link">Visitar agencia
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </article>
+    function resizeCanvas() {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      cw = innerWidth;
+      ch = innerHeight;
+      canvas.width = cw * dpr;
+      canvas.height = ch * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const total = Math.max(82, Math.floor((cw * ch) / 13500));
+      particles = Array.from({ length: total }, (_, i) => ({
+        x: (i * 197) % cw,
+        y: (i * 113) % ch,
+        vx: (Math.random() - .5) * .55,
+        vy: (Math.random() - .5) * .55,
+        r: 1 + Math.random() * 2.2,
+        hue: [186, 314, 74, 32][i % 4]
+      }));
+    }
 
-      <article class="proj">
-        <div class="proj-visual pv-3">
-          <span class="proj-num">03 — IA &amp; Inversión</span>
-          <div class="proj-icon">
-            <svg width="28" height="28" fill="none" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M9 9.5a2.5 2.5 0 1 1 3 2.45V13"/></svg>
-          </div>
-          <div class="proj-bigtype">03</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-cat">Consultoría · DE / Inversión</div>
-          <h4>ReplaceIT — IA + Capital</h4>
-          <p>Proyectos de inversión asistidos por IA con gestión bilingüe en alemán para clientes internacionales de alto patrimonio.</p>
-          <div class="tags" style="margin-bottom: 1rem;">
-            <span class="tag">IA</span>
-            <span class="tag">Inversión</span>
-            <span class="tag">Alemán</span>
-          </div>
-          <span class="proj-link">Detalle del rol
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </article>
+    function drawCanvas() {
+      ctx.clearRect(0, 0, cw, ch);
+      for (const p of particles) {
+        p.x += p.vx * (chaos ? 2.4 : 1);
+        p.y += p.vy * (chaos ? 2.4 : 1);
+        if (p.x < 0 || p.x > cw) p.vx *= -1;
+        if (p.y < 0 || p.y > ch) p.vy *= -1;
+        if (pointer.active) {
+          const dx = pointer.x - p.x;
+          const dy = pointer.y - p.y;
+          const d = Math.hypot(dx, dy);
+          if (d < 210) {
+            p.x -= dx * (chaos ? .007 : .0028);
+            p.y -= dy * (chaos ? .007 : .0028);
+          }
+        }
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 62%, .78)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, chaos ? p.r * 1.6 : p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          const limit = chaos ? 152 : 118;
+          if (d < limit) {
+            ctx.globalAlpha = (1 - d / limit) * .55;
+            ctx.strokeStyle = `hsla(${a.hue}, 100%, 62%, .42)`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(drawCanvas);
+    }
 
-      <article class="proj">
-        <div class="proj-visual pv-4">
-          <span class="proj-num">04 — Conversión</span>
-          <div class="proj-icon">
-            <svg width="28" height="28" fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <div class="proj-bigtype">04</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-cat">Estrategia · Funnels</div>
-          <h4>Conversion Engine</h4>
-          <p>Diseño de funnels combinando paid media, contenido orgánico y automatización con IA para escalar adquisición de clientes.</p>
-          <div class="tags" style="margin-bottom: 1rem;">
-            <span class="tag">Conversión</span>
-            <span class="tag">Meta Ads</span>
-            <span class="tag">Automation</span>
-          </div>
-          <span class="proj-link">Metodología
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─────────── SKILLS ─────────── -->
-  <section class="section reveal" id="skills">
-    <div class="section-head">
-      <div class="section-head-left">
-        <div class="eyebrow">04 / Stack</div>
-        <h2 class="section-title">Stack de <em>competencias</em>.</h2>
-      </div>
-      <div class="section-aside">
-        Capacidades operativas verificables en producción, no buzzwords. Tres núcleos que se refuerzan entre sí.
-      </div>
-    </div>
-
-    <div class="skills-section">
-      <div class="sg">
-        <div class="sg-num">/ 01</div>
-        <h3>Paid <em>Media</em></h3>
-        <div class="skills-list">
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Google Ads</span><span class="skill-bar" style="--lvl:95%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Meta Ads</span><span class="skill-bar" style="--lvl:90%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Segmentación</span><span class="skill-bar" style="--lvl:90%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Budget mgmt</span><span class="skill-bar" style="--lvl:85%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Lead generation</span><span class="skill-bar" style="--lvl:90%"></span></div>
-        </div>
-      </div>
-
-      <div class="sg">
-        <div class="sg-num">/ 02</div>
-        <h3>Estrategia &amp; <em>Negocios</em></h3>
-        <div class="skills-list">
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Planes de marketing</span><span class="skill-bar" style="--lvl:90%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Estrategia de conversión</span><span class="skill-bar" style="--lvl:88%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Gestión de equipos</span><span class="skill-bar" style="--lvl:85%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>CRM &amp; Automatización</span><span class="skill-bar" style="--lvl:80%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Desarrollo web</span><span class="skill-bar" style="--lvl:75%"></span></div>
-        </div>
-      </div>
-
-      <div class="sg">
-        <div class="sg-num">/ 03</div>
-        <h3>Tech &amp; <em>Lenguaje</em></h3>
-        <div class="skills-list">
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Inteligencia Artificial</span><span class="skill-bar" style="--lvl:85%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Alemán</span><span class="skill-bar" style="--lvl:95%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Inglés</span><span class="skill-bar" style="--lvl:90%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Legislación AR</span><span class="skill-bar" style="--lvl:75%"></span></div>
-          <div class="skill-row"><span class="skill-name"><span class="skill-dot"></span>Mercados financieros</span><span class="skill-bar" style="--lvl:80%"></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─────────── EDUCACIÓN ─────────── -->
-  <section class="section reveal" id="educacion">
-    <div class="section-head">
-      <div class="section-head-left">
-        <div class="eyebrow">05 / Formación</div>
-        <h2 class="section-title">Formación &amp; <em>idiomas</em>.</h2>
-      </div>
-      <div class="section-aside">
-        Educación bilingüe alemán-español, intercambio en Alemania y carrera universitaria en Negocios Digitales.
-      </div>
-    </div>
-
-    <div class="edu-list">
-      <article class="edu-card">
-        <div class="edu-icon"><svg width="22" height="22" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg></div>
-        <div class="edu-body">
-          <h4>Licenciatura en Negocios Digitales</h4>
-          <div class="edu-school">Universidad Austral · Buenos Aires</div>
-          <p>Formación integral en estrategia digital, marketing, tecnología aplicada a negocios y transformación empresarial. Programa con visión global y enfoque en innovación.</p>
-          <span class="badge-active">En curso · 2024–presente</span>
-        </div>
-      </article>
-
-      <article class="edu-card">
-        <div class="edu-icon"><svg width="22" height="22" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="edu-body">
-          <h4>Educación Secundaria</h4>
-          <div class="edu-school">Goethe Schule · Buenos Aires</div>
-          <p>Colegio bilingüe alemán-español, base de la competencia avanzada en alemán, del pensamiento analítico estructurado y de la disciplina académica.</p>
-          <div class="tags" style="margin-top: 0.85rem;"><span class="tag">Alemán nativo escolar</span><span class="tag">Bilingüe</span></div>
-        </div>
-      </article>
-
-      <article class="edu-card">
-        <div class="edu-icon"><svg width="22" height="22" fill="none" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <div class="edu-body">
-          <h4>Intercambio en Alemania</h4>
-          <div class="edu-school">Alemania · 3 meses</div>
-          <p>Inmersión total que consolidó el dominio del alemán en contextos reales, convivencia con la cultura local y perspectiva internacional aplicada a proyectos con socios de habla alemana.</p>
-          <div class="tags" style="margin-top: 0.85rem;"><span class="tag">Alemán avanzado</span><span class="tag">Internacional</span></div>
-        </div>
-      </article>
-    </div>
-
-    <div style="margin-top: 3.5rem;">
-      <div class="eyebrow" style="margin-bottom: 1.5rem;">Idiomas</div>
-      <div class="lang-grid">
-        <div class="lang">
-          <div class="lang-flag"><svg width="44" height="32" viewBox="0 0 5 3" preserveAspectRatio="none"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg></div>
-          <div><div class="lang-name">Alemán</div><div class="lang-level">Avanzado · Nativo escolar</div></div>
-        </div>
-        <div class="lang">
-          <div class="lang-flag"><svg width="44" height="32" viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="3" height="2" fill="#74ACDF"/><rect width="3" height="0.667" y="0.667" fill="#fff"/><circle cx="1.5" cy="1" r="0.4" fill="#F6B40E"/></svg></div>
-          <div><div class="lang-name">Español</div><div class="lang-level">Nativo</div></div>
-        </div>
-        <div class="lang">
-          <div class="lang-flag"><svg width="44" height="32" viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></svg></div>
-          <div><div class="lang-name">Inglés</div><div class="lang-level">Avanzado</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ─────────── CONTACTO ─────────── -->
-  <section class="contact-section reveal" id="contacto">
-    <div class="contact-hero">
-      <div class="eyebrow" style="margin-bottom: 1.5rem;">06 / Contacto</div>
-      <div class="display">
-        Hablemos de tu<br>
-        <em>próximo proyecto</em>.
-      </div>
-    </div>
-
-    <div class="contact-layout">
-      <div class="contact-items">
-        <a href="mailto:adsbythomas@gmail.com" class="ci">
-          <div class="ci-icon">
-            <svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div class="ci-info"><label>Email</label><span>adsbythomas@gmail.com</span></div>
-          <svg class="ci-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-
-        <a href="https://wa.me/5491170218400" target="_blank" rel="noopener" class="ci">
-          <div class="ci-icon">
-            <svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div class="ci-info"><label>WhatsApp / Teléfono</label><span>+54 9 11 7021-8400</span></div>
-          <svg class="ci-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-
-        <a href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener" class="ci">
-          <div class="ci-icon">
-            <svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div class="ci-info"><label>LinkedIn</label><span>linkedin.com/in/thomas-lehmann--</span></div>
-          <svg class="ci-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-
-        <div class="ci" style="cursor:default;">
-          <div class="ci-icon">
-            <svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="ci-info"><label>Idiomas de trabajo</label><span>Español · Alemán · Inglés</span></div>
-        </div>
-      </div>
-
-      <aside class="avail-box">
-        <h3>Disponible <em>para</em></h3>
-        <p>Proyectos freelance, consultoría de paid media, estrategia digital y transformación de negocios tradicionales en operaciones digitales.</p>
-        <div class="avail-tags">
-          <div class="avail-tag">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Gestión de campañas Google &amp; Meta Ads
-          </div>
-          <div class="avail-tag">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Estrategia de marketing digital integral
-          </div>
-          <div class="avail-tag">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Transformación digital de negocios
-          </div>
-          <div class="avail-tag">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Consultoría en negocios digitales
-          </div>
-          <div class="avail-tag">
-            <svg width="14" height="14" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Proyectos con componente alemán / DACH
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ─────────── FOOTER ─────────── -->
-  <footer>
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">Thomas <em>Lehmann</em>.</div>
-        <p class="footer-tag">
-          Estrategia digital, paid media y transformación de negocios. Buenos Aires · disponible para proyectos remotos en LATAM y Europa.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h5>Navegación</h5>
-        <a href="#sobre">Sobre mí</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#skills">Skills</a>
-        <a href="#educacion">Educación</a>
-      </div>
-      <div class="footer-col">
-        <h5>Contacto</h5>
-        <a href="mailto:adsbythomas@gmail.com">Email</a>
-        <a href="https://wa.me/5491170218400" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener">LinkedIn</a>
-        <span style="color:var(--ink-faint);">Buenos Aires · ARG</span>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Thomas Lehmann · Todos los derechos reservados</span>
-      <span>Diseñado &amp; codificado con foco en la performance.</span>
-    </div>
-  </footer>
-
-<script>
-  // Nav scroll state
-  const nav = document.getElementById('main-nav');
-  const progress = document.getElementById('progress');
-  function onScroll() {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-    const h = document.documentElement;
-    const total = h.scrollHeight - h.clientHeight;
-    progress.style.width = ((window.scrollY / total) * 100) + '%';
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Subtle 3D tilt on project cards
-  document.querySelectorAll('.proj').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(1000px) translateY(-4px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
+    addEventListener("resize", resizeCanvas);
+    addEventListener("pointermove", (event) => {
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+      pointer.active = true;
+      root.style.setProperty("--mx", event.clientX + "px");
+      root.style.setProperty("--my", event.clientY + "px");
     });
-    card.addEventListener('mouseleave', () => card.style.transform = '');
-  });
+    resizeCanvas();
+    drawCanvas();
 
-  // Smooth anchor focus offset
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id.length > 1 && document.querySelector(id)) {
-        e.preventDefault();
-        document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const deck = document.getElementById("deck");
+    const deckReadout = document.getElementById("deckReadout");
+    deck.addEventListener("pointermove", (event) => {
+      const rect = deck.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      deckReadout.textContent = `X ${Math.round((x + .5) * 100)} / Y ${Math.round((y + .5) * 100)}`;
+      deck.querySelectorAll(".node").forEach((node, index) => {
+        const power = (index + 2) * 7;
+        node.style.transform = `translate(${x * power}px, ${y * power}px) rotate(${x * 2}deg)`;
+      });
+      deck.querySelector(".core").style.transform = `translate(calc(-50% + ${x * 20}px), calc(-50% + ${y * 20}px))`;
+    });
+    deck.addEventListener("pointerleave", () => {
+      deckReadout.textContent = "MOUSE: IDLE";
+      deck.querySelectorAll(".node").forEach((node) => node.style.transform = "");
+      deck.querySelector(".core").style.transform = "translate(-50%, -50%)";
+    });
+
+    const missions = {
+      premium: {
+        code: "MISSION / PREMIUM",
+        score: "FIT 94%",
+        accent: "var(--cyan)",
+        kicker: "Paid media con precision",
+        title: "Convertir deseo premium en consultas reales.",
+        text: "La estrategia combina Google Ads, lectura de intencion, landing clara y seguimiento comercial. El objetivo no es comprar clicks: es construir un circuito donde cada consulta tenga contexto, valor y proximo paso.",
+        word: "LEADS<br>WITH<br>INTENT",
+        caption: "Signal design for premium demand",
+        list: ["Campañas orientadas a intencion, no volumen vacio.", "Oferta y landing alineadas con buyer premium.", "Lectura semanal de costo, calidad y proximo ajuste."]
+      },
+      chaos: {
+        code: "MISSION / CHAOS",
+        score: "FIT 91%",
+        accent: "var(--hot)",
+        kicker: "Sistema para negocios trabados",
+        title: "Transformar ruido digital en una maquina simple.",
+        text: "WhatsApp, formularios, anuncios, planillas y contenido se conectan en un flujo unico. La prioridad es que el negocio deje de depender de memoria, improvisacion y mensajes perdidos.",
+        word: "FROM<br>NOISE<br>TO OS",
+        caption: "Business operating system prototype",
+        list: ["Mapa de consultas y puntos de fuga.", "CRM minimo con estados y responsables.", "Mensajes comerciales claros para vender sin explicar diez veces."]
+      },
+      dach: {
+        code: "MISSION / DACH",
+        score: "FIT 88%",
+        accent: "var(--acid)",
+        kicker: "Idioma + criterio + tecnologia",
+        title: "Traducir complejidad internacional en confianza.",
+        text: "Alemán, inglés, IA y negocios digitales se combinan para proyectos donde la precision importa: inversion, tecnologia, estrategia y comunicacion entre equipos.",
+        word: "DACH<br>SIGNAL<br>READY",
+        caption: "German, English and Spanish business bridge",
+        list: ["Comunicacion profesional en tres idiomas.", "Contexto de inversion y negocios digitales.", "IA como capa de analisis y produccion."]
+      },
+      automation: {
+        code: "MISSION / AUTO",
+        score: "FIT 96%",
+        accent: "var(--orange)",
+        kicker: "Automatizacion aplicable",
+        title: "Eliminar tareas repetidas y liberar decisiones.",
+        text: "La IA sirve cuando esta pegada a un proceso real. Se detectan tareas repetidas, se diseña un flujo y se mide si realmente ahorra tiempo o mejora velocidad comercial.",
+        word: "LESS<br>MANUAL<br>MORE SIGNAL",
+        caption: "Automation for useful speed",
+        list: ["Auditoria de tareas repetidas.", "Flujos de contenido, analisis o seguimiento.", "Version simple primero, mejora despues."]
+      }
+    };
+    const missionButtons = document.querySelectorAll(".control");
+    const missionEls = {
+      code: document.getElementById("missionCode"),
+      score: document.getElementById("missionScore"),
+      card: document.getElementById("pitchCard"),
+      kicker: document.getElementById("missionKicker"),
+      title: document.getElementById("missionTitle"),
+      text: document.getElementById("missionText"),
+      list: document.getElementById("missionList"),
+      holo: document.getElementById("holo"),
+      word: document.getElementById("holoWord"),
+      caption: document.getElementById("holoCaption")
+    };
+    function setMission(key) {
+      const data = missions[key];
+      missionButtons.forEach((button) => {
+        const active = button.dataset.mission === key;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      missionEls.code.textContent = data.code;
+      missionEls.score.textContent = data.score;
+      missionEls.card.style.setProperty("--accent", data.accent);
+      missionEls.holo.style.setProperty("--accent", data.accent);
+      missionEls.kicker.textContent = data.kicker;
+      missionEls.title.textContent = data.title;
+      missionEls.text.textContent = data.text;
+      missionEls.word.innerHTML = data.word;
+      missionEls.caption.textContent = data.caption;
+      missionEls.list.innerHTML = data.list.map((item) => `<div>${item}</div>`).join("");
+    }
+    missionButtons.forEach((button) => button.addEventListener("click", () => setMission(button.dataset.mission)));
+    setMission("premium");
+
+    const signals = {
+      demand: ["Señal detectada: demanda", "La pauta paga funciona mejor cuando parte de una hipotesis comercial fuerte, no de un boton de promocionar."],
+      conversion: ["Señal detectada: conversion", "Una buena pagina no solo se ve distinta. Hace que la persona entienda, confie y avance sin friccion."],
+      follow: ["Señal detectada: seguimiento", "El lead caro no puede terminar perdido entre chats. CRM simple, estado claro y proxima accion."],
+      auto: ["Señal detectada: automatizacion", "La IA entra donde hay repeticion, informacion dispersa o tareas que frenan al equipo comercial."]
+    };
+    document.querySelectorAll(".signal-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const [title, text] = signals[card.dataset.signal];
+        document.getElementById("radarTitle").textContent = title;
+        document.getElementById("radarText").textContent = text;
+        document.getElementById("radarMode").textContent = card.dataset.signal.toUpperCase();
+      });
+    });
+
+    const stackData = {
+      ads: ["ADS", "Google y Meta traen demanda medible y aprendizaje real."],
+      web: ["WEB", "La interfaz convierte atencion en entendimiento y accion."],
+      crm: ["CRM", "Cada oportunidad queda registrada con estado y proximo paso."],
+      ai: ["IA", "Automatiza analisis, contenido y tareas repetitivas."],
+      dach: ["DACH", "Idiomas y contexto internacional para proyectos con mas complejidad."]
+    };
+    const toggles = document.querySelectorAll(".stack-toggle");
+    const buildLines = document.getElementById("buildLines");
+    const scoreNum = document.getElementById("scoreNum");
+    const scoreOrb = document.getElementById("scoreOrb");
+    const scoreTitle = document.getElementById("scoreTitle");
+    const scoreText = document.getElementById("scoreText");
+    function renderStack() {
+      const active = Array.from(toggles).filter((toggle) => toggle.classList.contains("active"));
+      const score = Math.min(99, 26 + active.length * 14 + (active.length >= 4 ? 6 : 0));
+      scoreNum.textContent = score;
+      scoreOrb.style.setProperty("--score", score);
+      scoreTitle.textContent = score >= 88 ? "Sistema casi completo." : score >= 68 ? "Sistema con buena traccion." : "Sistema incompleto, pero con potencial.";
+      scoreText.textContent = score >= 88
+        ? "Hay demanda, pagina, seguimiento e IA. Esto permite probar mensajes, capturar oportunidades y aprender con velocidad."
+        : score >= 68
+          ? "Ya hay piezas fuertes, pero falta conectar mejor la captura, la lectura o la automatizacion."
+          : "Todavia hay demasiado esfuerzo manual o poca señal. Conviene empezar por el cuello de botella mas visible.";
+      const items = active.length ? active : Array.from(toggles).slice(0, 1);
+      buildLines.innerHTML = items.map((toggle) => {
+        const [label, body] = stackData[toggle.dataset.stack];
+        return `<div class="build-line"><b>${label}</b><span>${body}</span></div>`;
+      }).join("");
+    }
+    toggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        renderStack();
+      });
+    });
+    renderStack();
+
+    document.getElementById("chaosBtn").addEventListener("click", () => {
+      chaos = !chaos;
+      document.body.classList.toggle("chaos", chaos);
+      document.getElementById("chaosBtn").textContent = chaos ? "Calm" : "Chaos";
+      setMission(chaos ? "chaos" : "premium");
+    });
+
+    document.getElementById("copyPitch").addEventListener("click", async () => {
+      const text = "Hola Thomas, vi tu portfolio y quiero hablar sobre una estrategia digital / web / ads / IA para mi proyecto.";
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("copyPitch").querySelector("span").textContent = "Copiado. Ya tenes el mensaje listo.";
+      } catch {
+        document.getElementById("copyPitch").querySelector("span").textContent = text;
       }
     });
-  });
-</script>
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -80px 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
