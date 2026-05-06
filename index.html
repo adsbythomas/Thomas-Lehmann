@@ -3,32 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thomas Lehmann | Digital War Room</title>
-  <meta name="description" content="Portfolio experimental de Thomas Lehmann: paid media, negocios digitales, IA, CRM y estrategia de crecimiento." />
-  <meta name="theme-color" content="#f3f0e8" />
+  <title>Thomas Lehmann | Strategy Desk</title>
+  <meta name="description" content="Portfolio de Thomas Lehmann convertido en un escritorio interactivo de estrategia digital, paid media, IA y negocios." />
+  <meta name="theme-color" content="#eee8dc" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3f0e8'/%3E%3Cpath d='M9 9h46v46H9z' fill='%2307080a'/%3E%3Cpath d='M14 14h36v7H14zm0 29h36v7H14z' fill='%23d9ff00'/%3E%3Ctext x='32' y='38' text-anchor='middle' font-family='Arial Black,Arial' font-size='18' fill='%23f3f0e8'%3ETL%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23eee8dc'/%3E%3Cpath d='M10 14h44v36H10z' fill='%23111212'/%3E%3Cpath d='M15 19h17v6H15zM15 30h34v4H15zM15 39h24v4H15z' fill='%23c9ff18'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --paper: #f3f0e8;
-      --ink: #07080a;
-      --ink-2: #20242a;
-      --muted: #66707a;
-      --line: rgba(7, 8, 10, .18);
-      --heavy: rgba(7, 8, 10, .84);
-      --green: #d9ff00;
-      --red: #ff3d2e;
-      --blue: #204cff;
-      --sky: #00d9ff;
-      --violet: #8f35ff;
-      --panel: rgba(243, 240, 232, .88);
-      --shadow: 18px 18px 0 rgba(7, 8, 10, .12);
-      --sans: "Manrope", system-ui, sans-serif;
-      --display: "Barlow Condensed", Impact, sans-serif;
+      --paper: #eee8dc;
+      --paper-2: #f8f4ec;
+      --ink: #111212;
+      --ink-soft: #242624;
+      --muted: #686b64;
+      --line: rgba(17, 18, 18, .18);
+      --line-strong: rgba(17, 18, 18, .72);
+      --accent: #c9ff18;
+      --clay: #b96a44;
+      --sand: #d8c9b1;
+      --white: #fffdf7;
+      --shadow: 10px 10px 0 rgba(17, 18, 18, .16);
+      --sans: "DM Sans", system-ui, sans-serif;
       --mono: "IBM Plex Mono", ui-monospace, monospace;
-      --mode: var(--green);
     }
 
     * { box-sizing: border-box; }
@@ -37,975 +34,967 @@
       margin: 0;
       min-height: 100vh;
       color: var(--ink);
-      background:
-        linear-gradient(90deg, rgba(7,8,10,.06) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(7,8,10,.06) 1px, transparent 1px),
-        radial-gradient(circle at 86% 12%, rgba(32,76,255,.16), transparent 24rem),
-        radial-gradient(circle at 16% 86%, rgba(255,61,46,.15), transparent 22rem),
-        var(--paper);
-      background-size: 42px 42px, 42px 42px, auto, auto, auto;
       font-family: var(--sans);
+      background:
+        linear-gradient(90deg, rgba(17,18,18,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(17,18,18,.045) 1px, transparent 1px),
+        radial-gradient(circle at 74% 16%, rgba(201,255,24,.22), transparent 20rem),
+        radial-gradient(circle at 12% 86%, rgba(185,106,68,.17), transparent 22rem),
+        var(--paper);
+      background-size: 28px 28px, 28px 28px, auto, auto, auto;
       overflow-x: hidden;
     }
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: 90;
+      z-index: 100;
       pointer-events: none;
-      background:
-        repeating-linear-gradient(90deg, transparent 0 17px, rgba(7,8,10,.025) 17px 18px),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
       mix-blend-mode: multiply;
       opacity: .12;
     }
 
     a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; color: inherit; }
-    ::selection { background: var(--ink); color: var(--green); }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    ::selection { background: var(--ink); color: var(--accent); }
 
-    .app-shell {
+    .desk {
+      width: min(1440px, 100%);
+      margin: 0 auto;
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 86px minmax(0, 1fr);
-      position: relative;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      background: rgba(238, 232, 220, .72);
+      overflow-x: clip;
     }
 
-    .rail {
+    .deskbar {
       position: sticky;
       top: 0;
-      height: 100svh;
-      border-right: 2px solid var(--ink);
-      background: var(--ink);
-      color: var(--paper);
+      z-index: 80;
+      min-height: 62px;
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      z-index: 50;
-    }
-    .mark {
-      height: 86px;
-      display: grid;
-      place-items: center;
-      background: var(--mode);
-      color: var(--ink);
-      font-family: var(--display);
-      font-size: 28px;
-      font-weight: 900;
-    }
-    .rail-nav {
-      display: grid;
-      justify-items: center;
-      gap: 10px;
-    }
-    .rail-nav a, .rail-button {
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(243,240,232,.22);
-      background: transparent;
-      color: var(--paper);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      transition: background .2s ease, color .2s ease, transform .2s ease;
-    }
-    .rail-nav a:hover, .rail-button:hover {
-      background: var(--mode);
-      color: var(--ink);
-      transform: translateX(4px);
-    }
-    .rail-footer {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      justify-self: center;
-      padding: 18px 0;
-      color: rgba(243,240,232,.56);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .main {
-      min-width: 0;
-      position: relative;
-    }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      min-height: 66px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: center;
-      padding: 12px 18px;
+      gap: 16px;
+      padding: 10px 14px;
       border-bottom: 2px solid var(--ink);
-      background: rgba(243,240,232,.82);
+      background: rgba(248, 244, 236, .86);
       backdrop-filter: blur(18px);
     }
-    .topbar strong {
-      font-family: var(--mono);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-    .mode-switcher {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: end;
-      gap: 8px;
-    }
-    .mode {
-      min-height: 40px;
-      padding: 0 12px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      cursor: pointer;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      box-shadow: 5px 5px 0 rgba(7,8,10,.14);
-    }
-    .mode.active { background: var(--mode); }
-
-    .hero {
-      min-height: calc(100svh - 66px);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 390px;
-      gap: 0;
-      border-bottom: 2px solid var(--ink);
-    }
-    .hero-copy {
-      min-width: 0;
-      padding: clamp(28px, 5vw, 70px);
-      display: grid;
-      align-content: space-between;
-      gap: 34px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-copy::after {
-      content: "GROWTH WAR ROOM";
-      position: absolute;
-      left: -18px;
-      bottom: -24px;
-      color: rgba(7,8,10,.045);
-      font-family: var(--display);
-      font-size: clamp(88px, 17vw, 250px);
-      font-weight: 900;
-      line-height: .78;
-      pointer-events: none;
-    }
-    .kicker {
-      width: max-content;
-      max-width: 100%;
+    .desk-logo {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 10px;
-      background: var(--ink);
-      color: var(--paper);
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .08em;
     }
-    .kicker::before {
-      content: "";
-      width: 12px;
-      height: 12px;
-      background: var(--mode);
+    .desk-logo i {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--accent);
+      font-style: normal;
     }
-    h1, h2, h3 {
-      margin: 0;
-      font-family: var(--display);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0;
-      line-height: .82;
-    }
-    h1 {
-      max-width: 980px;
-      font-size: clamp(78px, 14vw, 220px);
-    }
-    .name-slice {
-      display: block;
-      color: transparent;
-      -webkit-text-stroke: 2px var(--ink);
-      text-shadow: 8px 8px 0 var(--mode);
-    }
-    .lead {
-      max-width: 870px;
-      color: var(--ink-2);
-      font-size: clamp(21px, 2.8vw, 36px);
-      line-height: 1.18;
-      font-weight: 800;
-    }
-    .hero-actions {
+    .desk-nav {
       display: flex;
+      justify-content: center;
+      gap: 6px;
       flex-wrap: wrap;
-      gap: 10px;
-      position: relative;
-      z-index: 1;
     }
-    .btn {
-      min-height: 52px;
+    .desk-nav a, .icon-btn {
+      min-height: 38px;
+      border: 1px solid var(--line-strong);
+      background: var(--paper-2);
+      padding: 0 11px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 0 16px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      cursor: pointer;
-      box-shadow: 7px 7px 0 rgba(7,8,10,.16);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover {
-      transform: translate(3px, 3px);
-      box-shadow: 2px 2px 0 rgba(7,8,10,.22);
-    }
-    .btn.primary { background: var(--mode); }
-    .btn.dark { background: var(--ink); color: var(--paper); }
-
-    .status-board {
-      border-left: 2px solid var(--ink);
-      background: var(--ink);
-      color: var(--paper);
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      min-width: 0;
-    }
-    .status-top {
-      min-height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px;
-      border-bottom: 1px solid rgba(243,240,232,.18);
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
-      color: rgba(243,240,232,.66);
+      cursor: pointer;
+      box-shadow: 3px 3px 0 rgba(17,18,18,.12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .status-core {
-      padding: 20px;
-      display: grid;
-      align-content: center;
-      gap: 14px;
-      background:
-        linear-gradient(90deg, rgba(243,240,232,.06) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(243,240,232,.06) 1px, transparent 1px),
-        var(--ink);
-      background-size: 28px 28px;
+    .desk-nav a:hover, .icon-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 rgba(17,18,18,.18);
+      background: var(--accent);
     }
-    .metric-box {
-      border: 1px solid rgba(243,240,232,.22);
-      padding: 16px;
-      display: grid;
-      gap: 8px;
-      min-height: 120px;
-      position: relative;
-      overflow: hidden;
-    }
-    .metric-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, color-mix(in srgb, var(--mode) 22%, transparent), transparent);
-      transform: translateX(-100%);
-      animation: wash 5s linear infinite;
-    }
-    @keyframes wash { to { transform: translateX(100%); } }
-    .metric-box b {
-      position: relative;
-      font-family: var(--display);
-      font-size: 54px;
-      line-height: .84;
-      color: var(--mode);
-    }
-    .metric-box span {
-      position: relative;
-      color: rgba(243,240,232,.74);
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-    .ticker {
-      overflow: hidden;
-      border-top: 1px solid rgba(243,240,232,.18);
-      color: var(--mode);
-    }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 18s linear infinite;
-    }
-    .ticker span {
-      padding: 14px 18px;
-      white-space: nowrap;
-      font-family: var(--display);
-      font-size: 28px;
-      font-weight: 900;
-    }
-    @keyframes ticker { to { transform: translateX(-50%); } }
+    .desk-actions { display: flex; gap: 6px; justify-content: end; }
 
-    .section {
-      border-bottom: 2px solid var(--ink);
+    .hero {
+      min-height: calc(100svh - 62px);
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      min-height: 720px;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 36%);
+      border-bottom: 2px solid var(--ink);
     }
-    .section-label {
-      border-right: 2px solid var(--ink);
-      padding: 24px;
-      background: var(--mode);
+    .intro {
+      min-width: 0;
+      padding: clamp(24px, 5vw, 76px);
       display: grid;
       align-content: space-between;
-      gap: 20px;
+      gap: 32px;
     }
-    .section-label b {
-      font-family: var(--display);
-      font-size: 76px;
-      line-height: .82;
-    }
-    .section-label span {
+    .file-tag {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 10px;
+      background: var(--ink);
+      color: var(--paper-2);
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .1em;
+      letter-spacing: .08em;
     }
-    .section-body { padding: clamp(20px, 4vw, 52px); min-width: 0; }
-    .section-title {
-      max-width: 900px;
-      font-size: clamp(48px, 8vw, 118px);
-      margin-bottom: 28px;
-    }
-    .section-text {
-      max-width: 760px;
-      color: var(--ink-2);
-      font-size: clamp(18px, 2vw, 25px);
-      line-height: 1.38;
-      font-weight: 700;
-      margin-bottom: 28px;
-    }
-
-    .brief-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 18px;
-    }
-    .brief-controls, .brief-output, .matrix, .console, .contact-card {
-      border: 2px solid var(--ink);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-    .brief-controls { padding: 16px; display: grid; gap: 12px; align-content: start; }
-    .brief-button {
-      min-height: 86px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      text-align: left;
-      padding: 14px;
-      cursor: pointer;
-      display: grid;
-      gap: 6px;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-    .brief-button:hover, .brief-button.active {
+    .file-tag::before {
+      content: "";
+      width: 14px;
+      height: 14px;
       background: var(--accent);
-      transform: translate(5px, -5px);
-      box-shadow: -6px 6px 0 var(--ink);
     }
-    .brief-button b {
+    h1, h2, h3 { margin: 0; letter-spacing: -.06em; }
+    h1 {
+      max-width: 900px;
+      font-size: clamp(58px, 11vw, 172px);
+      line-height: .82;
+      font-weight: 900;
+    }
+    .strike-name {
+      display: inline;
+      background: linear-gradient(transparent 54%, var(--accent) 54% 78%, transparent 78%);
+    }
+    .intro-lead {
+      max-width: 850px;
+      font-size: clamp(22px, 3vw, 39px);
+      line-height: 1.08;
+      font-weight: 900;
+      color: var(--ink-soft);
+    }
+    .intro-text {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      min-height: 52px;
+      border: 2px solid var(--ink);
+      background: var(--paper-2);
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translate(5px, 5px); box-shadow: 2px 2px 0 rgba(17,18,18,.2); }
+    .btn.primary { background: var(--accent); }
+    .btn.dark { background: var(--ink); color: var(--paper-2); }
+
+    .brief-note {
+      min-width: 0;
+      border-left: 2px solid var(--ink);
+      background: var(--sand);
+      padding: 16px;
+      display: grid;
+      align-content: stretch;
+      gap: 14px;
+    }
+    .note-card {
+      background: var(--paper-2);
+      border: 2px solid var(--ink);
+      padding: 16px;
+      box-shadow: 8px 8px 0 rgba(17,18,18,.14);
+      display: grid;
+      gap: 12px;
+    }
+    .note-card.pin {
+      transform: rotate(1.5deg);
+      background: var(--accent);
+    }
+    .note-card.clay {
+      transform: rotate(-1deg);
+      background: #d9b293;
+    }
+    .note-card h2 {
+      font-size: clamp(28px, 4vw, 54px);
+      line-height: .9;
+      font-weight: 900;
+    }
+    .note-card p, .note-card li {
+      color: var(--ink-soft);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .note-card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .mini-stats div {
+      border: 1px solid var(--line-strong);
+      padding: 10px;
+      background: var(--paper-2);
+    }
+    .mini-stats b { display: block; font-size: 28px; line-height: 1; }
+    .mini-stats span {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 800;
       text-transform: uppercase;
     }
-    .brief-button span { color: var(--ink-2); font-size: 14px; line-height: 1.35; }
-    .brief-output {
-      min-height: 540px;
+
+    .section {
+      border-bottom: 2px solid var(--ink);
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-columns: 240px minmax(0, 1fr);
+      min-height: 680px;
+    }
+    .section-index {
+      border-right: 2px solid var(--ink);
+      padding: 22px;
+      background: var(--ink);
+      color: var(--paper-2);
+      display: grid;
+      align-content: space-between;
+      gap: 20px;
+    }
+    .section-index b {
+      display: block;
+      font-size: 72px;
+      line-height: .8;
+      letter-spacing: -.08em;
+    }
+    .section-index span {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.4;
+      letter-spacing: .08em;
+    }
+    .section-body {
+      min-width: 0;
+      padding: clamp(22px, 4vw, 56px);
+    }
+    .section-title {
+      max-width: 850px;
+      margin-bottom: 18px;
+      font-size: clamp(42px, 7vw, 108px);
+      line-height: .86;
+      font-weight: 900;
+    }
+    .section-copy {
+      max-width: 760px;
+      margin-bottom: 28px;
+      color: var(--ink-soft);
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .composer {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 16px;
+    }
+    .panel {
+      border: 2px solid var(--ink);
+      background: rgba(248,244,236,.86);
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
-    .window-top {
-      min-height: 50px;
-      border-bottom: 2px solid var(--ink);
+    .panel-head {
+      min-height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       padding: 0 14px;
+      border-bottom: 2px solid var(--ink);
       background: var(--ink);
-      color: var(--paper);
+      color: var(--paper-2);
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
     }
-    .brief-screen {
-      padding: 20px;
+    .panel-body { padding: 16px; }
+    .field-grid { display: grid; gap: 12px; }
+    label {
       display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 18px;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
-    .brief-copy {
+    select, input, textarea {
+      width: 100%;
+      border: 2px solid var(--ink);
+      background: var(--paper-2);
+      padding: 12px;
+      outline: none;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    select:focus, input:focus, textarea:focus { box-shadow: 0 0 0 4px var(--accent); }
+    .proposal {
+      min-height: 436px;
       display: grid;
       align-content: start;
-      gap: 16px;
+      gap: 12px;
+      background:
+        linear-gradient(90deg, rgba(17,18,18,.06) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(17,18,18,.06) 1px, transparent 1px),
+        var(--paper-2);
+      background-size: 22px 22px;
     }
-    .brief-copy h3 {
-      font-size: clamp(38px, 5.8vw, 88px);
-      line-height: .84;
+    .proposal h3 {
+      font-size: clamp(30px, 4vw, 56px);
+      line-height: .9;
+      font-weight: 900;
     }
-    .brief-copy p {
-      color: var(--ink-2);
-      font-size: 17px;
-      line-height: 1.55;
-    }
-    .brief-list { display: grid; gap: 8px; }
-    .brief-list div {
+    .proposal p { color: var(--ink-soft); line-height: 1.48; font-weight: 700; }
+    .proposal-lines { display: grid; gap: 8px; }
+    .proposal-lines div {
       border: 2px solid var(--ink);
-      background: var(--paper);
+      background: var(--accent);
       padding: 10px;
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.45;
     }
-    .brief-card {
-      background: var(--accent);
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 16px;
+    }
+    .slider-set { display: grid; gap: 16px; }
+    .slider-card {
       border: 2px solid var(--ink);
+      background: var(--paper-2);
       padding: 16px;
-      display: grid;
-      align-content: space-between;
-      min-height: 420px;
-      color: var(--ink);
     }
-    .brief-card strong {
-      font-family: var(--display);
-      font-size: 64px;
-      line-height: .78;
-    }
-    .brief-card span {
+    .slider-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 800;
-      line-height: 1.5;
       text-transform: uppercase;
     }
-
-    .matrix {
-      padding: 16px;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 72px;
-      gap: 8px;
+    input[type="range"] { accent-color: var(--ink); }
+    .calc-result {
       background: var(--ink);
-    }
-    .tile {
-      border: 1px solid rgba(243,240,232,.28);
-      color: var(--paper);
-      padding: 10px;
-      display: grid;
-      align-content: space-between;
-      overflow: hidden;
-      transition: transform .2s ease, background .2s ease;
-    }
-    .tile:hover { transform: scale(.98); background: var(--mode); color: var(--ink); }
-    .tile.big { grid-column: span 6; grid-row: span 3; }
-    .tile.mid { grid-column: span 4; grid-row: span 2; }
-    .tile.small { grid-column: span 3; }
-    .tile b {
-      font-family: var(--display);
-      font-size: clamp(24px, 3.2vw, 48px);
-      line-height: .85;
-    }
-    .tile span {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-    .tile.green { background: var(--green); color: var(--ink); }
-    .tile.red { background: var(--red); color: var(--paper); }
-    .tile.blue { background: var(--blue); color: var(--paper); }
-    .tile.paper { background: var(--paper); color: var(--ink); }
-
-    .simulator {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    .console { overflow: hidden; }
-    .console-body {
+      color: var(--paper-2);
       padding: 18px;
-      background: var(--ink);
-      color: var(--paper);
-      min-height: 430px;
       display: grid;
-      gap: 14px;
-      align-content: start;
+      align-content: space-between;
+      gap: 22px;
+      min-height: 360px;
     }
-    .range-row {
-      display: grid;
-      gap: 8px;
+    .calc-result b {
+      color: var(--accent);
+      font-size: clamp(64px, 9vw, 118px);
+      line-height: .78;
+      letter-spacing: -.08em;
+    }
+    .calc-result span {
+      color: rgba(248,244,236,.72);
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .calc-result small {
+      color: rgba(248,244,236,.48);
       font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: .08em;
     }
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--mode);
-    }
-    .result {
-      border: 1px solid rgba(243,240,232,.24);
-      padding: 16px;
+
+    .case-files {
       display: grid;
       gap: 10px;
-      background: rgba(243,240,232,.06);
     }
-    .result b {
-      color: var(--mode);
-      font-family: var(--display);
-      font-size: 54px;
-      line-height: .86;
-    }
-    .result span { color: rgba(243,240,232,.78); line-height: 1.48; }
-    .output-lines {
-      display: grid;
-      gap: 8px;
-    }
-    .output-lines div {
-      padding: 10px;
-      background: var(--paper);
+    details {
       border: 2px solid var(--ink);
+      background: var(--paper-2);
+      box-shadow: 6px 6px 0 rgba(17,18,18,.12);
+    }
+    summary {
+      min-height: 76px;
+      padding: 16px;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+      font-weight: 900;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary span {
+      color: var(--muted);
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    summary b {
+      font-size: clamp(22px, 3vw, 38px);
+      line-height: .95;
+      letter-spacing: -.04em;
+    }
+    summary i {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--accent);
+      font-style: normal;
+      font-family: var(--mono);
+    }
+    details[open] summary { background: var(--accent); border-bottom: 2px solid var(--ink); }
+    .case-content {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+    }
+    .case-content p { margin: 0; color: var(--ink-soft); line-height: 1.55; font-weight: 700; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: end; }
+    .chip {
+      border: 1px solid var(--line-strong);
+      padding: 7px 9px;
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .contact-zone {
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 390px;
-      gap: 18px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 16px;
     }
-    .contact-card { padding: 20px; display: grid; gap: 12px; align-content: start; }
-    .contact-link, .copy-pitch {
+    .contact-card {
+      min-height: 440px;
+      border: 2px solid var(--ink);
+      background: var(--accent);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: grid;
+      align-content: space-between;
+      gap: 20px;
+    }
+    .contact-card h3 {
+      font-size: clamp(42px, 6vw, 86px);
+      line-height: .82;
+      font-weight: 900;
+    }
+    .contact-card p { color: var(--ink-soft); font-weight: 800; line-height: 1.45; }
+    .links-card {
+      border: 2px solid var(--ink);
+      background: var(--paper-2);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .contact-link {
       min-height: 74px;
       border: 2px solid var(--ink);
       background: var(--paper);
       padding: 14px;
       display: grid;
       gap: 4px;
-      text-align: left;
-      cursor: pointer;
-      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
     }
-    .contact-link:hover, .copy-pitch:hover {
-      background: var(--mode);
+    .contact-link:hover {
+      background: var(--accent);
       transform: translate(5px, -5px);
       box-shadow: -6px 6px 0 var(--ink);
     }
-    .contact-link b, .copy-pitch b { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
-    .contact-link span, .copy-pitch span { color: var(--ink-2); overflow-wrap: anywhere; }
+    .contact-link b { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
+    .contact-link span { color: var(--muted); overflow-wrap: anywhere; }
+
+    .palette-strip {
+      height: 18px;
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr 1fr;
+      border-top: 2px solid var(--ink);
+    }
+    .palette-strip i:nth-child(1) { background: var(--ink); }
+    .palette-strip i:nth-child(2) { background: var(--accent); }
+    .palette-strip i:nth-child(3) { background: var(--clay); }
+    .palette-strip i:nth-child(4) { background: var(--sand); }
+
+    .command {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      place-items: start center;
+      padding: 92px 16px 16px;
+      background: rgba(17,18,18,.38);
+      backdrop-filter: blur(8px);
+    }
+    .command.open { display: grid; }
+    .command-box {
+      width: min(720px, 100%);
+      border: 2px solid var(--ink);
+      background: var(--paper-2);
+      box-shadow: 16px 16px 0 rgba(17,18,18,.26);
+    }
+    .command-box input {
+      border: 0;
+      border-bottom: 2px solid var(--ink);
+      font-family: var(--mono);
+      font-size: 16px;
+    }
+    .command-list { display: grid; max-height: 390px; overflow: auto; }
+    .command-item {
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      min-height: 58px;
+      padding: 12px;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      gap: 3px;
+    }
+    .command-item:hover { background: var(--accent); }
+    .command-item b { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
+    .command-item span { color: var(--muted); }
 
     footer {
-      padding: 24px;
+      padding: 22px;
       background: var(--ink);
-      color: rgba(243,240,232,.68);
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      color: rgba(248,244,236,.68);
       display: flex;
       justify-content: space-between;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    @media (max-width: 1080px) {
-      .app-shell { grid-template-columns: 1fr; }
-      .rail {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: auto;
-        height: 68px;
-        grid-template-columns: auto 1fr auto;
-        grid-template-rows: 1fr;
-        border-right: 0;
-        border-top: 2px solid var(--ink);
-      }
-      .mark { width: 68px; height: 68px; }
-      .rail-nav { grid-auto-flow: column; justify-content: center; overflow-x: auto; padding: 0 10px; }
-      .rail-nav a, .rail-button { width: 48px; height: 48px; }
-      .rail-footer { display: none; }
-      .main { padding-bottom: 68px; }
-      .hero, .section, .brief-grid, .simulator, .contact-zone { grid-template-columns: 1fr; }
-      .status-board, .section-label { border-left: 0; border-right: 0; }
-      .section-label { min-height: 220px; }
-      .brief-screen { grid-template-columns: 1fr; }
-      .brief-card { min-height: 260px; }
-      .matrix { grid-template-columns: repeat(6, 1fr); }
-      .tile.big { grid-column: span 6; }
-      .tile.mid { grid-column: span 3; }
-      .tile.small { grid-column: span 2; }
+    @media (max-width: 980px) {
+      .deskbar { grid-template-columns: 1fr auto; }
+      .desk-nav { display: none; }
+      .hero, .section, .composer, .calc-grid, .contact-grid { grid-template-columns: 1fr; }
+      .brief-note { border-left: 0; border-top: 2px solid var(--ink); }
+      .section-index { border-right: 0; min-height: 190px; }
+      .case-content { grid-template-columns: 1fr; }
+      .chips { justify-content: start; }
     }
 
     @media (max-width: 640px) {
-      .topbar { grid-template-columns: 1fr; }
-      .mode-switcher { justify-content: start; }
-      .mode { min-height: 36px; font-size: 10px; }
-      .hero-copy { padding: 24px 14px; }
-      h1 { font-size: clamp(70px, 24vw, 112px); }
-      .lead { font-size: 22px; }
-      .status-board { min-height: auto; }
-      .section-body { padding: 24px 14px; }
-      .section-label { padding: 18px 14px; }
-      .section-label b { font-size: 56px; }
-      .section-title { font-size: clamp(48px, 17vw, 76px); }
-      .brief-controls, .brief-output, .matrix, .console, .contact-card { box-shadow: 8px 8px 0 rgba(7,8,10,.1); }
-      .matrix { grid-template-columns: 1fr; grid-auto-rows: minmax(110px, auto); }
-      .tile.big, .tile.mid, .tile.small { grid-column: span 1; grid-row: span 1; }
-      .hero-actions { display: grid; }
+      .deskbar { padding: 8px; }
+      .desk-logo span { display: none; }
+      .intro { padding: 22px 12px; }
+      h1 { font-size: clamp(58px, 20vw, 92px); }
+      .intro-lead { font-size: 22px; }
+      .cta-row { display: grid; }
       .btn { width: 100%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
-      }
+      .btn, .panel, .contact-card, .links-card, .note-card, details, .calc-result { box-shadow: 4px 4px 0 rgba(17,18,18,.1); }
+      .mini-stats { grid-template-columns: 1fr; }
+      .section-body { padding: 24px 12px; }
+      .section-index { padding: 18px 12px; }
+      .section-title { font-size: clamp(42px, 16vw, 70px); }
+      summary { grid-template-columns: 1fr auto; }
+      summary span { grid-column: 1 / -1; }
+      .panel, .contact-card, .links-card { box-shadow: 6px 6px 0 rgba(17,18,18,.12); }
     }
   </style>
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="rail" aria-label="Navegacion compacta">
-      <a class="mark" href="#home" aria-label="Inicio">TL</a>
-      <nav class="rail-nav">
-        <a href="#brief" title="Brief">B1</a>
-        <a href="#mapa" title="Mapa">M2</a>
-        <a href="#sim" title="Simulador">S3</a>
-        <a href="#contacto" title="Contacto">C4</a>
-        <button class="rail-button" type="button" id="panic">!</button>
+  <div class="command" id="command" aria-hidden="true">
+    <div class="command-box" role="dialog" aria-label="Command palette">
+      <input id="commandInput" type="search" placeholder="Buscar accion: brief, calculadora, casos, contacto..." />
+      <div class="command-list" id="commandList"></div>
+    </div>
+  </div>
+
+  <div class="desk">
+    <header class="deskbar">
+      <a class="desk-logo" href="#inicio"><i>TL</i><span>Thomas Lehmann / Strategy Desk</span></a>
+      <nav class="desk-nav" aria-label="Navegacion principal">
+        <a href="#composer">Brief</a>
+        <a href="#calculator">Calculadora</a>
+        <a href="#cases">Archivos</a>
+        <a href="#contact">Contacto</a>
       </nav>
-      <div class="rail-footer">Digital War Room</div>
-    </aside>
+      <div class="desk-actions">
+        <button class="icon-btn" type="button" id="openCommand">⌘K</button>
+        <a class="icon-btn" href="https://wa.me/5491170218400" target="_blank" rel="noopener">WA</a>
+      </div>
+    </header>
 
-    <main class="main">
-      <header class="topbar">
-        <strong id="modeLine">Thomas Lehmann operating mode: growth</strong>
-        <div class="mode-switcher" aria-label="Cambiar modo de lectura">
-          <button class="mode active" type="button" data-mode="growth" data-color="#d9ff00">Growth</button>
-          <button class="mode" type="button" data-mode="client" data-color="#00d9ff">Cliente</button>
-          <button class="mode" type="button" data-mode="investor" data-color="#ff3d2e">Inversor</button>
-          <button class="mode" type="button" data-mode="chaos" data-color="#8f35ff">Raro</button>
-        </div>
-      </header>
-
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <div class="kicker">No landing. No template. Interface as portfolio.</div>
+    <main id="inicio">
+      <section class="hero">
+        <div class="intro">
+          <div class="file-tag">Portfolio como herramienta, no como vidriera</div>
           <div>
-            <h1>Thomas <span class="name-slice">Lehmann</span></h1>
-            <p class="lead" id="heroLead">Estratega digital que mezcla paid media, CRM, IA, negocios y ejecucion real para convertir ruido en crecimiento medible.</p>
+            <h1>Thomas <span class="strike-name">Lehmann</span></h1>
+            <p class="intro-lead">Un escritorio interactivo para diagnosticar, estimar y convertir ideas digitales en movimientos comerciales concretos.</p>
           </div>
-          <div class="hero-actions">
-            <a class="btn primary" href="#brief">Crear brief conmigo</a>
-            <a class="btn" href="#mapa">Ver mapa de habilidades</a>
-            <a class="btn dark" href="https://wa.me/5491170218400" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          <p class="intro-text">Paid media, CRM, IA, web y estrategia de negocio. La idea no es impresionar con fuegos artificiales: es mostrar criterio, velocidad y una forma distinta de pensar crecimiento.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#composer">Armar brief</a>
+            <a class="btn" href="#calculator">Calcular leads</a>
+            <button class="btn dark" type="button" id="randomize">Sorprendeme</button>
           </div>
         </div>
 
-        <aside class="status-board">
-          <div class="status-top"><span>TL-WR/00</span><span id="clock">--:--</span></div>
-          <div class="status-core">
-            <div class="metric-box"><b>20+</b><span>Leads con USD 250 de pauta en Google Ads para un mercado premium.</span></div>
-            <div class="metric-box"><b>3</b><span>Idiomas de trabajo: español, aleman e ingles.</span></div>
-            <div class="metric-box"><b>360</b><span>Web, ads, CRM, IA, contenido y lectura de negocio en un solo criterio.</span></div>
-          </div>
-          <div class="ticker" aria-hidden="true">
-            <div class="ticker-track">
-              <span>PAID MEDIA</span><span>CRM</span><span>IA APLICADA</span><span>NEGOCIOS DIGITALES</span><span>DACH</span>
-              <span>PAID MEDIA</span><span>CRM</span><span>IA APLICADA</span><span>NEGOCIOS DIGITALES</span><span>DACH</span>
+        <aside class="brief-note">
+          <article class="note-card pin">
+            <h2>Antes: portfolio.<br>Ahora: desk.</h2>
+            <p>La pagina te deja interactuar con problemas reales: demanda, conversion, presupuesto, seguimiento y posicionamiento.</p>
+          </article>
+          <article class="note-card">
+            <div class="mini-stats">
+              <div><b>20+</b><span>leads</span></div>
+              <div><b>3</b><span>idiomas</span></div>
+              <div><b>360</b><span>stack</span></div>
             </div>
-          </div>
+          </article>
+          <article class="note-card clay">
+            <ul>
+              <li>Google Ads y Meta Ads.</li>
+              <li>Negocios digitales en Universidad Austral.</li>
+              <li>IA aplicada a procesos reales.</li>
+              <li>Aleman, ingles y español.</li>
+            </ul>
+          </article>
         </aside>
       </section>
 
-      <section class="section" id="brief">
-        <div class="section-label">
+      <section class="section" id="composer">
+        <div class="section-index">
           <b>01</b>
-          <span>Brief builder / utilidad real</span>
+          <span>Brief composer<br>feature nueva</span>
         </div>
         <div class="section-body">
-          <h2 class="section-title">Un portfolio que te arma el brief.</h2>
-          <p class="section-text">Elegí qué problema tenés y la pagina devuelve una forma de encararlo con Thomas. Menos “mirá mi CV”, más “hagamos algo útil ahora”.</p>
+          <h2 class="section-title">Escribí tu problema. La web arma una primera jugada.</h2>
+          <p class="section-copy">Un generador simple de brief para convertir una conversación vaga en una hipótesis de trabajo.</p>
 
-          <div class="brief-grid">
-            <div class="brief-controls">
-              <button class="brief-button active" type="button" data-brief="leads" style="--accent: var(--green)"><b>Necesito mas leads</b><span>Campañas, landing, medicion y seguimiento.</span></button>
-              <button class="brief-button" type="button" data-brief="system" style="--accent: var(--sky)"><b>Mi negocio esta desordenado</b><span>CRM, procesos, mensajes y automatizacion.</span></button>
-              <button class="brief-button" type="button" data-brief="dach" style="--accent: var(--red)"><b>Tengo proyecto internacional</b><span>Aleman, ingles, IA, inversion y comunicacion.</span></button>
-              <button class="brief-button" type="button" data-brief="weird" style="--accent: var(--violet)"><b>Quiero algo que nadie tenga</b><span>Web experimental, experiencia rara, marca memorable.</span></button>
+          <div class="composer">
+            <div class="panel">
+              <div class="panel-head"><span>Input</span><span>editable</span></div>
+              <div class="panel-body field-grid">
+                <label>Tipo de negocio
+                  <select id="businessType">
+                    <option value="premium">Marca premium / ticket alto</option>
+                    <option value="local">Negocio local que quiere más consultas</option>
+                    <option value="startup">Startup o producto digital</option>
+                    <option value="international">Proyecto internacional / DACH</option>
+                  </select>
+                </label>
+                <label>Problema principal
+                  <select id="problemType">
+                    <option value="demand">No llega demanda suficiente</option>
+                    <option value="clarity">La oferta no se entiende rápido</option>
+                    <option value="followup">Se pierden leads por falta de seguimiento</option>
+                    <option value="automation">Hay demasiadas tareas manuales</option>
+                  </select>
+                </label>
+                <label>Contexto libre
+                  <textarea id="contextText" placeholder="Ej: vendo servicios premium, tengo tráfico pero pocas consultas buenas..."></textarea>
+                </label>
+                <button class="btn primary" type="button" id="generateBrief">Generar jugada</button>
+              </div>
             </div>
 
-            <div class="brief-output">
-              <div class="window-top"><span id="briefCode">BRIEF / LEADS</span><span id="briefScore">MATCH 94%</span></div>
-              <div class="brief-screen">
-                <div class="brief-copy">
-                  <h3 id="briefTitle">Motor de demanda medible.</h3>
-                  <p id="briefText">La jugada empieza con una hipotesis comercial, no con anuncios sueltos. Thomas puede unir Google Ads, Meta Ads, landing y CRM para saber que mensaje trae consultas reales.</p>
-                  <div class="brief-list" id="briefList"></div>
-                </div>
-                <div class="brief-card" id="briefCard" style="--accent: var(--green)">
-                  <strong id="briefBig">LEAD<br>ENGINE</strong>
-                  <span id="briefTag">Paid media + conversion + follow up</span>
-                </div>
-              </div>
+            <div class="panel">
+              <div class="panel-head"><span>Output</span><span id="briefMood">growth memo</span></div>
+              <div class="panel-body proposal" id="proposal"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="mapa">
-        <div class="section-label">
+      <section class="section" id="calculator">
+        <div class="section-index">
           <b>02</b>
-          <span>Skill map / collage brutalista</span>
+          <span>Lead math<br>mini calculadora</span>
         </div>
         <div class="section-body">
-          <h2 class="section-title">Las piezas no viven separadas.</h2>
-          <p class="section-text">Este mapa no está ordenado como CV clásico. Está armado como una mesa de trabajo: cosas que se cruzan, chocan y producen criterio.</p>
+          <h2 class="section-title">Jugá con presupuesto, costo y cierre.</h2>
+          <p class="section-copy">No promete resultados mágicos. Sirve para pensar economics básicos antes de gastar plata en anuncios.</p>
 
-          <div class="matrix">
-            <div class="tile big green"><b>Google Ads</b><span>Performance, intencion, presupuesto chico y lectura de calidad.</span></div>
-            <div class="tile mid paper"><b>Meta Ads</b><span>Creatividad, publico, testeo y demanda nueva.</span></div>
-            <div class="tile small blue"><b>CRM</b><span>Estado, proximo paso, memoria comercial.</span></div>
-            <div class="tile small"><b>IA</b><span>Automatizacion util, no humo.</span></div>
-            <div class="tile mid red"><b>Vantra</b><span>Agencia propia como laboratorio de sistemas digitales.</span></div>
-            <div class="tile small paper"><b>Aleman</b><span>DACH, precision, proyectos internacionales.</span></div>
-            <div class="tile small"><b>Finanzas</b><span>Mercados, activos, riesgo, capital.</span></div>
-            <div class="tile mid blue"><b>Web</b><span>Interfaces que explican, sorprenden y convierten.</span></div>
-            <div class="tile small green"><b>Autos</b><span>Cultura automotriz global y lectura de industria.</span></div>
-            <div class="tile small red"><b>Leyes AR</b><span>Contexto legal aplicado a negocio digital.</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="sim">
-        <div class="section-label">
-          <b>03</b>
-          <span>Growth simulator / mini herramienta</span>
-        </div>
-        <div class="section-body">
-          <h2 class="section-title">Subí o bajá la señal.</h2>
-          <p class="section-text">Tres controles simples para traducir un negocio en una lectura accionable. Es juguete, sí. Pero también explica cómo Thomas prioriza.</p>
-
-          <div class="simulator">
-            <div class="console">
-              <div class="window-top"><span>INPUT / BUSINESS SIGNAL</span><span>LIVE</span></div>
-              <div class="console-body">
-                <label class="range-row">Demanda actual <input id="demand" type="range" min="0" max="100" value="38" /></label>
-                <label class="range-row">Claridad de oferta <input id="clarity" type="range" min="0" max="100" value="62" /></label>
-                <label class="range-row">Orden comercial <input id="order" type="range" min="0" max="100" value="28" /></label>
-                <div class="result">
-                  <b id="simScore">43%</b>
-                  <span id="simDiagnosis">Hay potencial, pero el seguimiento comercial está frenando la captura de valor.</span>
+          <div class="calc-grid">
+            <div class="panel">
+              <div class="panel-head"><span>Controles</span><span>live</span></div>
+              <div class="panel-body slider-set">
+                <div class="slider-card">
+                  <div class="slider-top"><span>Presupuesto mensual</span><b id="budgetValue">USD 250</b></div>
+                  <input id="budget" type="range" min="100" max="3000" value="250" step="50" />
+                </div>
+                <div class="slider-card">
+                  <div class="slider-top"><span>Costo por lead estimado</span><b id="cplValue">USD 12</b></div>
+                  <input id="cpl" type="range" min="3" max="120" value="12" step="1" />
+                </div>
+                <div class="slider-card">
+                  <div class="slider-top"><span>Tasa de cierre</span><b id="closeValue">18%</b></div>
+                  <input id="closeRate" type="range" min="1" max="60" value="18" step="1" />
                 </div>
               </div>
             </div>
 
-            <div class="console">
-              <div class="window-top"><span>OUTPUT / NEXT MOVES</span><span id="simMode">CRM FIRST</span></div>
-              <div class="console-body">
-                <div class="output-lines" id="simLines"></div>
+            <div class="calc-result">
+              <small>Estimacion rápida</small>
+              <div>
+                <b id="leadCount">20</b>
+                <span>leads aproximados / mes</span>
+              </div>
+              <div>
+                <b id="dealCount">4</b>
+                <span>cierres potenciales si el seguimiento acompaña.</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="contacto">
-        <div class="section-label">
-          <b>04</b>
-          <span>Contact / abrir conversacion</span>
+      <section class="section" id="cases">
+        <div class="section-index">
+          <b>03</b>
+          <span>Case files<br>estructura nueva</span>
         </div>
         <div class="section-body">
-          <h2 class="section-title">Si querés normalidad, no es acá.</h2>
-          <p class="section-text">Si querés una web, campaña o sistema digital que tenga personalidad y además piense en negocio, escribime.</p>
+          <h2 class="section-title">Archivos, no tarjetas genéricas.</h2>
+          <p class="section-copy">Cada experiencia se abre como expediente: menos catálogo, más evidencia de criterio.</p>
 
-          <div class="contact-zone">
-            <div class="contact-card">
+          <div class="case-files">
+            <details open>
+              <summary><span>File 001</span><b>Technogym Argentina</b><i>+</i></summary>
+              <div class="case-content">
+                <p>Gestión de Google Ads para una marca premium de fitness. Resultado destacado: más de 20 leads con USD 250 de pauta en un mes, priorizando intención y calidad sobre volumen vacío.</p>
+                <div class="chips"><span class="chip">Google Ads</span><span class="chip">Lead Gen</span><span class="chip">Premium</span></div>
+              </div>
+            </details>
+            <details>
+              <summary><span>File 002</span><b>Vantra</b><i>+</i></summary>
+              <div class="case-content">
+                <p>Agencia propia orientada a transformar negocios tradicionales en ecosistemas digitales con web, CRM, campañas, contenido y estrategia bajo una sola lógica operativa.</p>
+                <div class="chips"><span class="chip">Founder</span><span class="chip">CRM</span><span class="chip">Web</span><span class="chip">Ads</span></div>
+              </div>
+            </details>
+            <details>
+              <summary><span>File 003</span><b>ReplaceIT / DACH</b><i>+</i></summary>
+              <div class="case-content">
+                <p>Consultoría en alemán para proyectos de inversión generados mediante IA, conectando clientes internacionales con equipos técnicos locales y contexto de negocio.</p>
+                <div class="chips"><span class="chip">Alemán</span><span class="chip">IA</span><span class="chip">Inversión</span></div>
+              </div>
+            </details>
+            <details>
+              <summary><span>File 004</span><b>Universidad Austral</b><i>+</i></summary>
+              <div class="case-content">
+                <p>Formación en Negocios Digitales con foco en estrategia, tecnología, marketing, modelos digitales y lectura integral de sistemas comerciales.</p>
+                <div class="chips"><span class="chip">Digital Business</span><span class="chip">Strategy</span></div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-index">
+          <b>04</b>
+          <span>Contact<br>copiar y enviar</span>
+        </div>
+        <div class="section-body">
+          <h2 class="section-title">Abrí una conversación con contexto.</h2>
+          <p class="section-copy">Podés escribir directo o copiar un mensaje armado con el brief generado arriba.</p>
+
+          <div class="contact-grid">
+            <article class="contact-card">
+              <div>
+                <h3>No quiero una web normal.</h3>
+                <p>Quiero una presencia digital con intención, una estrategia de anuncios con números y un sistema que no se caiga después del primer contacto.</p>
+              </div>
+              <button class="btn dark" type="button" id="copyGenerated">Copiar mensaje con brief</button>
+            </article>
+            <div class="links-card">
               <a class="contact-link" href="mailto:adsbythomas@gmail.com"><b>Email</b><span>adsbythomas@gmail.com</span></a>
               <a class="contact-link" href="https://wa.me/5491170218400" target="_blank" rel="noopener"><b>WhatsApp</b><span>+54 9 11 7021-8400</span></a>
               <a class="contact-link" href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/thomas-lehmann--</span></a>
             </div>
-            <div class="contact-card">
-              <button class="copy-pitch" type="button" id="copyPitch"><b>Copiar mensaje de apertura</b><span>Hola Thomas, vi tu Digital War Room y quiero hablar sobre una estrategia digital distinta para mi proyecto.</span></button>
-              <button class="copy-pitch" type="button" id="copyBrief"><b>Copiar brief actual</b><span>Usa la seleccion del brief builder para armar un mensaje inicial.</span></button>
-            </div>
           </div>
         </div>
       </section>
-
-      <footer>
-        <span>Thomas Lehmann / Buenos Aires / Digital War Room</span>
-        <span>Paid media, CRM, IA, web experimental y negocios digitales.</span>
-      </footer>
     </main>
+
+    <div class="palette-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <footer>
+      <span>Thomas Lehmann / Strategy Desk / Buenos Aires</span>
+      <span>Paid media · CRM · IA · Web · Negocios digitales</span>
+    </footer>
   </div>
 
   <script>
-    const root = document.documentElement;
-    const modeLine = document.getElementById("modeLine");
-    const heroLead = document.getElementById("heroLead");
-    const modes = {
-      growth: "Estratega digital que mezcla paid media, CRM, IA, negocios y ejecucion real para convertir ruido en crecimiento medible.",
-      client: "Si tu negocio necesita consultas, orden comercial o una presencia digital distinta, Thomas piensa el sistema completo y lo baja a acciones.",
-      investor: "Perfil hibrido: marketing de performance, negocios digitales, idiomas, mercados financieros, IA y criterio operativo.",
-      chaos: "Webs que no piden permiso, campañas que aprenden, sistemas que se mueven y una estetica que no parece salida de una plantilla."
+    const proposal = document.getElementById("proposal");
+    let lastBrief = "";
+
+    const business = {
+      premium: "marca premium",
+      local: "negocio local",
+      startup: "producto digital",
+      international: "proyecto internacional"
     };
-    document.querySelectorAll(".mode").forEach((button) => {
-      button.addEventListener("click", () => {
-        document.querySelectorAll(".mode").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        root.style.setProperty("--mode", button.dataset.color);
-        modeLine.textContent = "Thomas Lehmann operating mode: " + button.dataset.mode;
-        heroLead.textContent = modes[button.dataset.mode];
-      });
-    });
-
-    function tick() {
-      document.getElementById("clock").textContent = new Date().toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" });
-    }
-    tick();
-    setInterval(tick, 10000);
-
-    const briefs = {
-      leads: {
-        code: "BRIEF / LEADS",
-        score: "MATCH 94%",
-        accent: "var(--green)",
-        title: "Motor de demanda medible.",
-        text: "La jugada empieza con una hipotesis comercial, no con anuncios sueltos. Thomas puede unir Google Ads, Meta Ads, landing y CRM para saber que mensaje trae consultas reales.",
-        big: "LEAD<br>ENGINE",
-        tag: "Paid media + conversion + follow up",
-        list: ["Definir oferta, cliente y canal prioritario.", "Crear campaña con tracking y landing clara.", "Medir costo, calidad y proximo paso comercial."]
-      },
-      system: {
-        code: "BRIEF / SYSTEM",
-        score: "MATCH 91%",
-        accent: "var(--sky)",
-        title: "Orden comercial sin friccion.",
-        text: "Cuando las consultas viven en chats, planillas y memoria humana, se pierde plata. La solucion es un sistema simple: estados, responsables, mensajes y automatizaciones.",
-        big: "BUSINESS<br>OS",
-        tag: "CRM + process + automation",
-        list: ["Auditar donde se pierden oportunidades.", "Diseñar pipeline minimo y mensajes base.", "Automatizar recordatorios y lectura de pendientes."]
-      },
-      dach: {
-        code: "BRIEF / DACH",
-        score: "MATCH 88%",
-        accent: "var(--red)",
-        title: "Puente internacional con criterio.",
-        text: "Aleman, ingles, IA y negocios digitales sirven cuando hay que explicar algo complejo con precision y moverlo entre equipos, clientes o inversores.",
-        big: "DACH<br>READY",
-        tag: "German + English + business",
-        list: ["Traducir complejidad a narrativa clara.", "Armar documentos y presentaciones accionables.", "Acompañar proyectos con componente internacional."]
-      },
-      weird: {
-        code: "BRIEF / WEIRD",
-        score: "MATCH 99%",
-        accent: "var(--violet)",
-        title: "Experiencia web imposible de ignorar.",
-        text: "Cuando todos tienen la misma pagina, diferenciarse tambien es estrategia. Una interfaz rara puede explicar mejor, quedarse en la memoria y abrir conversaciones.",
-        big: "MAKE<br>IT<br>UNREAL",
-        tag: "Experimental web + brand memory",
-        list: ["Romper la estructura de landing generica.", "Crear interacciones utiles, no solo animaciones.", "Convertir personalidad en ventaja comercial."]
-      }
+    const problem = {
+      demand: ["demanda", "Crear un experimento de adquisición con hipótesis clara, landing específica y lectura semanal de calidad de lead."],
+      clarity: ["claridad", "Reordenar la oferta para que una persona entienda en segundos qué se vende, para quién y cuál es el próximo paso."],
+      followup: ["seguimiento", "Diseñar un CRM mínimo con etapas, prioridad y recordatorios para que ningún lead quede flotando."],
+      automation: ["automatización", "Detectar tareas repetidas y armar una capa simple de IA o automatización que reduzca fricción operativa."]
     };
-    let activeBrief = "leads";
-    function setBrief(key) {
-      activeBrief = key;
-      const data = briefs[key];
-      document.querySelectorAll(".brief-button").forEach((button) => button.classList.toggle("active", button.dataset.brief === key));
-      document.getElementById("briefCode").textContent = data.code;
-      document.getElementById("briefScore").textContent = data.score;
-      document.getElementById("briefTitle").textContent = data.title;
-      document.getElementById("briefText").textContent = data.text;
-      document.getElementById("briefBig").innerHTML = data.big;
-      document.getElementById("briefTag").textContent = data.tag;
-      document.getElementById("briefCard").style.setProperty("--accent", data.accent);
-      document.getElementById("briefList").innerHTML = data.list.map((item) => `<div>${item}</div>`).join("");
-    }
-    document.querySelectorAll(".brief-button").forEach((button) => button.addEventListener("click", () => setBrief(button.dataset.brief)));
-    setBrief("leads");
 
-    const sliders = ["demand", "clarity", "order"].map((id) => document.getElementById(id));
-    function renderSim() {
-      const demand = Number(document.getElementById("demand").value);
-      const clarity = Number(document.getElementById("clarity").value);
-      const order = Number(document.getElementById("order").value);
-      const score = Math.round((demand * .34) + (clarity * .31) + (order * .35));
-      const lowest = [["DEMANDA", demand], ["OFERTA", clarity], ["CRM", order]].sort((a, b) => a[1] - b[1])[0][0];
-      document.getElementById("simScore").textContent = score + "%";
-      document.getElementById("simMode").textContent = lowest + " FIRST";
-      document.getElementById("simDiagnosis").textContent =
-        lowest === "DEMANDA" ? "El negocio necesita más señal externa: campañas, contenido y distribución." :
-        lowest === "OFERTA" ? "La oferta no está suficientemente clara: hay que simplificar el mensaje y la landing." :
-        "Hay potencial, pero el seguimiento comercial está frenando la captura de valor.";
-      const lines = {
-        DEMANDA: ["Lanzar test de Google/Meta Ads con dos mensajes.", "Crear landing de captura con tracking.", "Medir costo por consulta y calidad."],
-        OFERTA: ["Reescribir propuesta en lenguaje directo.", "Separar cliente ideal, dolor y resultado.", "Convertir la pagina en argumento comercial."],
-        CRM: ["Crear pipeline simple de oportunidades.", "Definir estados, responsable y proximo paso.", "Automatizar recordatorios para no perder leads."]
-      };
-      document.getElementById("simLines").innerHTML = lines[lowest].map((line) => `<div>${line}</div>`).join("");
+    function generateBrief() {
+      const businessType = document.getElementById("businessType").value;
+      const problemType = document.getElementById("problemType").value;
+      const context = document.getElementById("contextText").value.trim();
+      const [problemLabel, move] = problem[problemType];
+      const contextLine = context ? `Contexto recibido: ${context}` : "Contexto recibido: falta detalle, conviene empezar con una llamada de diagnóstico.";
+      lastBrief = `Hola Thomas, tengo un ${business[businessType]} con un problema de ${problemLabel}. ${move} ${contextLine}`;
+      document.getElementById("briefMood").textContent = problemLabel;
+      proposal.innerHTML = `
+        <h3>${business[businessType]} / ${problemLabel}</h3>
+        <p>${move}</p>
+        <div class="proposal-lines">
+          <div>01 · Diagnóstico: oferta, cliente, canal y fuga principal.</div>
+          <div>02 · Primer sprint: web/mensaje/campaña/CRM según el cuello de botella.</div>
+          <div>03 · Métrica: costo por consulta, calidad y siguiente paso comercial.</div>
+        </div>
+        <p>${contextLine}</p>
+      `;
     }
-    sliders.forEach((slider) => slider.addEventListener("input", renderSim));
-    renderSim();
+    document.getElementById("generateBrief").addEventListener("click", generateBrief);
+    ["businessType", "problemType"].forEach((id) => document.getElementById(id).addEventListener("change", generateBrief));
+    generateBrief();
 
-    async function copyText(text, target) {
+    function renderCalc() {
+      const budget = Number(document.getElementById("budget").value);
+      const cpl = Number(document.getElementById("cpl").value);
+      const closeRate = Number(document.getElementById("closeRate").value);
+      const leads = Math.max(1, Math.round(budget / cpl));
+      const deals = Math.max(0, Math.round(leads * closeRate / 100));
+      document.getElementById("budgetValue").textContent = `USD ${budget}`;
+      document.getElementById("cplValue").textContent = `USD ${cpl}`;
+      document.getElementById("closeValue").textContent = `${closeRate}%`;
+      document.getElementById("leadCount").textContent = leads;
+      document.getElementById("dealCount").textContent = deals;
+    }
+    ["budget", "cpl", "closeRate"].forEach((id) => document.getElementById(id).addEventListener("input", renderCalc));
+    renderCalc();
+
+    async function copyText(text, button) {
       try {
         await navigator.clipboard.writeText(text);
-        target.querySelector("span").textContent = "Copiado.";
+        const old = button.textContent;
+        button.textContent = "Copiado";
+        setTimeout(() => button.textContent = old, 1400);
       } catch {
-        target.querySelector("span").textContent = text;
+        alert(text);
       }
     }
-    document.getElementById("copyPitch").addEventListener("click", (event) => {
-      copyText("Hola Thomas, vi tu Digital War Room y quiero hablar sobre una estrategia digital distinta para mi proyecto.", event.currentTarget);
+    document.getElementById("copyGenerated").addEventListener("click", (event) => copyText(lastBrief, event.currentTarget));
+
+    const command = document.getElementById("command");
+    const commandInput = document.getElementById("commandInput");
+    const commandList = document.getElementById("commandList");
+    const actions = [
+      ["Brief composer", "Armar una primera jugada", "#composer"],
+      ["Lead calculator", "Estimar leads y cierres", "#calculator"],
+      ["Case files", "Abrir expedientes de experiencia", "#cases"],
+      ["Contacto", "Email, WhatsApp y LinkedIn", "#contact"],
+      ["WhatsApp", "Escribir directo", "https://wa.me/5491170218400"]
+    ];
+    function renderCommands(query = "") {
+      const q = query.toLowerCase();
+      commandList.innerHTML = actions
+        .filter(([title, desc]) => `${title} ${desc}`.toLowerCase().includes(q))
+        .map(([title, desc, href]) => `<button class="command-item" type="button" data-href="${href}"><b>${title}</b><span>${desc}</span></button>`)
+        .join("");
+      commandList.querySelectorAll(".command-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          const href = item.dataset.href;
+          command.classList.remove("open");
+          command.setAttribute("aria-hidden", "true");
+          if (href.startsWith("#")) document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+          else window.open(href, "_blank", "noopener");
+        });
+      });
+    }
+    function openCommand() {
+      command.classList.add("open");
+      command.setAttribute("aria-hidden", "false");
+      renderCommands();
+      setTimeout(() => commandInput.focus(), 20);
+    }
+    document.getElementById("openCommand").addEventListener("click", openCommand);
+    commandInput.addEventListener("input", () => renderCommands(commandInput.value));
+    command.addEventListener("click", (event) => {
+      if (event.target === command) command.classList.remove("open");
     });
-    document.getElementById("copyBrief").addEventListener("click", (event) => {
-      const data = briefs[activeBrief];
-      copyText(`Hola Thomas, mi caso es: ${data.title} ${data.text}`, event.currentTarget);
+    addEventListener("keydown", (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        openCommand();
+      }
+      if (event.key === "Escape") command.classList.remove("open");
     });
-    document.getElementById("panic").addEventListener("click", () => {
-      const keys = Object.keys(briefs);
-      setBrief(keys[Math.floor(Math.random() * keys.length)]);
-      const modeButtons = [...document.querySelectorAll(".mode")];
-      modeButtons[Math.floor(Math.random() * modeButtons.length)].click();
+
+    document.getElementById("randomize").addEventListener("click", () => {
+      const businessKeys = Object.keys(business);
+      const problemKeys = Object.keys(problem);
+      document.getElementById("businessType").value = businessKeys[Math.floor(Math.random() * businessKeys.length)];
+      document.getElementById("problemType").value = problemKeys[Math.floor(Math.random() * problemKeys.length)];
+      document.getElementById("budget").value = String(100 + Math.floor(Math.random() * 58) * 50);
+      document.getElementById("cpl").value = String(5 + Math.floor(Math.random() * 35));
+      document.getElementById("closeRate").value = String(5 + Math.floor(Math.random() * 30));
+      generateBrief();
+      renderCalc();
+      document.querySelector("#composer").scrollIntoView({ behavior: "smooth" });
     });
   </script>
 </body>
