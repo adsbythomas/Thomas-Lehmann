@@ -3,999 +3,2453 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thomas Lehmann | Strategy Desk</title>
-  <meta name="description" content="Portfolio de Thomas Lehmann convertido en un escritorio interactivo de estrategia digital, paid media, IA y negocios." />
-  <meta name="theme-color" content="#eee8dc" />
+  <title>Thomas Lehmann — Marketing · IA · Growth</title>
+  <meta name="description" content="Thomas Lehmann · Paid media, CRM, IA aplicada y estrategia digital. Sistemas de adquisición y crecimiento con criterio, datos y tecnología." />
+  <meta name="theme-color" content="#06080f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23eee8dc'/%3E%3Cpath d='M10 14h44v36H10z' fill='%23111212'/%3E%3Cpath d='M15 19h17v6H15zM15 30h34v4H15zM15 39h24v4H15z' fill='%23c9ff18'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2306080f'/%3E%3Cpath d='M12 18h40M12 32h40M12 46h28' stroke='%2300f0ff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='52' cy='46' r='4' fill='%23b026ff'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --paper: #eee8dc;
-      --paper-2: #f8f4ec;
-      --ink: #111212;
-      --ink-soft: #242624;
-      --muted: #686b64;
-      --line: rgba(17, 18, 18, .18);
-      --line-strong: rgba(17, 18, 18, .72);
-      --accent: #c9ff18;
-      --clay: #b96a44;
-      --sand: #d8c9b1;
-      --white: #fffdf7;
-      --shadow: 10px 10px 0 rgba(17, 18, 18, .16);
-      --sans: "DM Sans", system-ui, sans-serif;
-      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --bg: #06080f;
+      --bg-2: #0b0f1b;
+      --surface: #11162a;
+      --surface-2: #161c33;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #eef0f7;
+      --text-soft: #c4cad8;
+      --muted: #6b7393;
+      --cyan: #00f0ff;
+      --cyan-soft: rgba(0, 240, 255, 0.14);
+      --magenta: #b026ff;
+      --magenta-soft: rgba(176, 38, 255, 0.18);
+      --lime: #c9ff3a;
+      --green: #00ff88;
+      --pink: #ff3ec9;
+      --orange: #ff8a3a;
+      --grad: linear-gradient(135deg, #00f0ff 0%, #b026ff 100%);
+      --grad-warm: linear-gradient(135deg, #ff3ec9 0%, #ff8a3a 100%);
+      --grad-cool: linear-gradient(135deg, #00f0ff 0%, #00ff88 100%);
+      --sans: "Inter", system-ui, sans-serif;
+      --display: "Space Grotesk", "Inter", sans-serif;
+      --serif: "Instrument Serif", "Times New Roman", serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--paper); }
+    *::selection { background: var(--cyan); color: var(--bg); }
+    html { background: var(--bg); }
     body {
       margin: 0;
       min-height: 100vh;
-      color: var(--ink);
+      color: var(--text);
       font-family: var(--sans);
-      background:
-        linear-gradient(90deg, rgba(17,18,18,.045) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(17,18,18,.045) 1px, transparent 1px),
-        radial-gradient(circle at 74% 16%, rgba(201,255,24,.22), transparent 20rem),
-        radial-gradient(circle at 12% 86%, rgba(185,106,68,.17), transparent 22rem),
-        var(--paper);
-      background-size: 28px 28px, 28px 28px, auto, auto, auto;
+      font-size: 16px;
+      line-height: 1.5;
+      background: var(--bg);
       overflow-x: hidden;
+      cursor: none;
     }
+    @media (pointer: coarse) { body { cursor: auto; } }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+
+    /* ============ Background canvas (constellation) ============ */
+    #bgCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    /* Grid overlay */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 0;
       pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-      opacity: .12;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 30%, transparent 90%);
     }
 
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea, select { font: inherit; color: inherit; }
-    ::selection { background: var(--ink); color: var(--accent); }
-
-    .desk {
-      width: min(1440px, 100%);
-      margin: 0 auto;
-      min-height: 100vh;
-      border-left: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      background: rgba(238, 232, 220, .72);
-      overflow-x: clip;
-    }
-
-    .deskbar {
-      position: sticky;
+    /* ============ Spotlight cursor ============ */
+    .cursor-ring,
+    .cursor-dot {
+      position: fixed;
       top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 999;
+      mix-blend-mode: screen;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 240, 255, 0.6);
+      transition: width .25s ease, height .25s ease, border-color .25s ease, background .25s ease;
+      background: transparent;
+    }
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+    }
+    body.cursor-hover .cursor-ring {
+      width: 56px;
+      height: 56px;
+      background: rgba(0, 240, 255, 0.12);
+      border-color: rgba(0, 240, 255, 0.9);
+    }
+    .spotlight {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at center, rgba(0, 240, 255, 0.16) 0%, rgba(176, 38, 255, 0.08) 35%, transparent 70%);
+      transform: translate(-50%, -50%);
+      filter: blur(6px);
+      transition: opacity .4s ease;
+    }
+    @media (pointer: coarse) {
+      .cursor-ring, .cursor-dot, .spotlight { display: none; }
+    }
+
+    /* ============ Scroll progress ============ */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      z-index: 100;
+      background: var(--grad);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1320px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 56px);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 80;
-      min-height: 62px;
+      padding: 14px 0;
+      background: rgba(6, 8, 15, 0.55);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease, background .3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(6, 8, 15, 0.85);
+      border-bottom-color: var(--line);
+    }
+    .nav-inner {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 16px;
-      padding: 10px 14px;
-      border-bottom: 2px solid var(--ink);
-      background: rgba(248, 244, 236, .86);
-      backdrop-filter: blur(18px);
+      gap: 24px;
     }
-    .desk-logo {
+    .logo {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+      gap: 12px;
+      font-family: var(--display);
+      font-weight: 700;
+      letter-spacing: -.02em;
     }
-    .desk-logo i {
-      width: 36px;
-      height: 36px;
+    .logo-mark {
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-      background: var(--ink);
-      color: var(--accent);
-      font-style: normal;
-    }
-    .desk-nav {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .desk-nav a, .icon-btn {
-      min-height: 38px;
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-      padding: 0 11px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 12px;
+      background: var(--grad);
+      color: var(--bg);
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 3px 3px 0 rgba(17,18,18,.12);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-    .desk-nav a:hover, .icon-btn:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0 rgba(17,18,18,.18);
-      background: var(--accent);
-    }
-    .desk-actions { display: flex; gap: 6px; justify-content: end; }
-
-    .hero {
-      min-height: calc(100svh - 62px);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 36%);
-      border-bottom: 2px solid var(--ink);
-    }
-    .intro {
-      min-width: 0;
-      padding: clamp(24px, 5vw, 76px);
-      display: grid;
-      align-content: space-between;
-      gap: 32px;
-    }
-    .file-tag {
-      width: max-content;
-      max-width: 100%;
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 8px 10px;
-      background: var(--ink);
-      color: var(--paper-2);
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-    .file-tag::before {
-      content: "";
-      width: 14px;
-      height: 14px;
-      background: var(--accent);
-    }
-    h1, h2, h3 { margin: 0; letter-spacing: -.06em; }
-    h1 {
-      max-width: 900px;
-      font-size: clamp(58px, 11vw, 172px);
-      line-height: .82;
-      font-weight: 900;
-    }
-    .strike-name {
-      display: inline;
-      background: linear-gradient(transparent 54%, var(--accent) 54% 78%, transparent 78%);
-    }
-    .intro-lead {
-      max-width: 850px;
-      font-size: clamp(22px, 3vw, 39px);
-      line-height: 1.08;
-      font-weight: 900;
-      color: var(--ink-soft);
-    }
-    .intro-text {
-      max-width: 680px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.55;
-      font-weight: 500;
-    }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .btn {
-      min-height: 52px;
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      padding: 0 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-    .btn:hover { transform: translate(5px, 5px); box-shadow: 2px 2px 0 rgba(17,18,18,.2); }
-    .btn.primary { background: var(--accent); }
-    .btn.dark { background: var(--ink); color: var(--paper-2); }
-
-    .brief-note {
-      min-width: 0;
-      border-left: 2px solid var(--ink);
-      background: var(--sand);
-      padding: 16px;
-      display: grid;
-      align-content: stretch;
-      gap: 14px;
-    }
-    .note-card {
-      background: var(--paper-2);
-      border: 2px solid var(--ink);
-      padding: 16px;
-      box-shadow: 8px 8px 0 rgba(17,18,18,.14);
-      display: grid;
-      gap: 12px;
-    }
-    .note-card.pin {
-      transform: rotate(1.5deg);
-      background: var(--accent);
-    }
-    .note-card.clay {
-      transform: rotate(-1deg);
-      background: #d9b293;
-    }
-    .note-card h2 {
-      font-size: clamp(28px, 4vw, 54px);
-      line-height: .9;
-      font-weight: 900;
-    }
-    .note-card p, .note-card li {
-      color: var(--ink-soft);
-      line-height: 1.45;
       font-weight: 700;
-    }
-    .note-card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-    .mini-stats div {
-      border: 1px solid var(--line-strong);
-      padding: 10px;
-      background: var(--paper-2);
-    }
-    .mini-stats b { display: block; font-size: 28px; line-height: 1; }
-    .mini-stats span {
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .section {
-      border-bottom: 2px solid var(--ink);
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      min-height: 680px;
-    }
-    .section-index {
-      border-right: 2px solid var(--ink);
-      padding: 22px;
-      background: var(--ink);
-      color: var(--paper-2);
-      display: grid;
-      align-content: space-between;
-      gap: 20px;
-    }
-    .section-index b {
-      display: block;
-      font-size: 72px;
-      line-height: .8;
-      letter-spacing: -.08em;
-    }
-    .section-index span {
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.4;
-      letter-spacing: .08em;
-    }
-    .section-body {
-      min-width: 0;
-      padding: clamp(22px, 4vw, 56px);
-    }
-    .section-title {
-      max-width: 850px;
-      margin-bottom: 18px;
-      font-size: clamp(42px, 7vw, 108px);
-      line-height: .86;
-      font-weight: 900;
-    }
-    .section-copy {
-      max-width: 760px;
-      margin-bottom: 28px;
-      color: var(--ink-soft);
-      font-size: clamp(18px, 2vw, 25px);
-      line-height: 1.35;
-      font-weight: 800;
-    }
-
-    .composer {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 16px;
-    }
-    .panel {
-      border: 2px solid var(--ink);
-      background: rgba(248,244,236,.86);
-      box-shadow: var(--shadow);
+      font-size: 14px;
+      box-shadow: 0 0 0 1px rgba(0, 240, 255, 0.3), 0 0 32px rgba(0, 240, 255, 0.35);
+      position: relative;
       overflow: hidden;
     }
-    .panel-head {
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 0 14px;
-      border-bottom: 2px solid var(--ink);
-      background: var(--ink);
-      color: var(--paper-2);
+    .logo-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.4) 50%, transparent 60%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .logo-text { font-size: 15px; }
+    .logo-text small {
+      display: block;
       font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .panel-body { padding: 16px; }
-    .field-grid { display: grid; gap: 12px; }
-    label {
-      display: grid;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    select, input, textarea {
-      width: 100%;
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      padding: 12px;
-      outline: none;
-      font-family: var(--sans);
-      font-size: 15px;
-      font-weight: 700;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    select:focus, input:focus, textarea:focus { box-shadow: 0 0 0 4px var(--accent); }
-    .proposal {
-      min-height: 436px;
-      display: grid;
-      align-content: start;
-      gap: 12px;
-      background:
-        linear-gradient(90deg, rgba(17,18,18,.06) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(17,18,18,.06) 1px, transparent 1px),
-        var(--paper-2);
-      background-size: 22px 22px;
-    }
-    .proposal h3 {
-      font-size: clamp(30px, 4vw, 56px);
-      line-height: .9;
-      font-weight: 900;
-    }
-    .proposal p { color: var(--ink-soft); line-height: 1.48; font-weight: 700; }
-    .proposal-lines { display: grid; gap: 8px; }
-    .proposal-lines div {
-      border: 2px solid var(--ink);
-      background: var(--accent);
-      padding: 10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.45;
-    }
-
-    .calc-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 16px;
-    }
-    .slider-set { display: grid; gap: 16px; }
-    .slider-card {
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      padding: 16px;
-    }
-    .slider-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    input[type="range"] { accent-color: var(--ink); }
-    .calc-result {
-      background: var(--ink);
-      color: var(--paper-2);
-      padding: 18px;
-      display: grid;
-      align-content: space-between;
-      gap: 22px;
-      min-height: 360px;
-    }
-    .calc-result b {
-      color: var(--accent);
-      font-size: clamp(64px, 9vw, 118px);
-      line-height: .78;
-      letter-spacing: -.08em;
-    }
-    .calc-result span {
-      color: rgba(248,244,236,.72);
-      font-size: 16px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-    .calc-result small {
-      color: rgba(248,244,236,.48);
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    .case-files {
-      display: grid;
-      gap: 10px;
-    }
-    details {
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      box-shadow: 6px 6px 0 rgba(17,18,18,.12);
-    }
-    summary {
-      min-height: 76px;
-      padding: 16px;
-      cursor: pointer;
-      display: grid;
-      grid-template-columns: 140px 1fr auto;
-      align-items: center;
-      gap: 16px;
-      list-style: none;
-      font-weight: 900;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary span {
+      font-size: 10px;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 500;
+    }
+    .nav-clocks {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .clock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: .06em;
+    }
+    .clock i {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+      font-style: normal;
+      animation: blink 2s ease-in-out infinite;
+    }
+    .clock b {
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    @keyframes blink { 50% { opacity: 0.3; } }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 600;
+      letter-spacing: .04em;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0, 240, 255, 0.3); }
+    .nav-cta .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px var(--green);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(.7); }
+    }
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      place-items: center;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      position: relative;
+    }
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+    }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-inner { width: 100%; position: relative; }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp .9s .1s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+    .hero-eyebrow .dot-mini {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+    }
+    .hero-meta .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
-    summary b {
-      font-size: clamp(22px, 3vw, 38px);
-      line-height: .95;
-      letter-spacing: -.04em;
+    .hero-meta .status::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--line-strong);
     }
-    summary i {
-      width: 34px;
-      height: 34px;
+
+    h1.hero-title {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(56px, 11vw, 180px);
+      line-height: 0.88;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    .hero-line {
+      display: block;
+      overflow: hidden;
+    }
+    .hero-line .word {
+      display: inline-block;
+    }
+    .hero-line .char {
+      display: inline-block;
+      transform: translateY(105%);
+      opacity: 0;
+      animation: charUp .9s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+    @keyframes charUp {
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .hero-title .accent {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-title .accent .char {
+      color: transparent;
+      background: inherit;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      padding: 0 .05em;
+    }
+
+    /* Cycling word */
+    .cycler {
+      display: inline-flex;
+      align-items: baseline;
+      height: 1em;
+      overflow: hidden;
+      vertical-align: bottom;
+      position: relative;
+    }
+    .cycler-track {
+      display: flex;
+      flex-direction: column;
+      transition: transform .7s cubic-bezier(.7, 0, .2, 1);
+    }
+    .cycler-item {
+      height: 1em;
+      display: flex;
+      align-items: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+    .cycler-item:nth-child(1) { color: var(--cyan); }
+    .cycler-item:nth-child(2) { color: var(--magenta); }
+    .cycler-item:nth-child(3) { color: var(--green); }
+    .cycler-item:nth-child(4) { color: var(--pink); }
+    .cycler-item:nth-child(5) { color: var(--orange); }
+
+    .hero-bottom {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag {
+      max-width: 540px;
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+    .hero-tag b { color: var(--text); font-weight: 600; }
+
+    .hero-actions { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .04em;
+      border: 1px solid transparent;
+      cursor: none;
+      transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s ease, color .3s ease, background .3s ease, border-color .3s ease;
+      will-change: transform;
+    }
+    @media (pointer: coarse) { .btn { cursor: pointer; } }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: 0 0 0 0px rgba(0, 240, 255, 0), 0 10px 28px -10px rgba(0, 240, 255, 0.5);
+    }
+    .btn-primary:hover { box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.2), 0 24px 48px -12px rgba(176, 38, 255, 0.6); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line-strong);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-soft); }
+    .btn-arrow { width: 14px; height: 14px; transition: transform .3s ease; }
+    .btn:hover .btn-arrow { transform: translate(2px, -2px); }
+
+    .hero-stat-strip {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .hero-stat-strip b {
+      color: var(--text);
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .hero-stat-strip i {
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--line-strong);
+      font-style: normal;
+    }
+
+    /* Orbital decoration */
+    .orbit {
+      position: absolute;
+      right: -200px;
+      top: 35%;
+      width: 720px;
+      height: 720px;
+      pointer-events: none;
+      opacity: .8;
+      z-index: 0;
+    }
+    .orbit svg { width: 100%; height: 100%; }
+    .orbit-spin { transform-origin: center; animation: spin 60s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ============ MARQUEE ============ */
+    .marquee {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(0, 240, 255, 0.02), rgba(176, 38, 255, 0.02));
+      overflow: hidden;
+      position: relative;
+      transform: rotate(-2deg);
+      margin: 40px -4% 80px;
+      z-index: 2;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      width: max-content;
+      animation: marquee 38s linear infinite;
+      align-items: center;
+    }
+    .marquee-track span {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      color: var(--text);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .marquee-track span::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--grad);
+      flex-shrink: 0;
+    }
+    .marquee-track span:nth-child(2n) {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--text);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============ SECTION HEAD shared ============ */
+    section { padding: clamp(80px, 12vw, 140px) 0; position: relative; z-index: 1; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--cyan-soft);
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .section-tag::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--cyan);
+    }
+    .section-tag.purple { background: var(--magenta-soft); color: var(--magenta); }
+    .section-tag.purple::before { background: var(--magenta); }
+    .section-tag.green { background: rgba(0, 255, 136, 0.12); color: var(--green); }
+    .section-tag.green::before { background: var(--green); }
+    .section-title {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 88px);
+      line-height: 0.98;
+      letter-spacing: -.035em;
+      font-weight: 600;
+      max-width: 920px;
+    }
+    .section-title em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--cyan);
+    }
+    .section-sub {
+      max-width: 460px;
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ============ HORIZONTAL PINNED SERVICES ============ */
+    .h-services {
+      position: relative;
+      height: 460vh;
+      padding: 0;
+    }
+    .h-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .h-head {
+      padding: 24px clamp(20px, 4vw, 56px) 0;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .h-head .section-tag { margin-bottom: 12px; }
+    .h-head h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: -.03em;
+      font-weight: 600;
+    }
+    .h-head h2 em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--magenta);
+    }
+    .h-track-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .h-track {
+      display: flex;
+      gap: 28px;
+      padding: 0 clamp(20px, 4vw, 56px);
+      will-change: transform;
+    }
+    .h-progress {
+      padding: 16px clamp(20px, 4vw, 56px) 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .h-progress .bar {
+      flex: 1;
+      height: 2px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .h-progress .bar i {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 25%;
+      background: var(--grad);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+      transition: width .15s ease-out;
+    }
+    .h-card {
+      flex: 0 0 min(78vw, 640px);
+      height: min(70vh, 580px);
+      border-radius: 28px;
+      padding: 44px;
+      background: linear-gradient(160deg, var(--surface) 0%, var(--bg-2) 100%);
+      border: 1px solid var(--line-strong);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .h-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0, 240, 255, 0.12), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(176, 38, 255, 0.14), transparent 60%);
+      opacity: .7;
+      pointer-events: none;
+    }
+    .h-card:nth-child(2)::before {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(176, 38, 255, 0.14), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(255, 62, 201, 0.14), transparent 60%);
+    }
+    .h-card:nth-child(3)::before {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0, 255, 136, 0.14), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(0, 240, 255, 0.12), transparent 60%);
+    }
+    .h-card:nth-child(4)::before {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 138, 58, 0.14), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(255, 62, 201, 0.14), transparent 60%);
+    }
+    .h-card > * { position: relative; z-index: 1; }
+    .h-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .h-card-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .h-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      background: var(--ink);
-      color: var(--accent);
-      font-style: normal;
-      font-family: var(--mono);
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--cyan);
     }
-    details[open] summary { background: var(--accent); border-bottom: 2px solid var(--ink); }
-    .case-content {
-      padding: 16px;
+    .h-card:nth-child(2) .h-card-icon { background: var(--magenta-soft); border-color: rgba(176, 38, 255, 0.4); color: var(--magenta); }
+    .h-card:nth-child(3) .h-card-icon { background: rgba(0, 255, 136, 0.1); border-color: rgba(0, 255, 136, 0.3); color: var(--green); }
+    .h-card:nth-child(4) .h-card-icon { background: rgba(255, 62, 201, 0.1); border-color: rgba(255, 62, 201, 0.3); color: var(--pink); }
+    .h-card-icon svg { width: 30px; height: 30px; }
+    .h-card h3 {
+      margin: 0 0 16px;
+      font-family: var(--display);
+      font-size: clamp(38px, 4.5vw, 56px);
+      line-height: 0.96;
+      letter-spacing: -.025em;
+      font-weight: 600;
+    }
+    .h-card h3 em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+    .h-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.55;
+      font-size: 16px;
+      max-width: 460px;
+    }
+    .h-card ul {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: start;
+      gap: 8px;
     }
-    .case-content p { margin: 0; color: var(--ink-soft); line-height: 1.55; font-weight: 700; }
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: end; }
-    .chip {
-      border: 1px solid var(--line-strong);
-      padding: 7px 9px;
-      background: var(--paper);
+    .h-card ul li {
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--text-soft);
+      padding-left: 22px;
+      position: relative;
+      letter-spacing: .02em;
+    }
+    .h-card ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    .h-card:nth-child(2) ul li::before { color: var(--magenta); }
+    .h-card:nth-child(3) ul li::before { color: var(--green); }
+    .h-card:nth-child(4) ul li::before { color: var(--pink); }
+
+    /* fallback for touch: vertical list */
+    @media (pointer: coarse), (max-width: 900px) {
+      .h-services { height: auto; }
+      .h-pin {
+        position: relative;
+        height: auto;
+        padding: 80px 0;
+      }
+      .h-track-wrap { overflow-x: auto; }
+      .h-track {
+        transform: none !important;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 16px;
+      }
+      .h-card { scroll-snap-align: start; flex: 0 0 80%; height: auto; min-height: 520px; }
+      .h-progress { display: none; }
     }
 
-    .contact-grid {
+    /* ============ BENTO STACK ============ */
+    .bento {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 380px;
-      gap: 16px;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 140px;
+      gap: 14px;
     }
-    .contact-card {
-      min-height: 440px;
-      border: 2px solid var(--ink);
-      background: var(--accent);
-      padding: 18px;
-      box-shadow: var(--shadow);
+    .bento-item {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s ease, border-color .35s ease, background .35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bento-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.4);
+      background: var(--surface-2);
+    }
+    .bento-item .acc {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+    .bento-item:nth-child(3n) .acc { background: var(--magenta); box-shadow: 0 0 10px var(--magenta); }
+    .bento-item:nth-child(4n) .acc { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .bento-item:nth-child(5n) .acc { background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+    .bento-item .lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .bento-item .name {
+      font-family: var(--display);
+      font-size: clamp(22px, 2.4vw, 32px);
+      letter-spacing: -.02em;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .bento-item .name em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+    /* sizes */
+    .bento-1x1 { grid-column: span 1; grid-row: span 1; }
+    .bento-2x1 { grid-column: span 2; grid-row: span 1; }
+    .bento-1x2 { grid-column: span 1; grid-row: span 2; }
+    .bento-2x2 { grid-column: span 2; grid-row: span 2; }
+    .bento-3x1 { grid-column: span 3; grid-row: span 1; }
+    .bento-3x2 { grid-column: span 3; grid-row: span 2; }
+    .bento-feature {
+      background: var(--grad);
+      color: var(--bg);
+      border: none;
+    }
+    .bento-feature::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.3), transparent 60%);
+    }
+    .bento-feature .lbl { color: rgba(6, 8, 15, 0.6); }
+    .bento-feature .name { color: var(--bg); }
+    .bento-feature .desc { color: rgba(6, 8, 15, 0.75); font-size: 13px; line-height: 1.4; position: relative; z-index: 1; }
+    .bento-feature .acc { display: none; }
+    .bento-dark {
+      background: var(--bg);
+      border-color: var(--line-strong);
+    }
+
+    /* ============ CASES with 3D tilt ============ */
+    .cases-grid {
       display: grid;
-      align-content: space-between;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    .contact-card h3 {
-      font-size: clamp(42px, 6vw, 86px);
-      line-height: .82;
-      font-weight: 900;
+    .case-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      padding: 36px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: border-color .3s ease;
+      will-change: transform;
     }
-    .contact-card p { color: var(--ink-soft); font-weight: 800; line-height: 1.45; }
-    .links-card {
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      box-shadow: var(--shadow);
-      padding: 14px;
-      display: grid;
-      gap: 10px;
-      align-content: start;
-    }
-    .contact-link {
-      min-height: 74px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      padding: 14px;
-      display: grid;
-      gap: 4px;
-      transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
-    }
-    .contact-link:hover {
-      background: var(--accent);
-      transform: translate(5px, -5px);
-      box-shadow: -6px 6px 0 var(--ink);
-    }
-    .contact-link b { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
-    .contact-link span { color: var(--muted); overflow-wrap: anywhere; }
-
-    .palette-strip {
-      height: 18px;
-      display: grid;
-      grid-template-columns: 3fr 1fr 1fr 1fr;
-      border-top: 2px solid var(--ink);
-    }
-    .palette-strip i:nth-child(1) { background: var(--ink); }
-    .palette-strip i:nth-child(2) { background: var(--accent); }
-    .palette-strip i:nth-child(3) { background: var(--clay); }
-    .palette-strip i:nth-child(4) { background: var(--sand); }
-
-    .command {
-      position: fixed;
+    .case-card:hover { border-color: rgba(0, 240, 255, 0.4); }
+    .case-card::before {
+      content: "";
+      position: absolute;
       inset: 0;
-      z-index: 120;
-      display: none;
-      place-items: start center;
-      padding: 92px 16px 16px;
-      background: rgba(17,18,18,.38);
-      backdrop-filter: blur(8px);
+      background: var(--glow, radial-gradient(circle at 0% 0%, rgba(0, 240, 255, 0.18), transparent 50%));
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
     }
-    .command.open { display: grid; }
-    .command-box {
-      width: min(720px, 100%);
-      border: 2px solid var(--ink);
-      background: var(--paper-2);
-      box-shadow: 16px 16px 0 rgba(17,18,18,.26);
-    }
-    .command-box input {
-      border: 0;
-      border-bottom: 2px solid var(--ink);
-      font-family: var(--mono);
-      font-size: 16px;
-    }
-    .command-list { display: grid; max-height: 390px; overflow: auto; }
-    .command-item {
-      border: 0;
-      border-bottom: 1px solid var(--line);
-      background: transparent;
-      min-height: 58px;
-      padding: 12px;
-      text-align: left;
-      cursor: pointer;
-      display: grid;
-      gap: 3px;
-    }
-    .command-item:hover { background: var(--accent); }
-    .command-item b { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
-    .command-item span { color: var(--muted); }
-
-    footer {
-      padding: 22px;
-      background: var(--ink);
-      color: rgba(248,244,236,.68);
+    .case-card:hover::before { opacity: 1; }
+    .case-card > * { position: relative; z-index: 1; transform: translateZ(20px); }
+    .case-head {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .case-id {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .14em;
       text-transform: uppercase;
+    }
+    .case-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-soft);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .case-status i {
+      width: 5px; height: 5px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      font-style: normal;
+    }
+    .case-title {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1;
+      letter-spacing: -.025em;
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+    .case-title em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+    .case-card p {
+      margin: 0 0 24px;
+      color: var(--text-soft);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+    .case-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+    .chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.02);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-soft);
+      letter-spacing: .04em;
+    }
+    .case-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .case-metric b {
+      display: block;
+      font-family: var(--display);
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+    .case-metric span {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============ PROCESS sticky pinned ============ */
+    .process {
+      position: relative;
+      height: 380vh;
+      padding: 0;
+    }
+    .process-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    .process-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .process-label .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--cyan);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .process-step h3 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.94;
+      letter-spacing: -.04em;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+    .process-step h3 em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--cyan);
+    }
+    .process-step p {
+      max-width: 540px;
+      color: var(--text-soft);
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.55;
+    }
+    .process-steps {
+      position: relative;
+      height: 360px;
+    }
+    .process-step {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .6s ease, transform .6s cubic-bezier(.2, .8, .2, 1);
+      pointer-events: none;
+    }
+    .process-step.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .process-visual {
+      position: relative;
+      aspect-ratio: 1;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .process-visual svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .process-nav {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 4;
+    }
+    .process-nav button {
+      width: 32px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--line-strong);
+      border: none;
+      cursor: pointer;
+      transition: background .3s ease, width .3s ease;
+    }
+    .process-nav button.active { background: var(--grad); width: 56px; }
+
+    @media (pointer: coarse), (max-width: 900px) {
+      .process { height: auto; padding: 80px 0; }
+      .process-pin { position: relative; height: auto; }
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .process-steps { position: relative; height: auto; display: grid; gap: 56px; }
+      .process-step { position: relative; opacity: 1; transform: none; }
+      .process-nav { display: none; }
+    }
+
+    /* ============ CALCULATOR ============ */
+    .calc-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .calc-panel {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      padding: 36px;
+    }
+    .calc-panel h4 {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .calc-controls {
+      display: grid;
+      gap: 30px;
+      margin-top: 24px;
+    }
+    .control-row {
+      display: grid;
+      gap: 12px;
+    }
+    .control-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .control-top span {
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    .control-top b {
+      font-family: var(--mono);
+      font-size: 20px;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      outline: none;
+      cursor: none;
+    }
+    @media (pointer: coarse) { input[type="range"] { cursor: pointer; } }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 2px solid var(--cyan);
+      cursor: none;
+      box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.1), 0 0 20px rgba(0, 240, 255, 0.6);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 2px solid var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    }
+    .calc-result {
+      border-radius: 24px;
+      padding: 36px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0, 240, 255, 0.18), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(176, 38, 255, 0.22), transparent 60%),
+        var(--surface);
+      border: 1px solid var(--line-strong);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-result::before {
+      content: "01001100 01010100";
+      position: absolute;
+      bottom: 12px;
+      right: 18px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      opacity: .4;
+      letter-spacing: .14em;
+    }
+    .calc-result .lbl {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .calc-result .big {
+      font-family: var(--display);
+      font-size: clamp(64px, 8vw, 112px);
+      line-height: .9;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 8px 0;
+    }
+    .calc-result .desc {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.5;
+      max-width: 360px;
+    }
+    .calc-result .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .calc-result .row-2 .num {
+      font-family: var(--display);
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .calc-result .row-2 .lbl-2 {
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============ CONTACT ============ */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+    .contact-big {
+      border-radius: 28px;
+      padding: 56px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0, 240, 255, 0.2), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(176, 38, 255, 0.24), transparent 50%),
+        var(--surface);
+      border: 1px solid var(--line-strong);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-big h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(40px, 5.5vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -.03em;
+      font-weight: 600;
+    }
+    .contact-big h3 em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--cyan);
+    }
+    .contact-big p {
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.55;
+      max-width: 480px;
+    }
+    .contact-big-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .contact-list { display: grid; gap: 12px; align-content: start; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      transition: background .25s ease, transform .25s ease, border-color .25s ease;
+    }
+    .contact-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 240, 255, 0.4);
+      background: var(--surface-2);
+    }
+    .contact-link .l-info b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .contact-link .l-info span {
+      font-family: var(--display);
+      font-size: 18px;
+      letter-spacing: -.01em;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+    .contact-link .arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line-strong);
+      color: var(--text-soft);
+      flex-shrink: 0;
+      transition: background .25s ease, color .25s ease, transform .25s ease, border-color .25s ease;
+    }
+    .contact-link:hover .arrow {
+      background: var(--cyan);
+      color: var(--bg);
+      border-color: var(--cyan);
+      transform: translate(2px, -2px);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 56px 0 40px;
+      border-top: 1px solid var(--line);
+      position: relative;
+      z-index: 1;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+    .footer-big {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 0.94;
+      letter-spacing: -.03em;
+      font-weight: 600;
+      grid-column: span 2;
+    }
+    .footer-big em {
+      font-style: italic;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--cyan);
+    }
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
       letter-spacing: .08em;
+      text-transform: uppercase;
+      align-self: end;
+    }
+    .footer-meta b { color: var(--text-soft); font-weight: 500; }
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
+    /* ============ REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 1s cubic-bezier(.2, .8, .2, 1), transform 1s cubic-bezier(.2, .8, .2, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s cubic-bezier(.2, .8, .2, 1), transform .8s cubic-bezier(.2, .8, .2, 1);
+    }
+    .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: .04s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: .12s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: .2s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: .28s; }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay: .36s; }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay: .44s; }
+    .reveal-stagger.visible > *:nth-child(7) { transition-delay: .52s; }
+    .reveal-stagger.visible > *:nth-child(8) { transition-delay: .6s; }
+    .reveal-stagger.visible > *:nth-child(9) { transition-delay: .68s; }
+    .reveal-stagger.visible > *:nth-child(10) { transition-delay: .76s; }
+    .reveal-stagger.visible > *:nth-child(11) { transition-delay: .84s; }
+    .reveal-stagger.visible > *:nth-child(12) { transition-delay: .92s; }
+
+    /* ============ RESPONSIVE ============ */
     @media (max-width: 980px) {
-      .deskbar { grid-template-columns: 1fr auto; }
-      .desk-nav { display: none; }
-      .hero, .section, .composer, .calc-grid, .contact-grid { grid-template-columns: 1fr; }
-      .brief-note { border-left: 0; border-top: 2px solid var(--ink); }
-      .section-index { border-right: 0; min-height: 190px; }
-      .case-content { grid-template-columns: 1fr; }
-      .chips { justify-content: start; }
+      .nav-clocks { display: none; }
+      .nav-toggle { display: grid; }
+      .nav-inner { grid-template-columns: auto 1fr; }
+      .nav.open .nav-clocks {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 18px 20px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .hero-bottom { grid-template-columns: 1fr; gap: 32px; }
+      .cases-grid, .calc-wrap, .contact-wrap { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 120px; }
+      .bento-3x2, .bento-3x1 { grid-column: span 4; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-big { grid-column: span 1; }
+      .orbit { right: -60%; top: 50%; width: 540px; height: 540px; opacity: .5; }
+    }
+    @media (max-width: 560px) {
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .bento-2x2, .bento-2x1, .bento-3x1, .bento-3x2 { grid-column: span 2; }
+      .calc-panel, .calc-result, .contact-big { padding: 24px; }
+      .marquee { margin: 32px -10% 60px; }
+      .case-card { padding: 24px; }
     }
 
-    @media (max-width: 640px) {
-      .deskbar { padding: 8px; }
-      .desk-logo span { display: none; }
-      .intro { padding: 22px 12px; }
-      h1 { font-size: clamp(58px, 20vw, 92px); }
-      .intro-lead { font-size: 22px; }
-      .cta-row { display: grid; }
-      .btn { width: 100%; }
-      .btn, .panel, .contact-card, .links-card, .note-card, details, .calc-result { box-shadow: 4px 4px 0 rgba(17,18,18,.1); }
-      .mini-stats { grid-template-columns: 1fr; }
-      .section-body { padding: 24px 12px; }
-      .section-index { padding: 18px 12px; }
-      .section-title { font-size: clamp(42px, 16vw, 70px); }
-      summary { grid-template-columns: 1fr auto; }
-      summary span { grid-column: 1 / -1; }
-      .panel, .contact-card, .links-card { box-shadow: 6px 6px 0 rgba(17,18,18,.12); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+      body { cursor: auto; }
+      .cursor-ring, .cursor-dot, .spotlight { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="command" id="command" aria-hidden="true">
-    <div class="command-box" role="dialog" aria-label="Command palette">
-      <input id="commandInput" type="search" placeholder="Buscar accion: brief, calculadora, casos, contacto..." />
-      <div class="command-list" id="commandList"></div>
-    </div>
-  </div>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-  <div class="desk">
-    <header class="deskbar">
-      <a class="desk-logo" href="#inicio"><i>TL</i><span>Thomas Lehmann / Strategy Desk</span></a>
-      <nav class="desk-nav" aria-label="Navegacion principal">
-        <a href="#composer">Brief</a>
-        <a href="#calculator">Calculadora</a>
-        <a href="#cases">Archivos</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-      <div class="desk-actions">
-        <button class="icon-btn" type="button" id="openCommand">⌘K</button>
-        <a class="icon-btn" href="https://wa.me/5491170218400" target="_blank" rel="noopener">WA</a>
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" data-cursor>
+        <span class="logo-mark">TL</span>
+        <span class="logo-text">
+          Thomas Lehmann
+          <small>Marketing × IA × Growth</small>
+        </span>
+      </a>
+      <div class="nav-clocks" id="navClocks">
+        <span class="clock"><i></i>BUE · <b id="clockBue">--:--</b></span>
       </div>
-    </header>
+      <div class="nav-right">
+        <a class="nav-cta" href="https://wa.me/5491170218400" target="_blank" rel="noopener" data-cursor>
+          <span class="dot"></span>
+          Disponible
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span></button>
+      </div>
+    </div>
+  </nav>
 
-    <main id="inicio">
-      <section class="hero">
-        <div class="intro">
-          <div class="file-tag">Portfolio como herramienta, no como vidriera</div>
-          <div>
-            <h1>Thomas <span class="strike-name">Lehmann</span></h1>
-            <p class="intro-lead">Un escritorio interactivo para diagnosticar, estimar y convertir ideas digitales en movimientos comerciales concretos.</p>
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="orbit" aria-hidden="true">
+          <svg viewBox="0 0 720 720">
+            <defs>
+              <linearGradient id="og1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#b026ff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+            <g class="orbit-spin">
+              <circle cx="360" cy="360" r="340" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="360" cy="360" r="260" fill="none" stroke="rgba(0,240,255,0.18)" stroke-width="1" stroke-dasharray="4 6"/>
+              <circle cx="360" cy="360" r="180" fill="none" stroke="rgba(176,38,255,0.18)" stroke-width="1"/>
+              <circle cx="700" cy="360" r="8" fill="#00f0ff"/>
+              <circle cx="120" cy="360" r="6" fill="#b026ff"/>
+              <circle cx="360" cy="100" r="5" fill="#00ff88"/>
+              <circle cx="540" cy="180" r="4" fill="#ff3ec9"/>
+              <circle cx="180" cy="540" r="3" fill="#ff8a3a"/>
+            </g>
+            <circle cx="360" cy="360" r="60" fill="url(#og1)" opacity="0.4"/>
+            <circle cx="360" cy="360" r="20" fill="#00f0ff"/>
+          </svg>
+        </div>
+
+        <div class="hero-meta">
+          <span class="hero-eyebrow">
+            <span class="dot-mini"></span>
+            Strategy desk · Buenos Aires → DACH
+          </span>
+          <span class="status">Aceptando 2 proyectos · Q2 2026</span>
+        </div>
+
+        <h1 class="hero-title" id="heroTitle">
+          <span class="hero-line"><span class="word" data-text="Marketing"></span></span>
+          <span class="hero-line">
+            <span class="word" data-text="con&nbsp;"></span><span class="cycler" aria-label="con criterio, datos, IA, sistemas, growth">
+              <span class="cycler-track" id="cyclerTrack">
+                <span class="cycler-item">criterio</span>
+                <span class="cycler-item">datos</span>
+                <span class="cycler-item">IA</span>
+                <span class="cycler-item">sistemas</span>
+                <span class="cycler-item">growth</span>
+                <span class="cycler-item">criterio</span>
+              </span>
+            </span><span class="word" data-text=","></span>
+          </span>
+          <span class="hero-line">
+            <span class="word" data-text="por&nbsp;Thomas"></span>
+          </span>
+          <span class="hero-line">
+            <span class="word accent" data-text="Lehmann."></span>
+          </span>
+        </h1>
+
+        <div class="hero-bottom">
+          <p class="hero-tag">
+            Diseño sistemas de adquisición que conectan <b>paid media, CRM, IA aplicada y web</b> bajo una sola lógica operativa. Menos vidriera, más motor comercial — desde Buenos Aires, hablando alemán, inglés y español.
+          </p>
+          <div class="hero-actions">
+            <div class="hero-ctas">
+              <a href="#contacto" class="btn btn-primary" data-cursor data-magnetic>
+                Hablemos
+                <svg class="btn-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11L11 3M11 3H5M11 3V9"/></svg>
+              </a>
+              <a href="#casos" class="btn btn-ghost" data-cursor data-magnetic>
+                Ver casos
+                <svg class="btn-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+            </div>
+            <div class="hero-stat-strip">
+              <b data-scramble="20+">20+</b>
+              leads · USD 250 pauta
+              <i></i>
+              <b data-scramble="3">3</b>
+              idiomas
+              <i></i>
+              <b data-scramble="360°">360°</b>
+              stack
+            </div>
           </div>
-          <p class="intro-text">Paid media, CRM, IA, web y estrategia de negocio. La idea no es impresionar con fuegos artificiales: es mostrar criterio, velocidad y una forma distinta de pensar crecimiento.</p>
-          <div class="cta-row">
-            <a class="btn primary" href="#composer">Armar brief</a>
-            <a class="btn" href="#calculator">Calcular leads</a>
-            <button class="btn dark" type="button" id="randomize">Sorprendeme</button>
-          </div>
         </div>
+      </div>
+    </section>
 
-        <aside class="brief-note">
-          <article class="note-card pin">
-            <h2>Antes: portfolio.<br>Ahora: desk.</h2>
-            <p>La pagina te deja interactuar con problemas reales: demanda, conversion, presupuesto, seguimiento y posicionamiento.</p>
-          </article>
-          <article class="note-card">
-            <div class="mini-stats">
-              <div><b>20+</b><span>leads</span></div>
-              <div><b>3</b><span>idiomas</span></div>
-              <div><b>360</b><span>stack</span></div>
-            </div>
-          </article>
-          <article class="note-card clay">
-            <ul>
-              <li>Google Ads y Meta Ads.</li>
-              <li>Negocios digitales en Universidad Austral.</li>
-              <li>IA aplicada a procesos reales.</li>
-              <li>Aleman, ingles y español.</li>
-            </ul>
-          </article>
-        </aside>
-      </section>
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>Paid Media</span><span>CRM Automation</span><span>IA Aplicada</span><span>Web Funnels</span><span>Growth Strategy</span><span>DACH Consulting</span>
+        <span>Paid Media</span><span>CRM Automation</span><span>IA Aplicada</span><span>Web Funnels</span><span>Growth Strategy</span><span>DACH Consulting</span>
+      </div>
+    </div>
 
-      <section class="section" id="composer">
-        <div class="section-index">
-          <b>01</b>
-          <span>Brief composer<br>feature nueva</span>
+    <!-- ============ HORIZONTAL PINNED SERVICES ============ -->
+    <section class="h-services" id="servicios">
+      <div class="h-pin">
+        <div class="h-head">
+          <div class="section-tag">01 · Servicios</div>
+          <h2>Cuatro disciplinas, <em>un solo motor</em>.</h2>
         </div>
-        <div class="section-body">
-          <h2 class="section-title">Escribí tu problema. La web arma una primera jugada.</h2>
-          <p class="section-copy">Un generador simple de brief para convertir una conversación vaga en una hipótesis de trabajo.</p>
-
-          <div class="composer">
-            <div class="panel">
-              <div class="panel-head"><span>Input</span><span>editable</span></div>
-              <div class="panel-body field-grid">
-                <label>Tipo de negocio
-                  <select id="businessType">
-                    <option value="premium">Marca premium / ticket alto</option>
-                    <option value="local">Negocio local que quiere más consultas</option>
-                    <option value="startup">Startup o producto digital</option>
-                    <option value="international">Proyecto internacional / DACH</option>
-                  </select>
-                </label>
-                <label>Problema principal
-                  <select id="problemType">
-                    <option value="demand">No llega demanda suficiente</option>
-                    <option value="clarity">La oferta no se entiende rápido</option>
-                    <option value="followup">Se pierden leads por falta de seguimiento</option>
-                    <option value="automation">Hay demasiadas tareas manuales</option>
-                  </select>
-                </label>
-                <label>Contexto libre
-                  <textarea id="contextText" placeholder="Ej: vendo servicios premium, tengo tráfico pero pocas consultas buenas..."></textarea>
-                </label>
-                <button class="btn primary" type="button" id="generateBrief">Generar jugada</button>
-              </div>
-            </div>
-
-            <div class="panel">
-              <div class="panel-head"><span>Output</span><span id="briefMood">growth memo</span></div>
-              <div class="panel-body proposal" id="proposal"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="calculator">
-        <div class="section-index">
-          <b>02</b>
-          <span>Lead math<br>mini calculadora</span>
-        </div>
-        <div class="section-body">
-          <h2 class="section-title">Jugá con presupuesto, costo y cierre.</h2>
-          <p class="section-copy">No promete resultados mágicos. Sirve para pensar economics básicos antes de gastar plata en anuncios.</p>
-
-          <div class="calc-grid">
-            <div class="panel">
-              <div class="panel-head"><span>Controles</span><span>live</span></div>
-              <div class="panel-body slider-set">
-                <div class="slider-card">
-                  <div class="slider-top"><span>Presupuesto mensual</span><b id="budgetValue">USD 250</b></div>
-                  <input id="budget" type="range" min="100" max="3000" value="250" step="50" />
-                </div>
-                <div class="slider-card">
-                  <div class="slider-top"><span>Costo por lead estimado</span><b id="cplValue">USD 12</b></div>
-                  <input id="cpl" type="range" min="3" max="120" value="12" step="1" />
-                </div>
-                <div class="slider-card">
-                  <div class="slider-top"><span>Tasa de cierre</span><b id="closeValue">18%</b></div>
-                  <input id="closeRate" type="range" min="1" max="60" value="18" step="1" />
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result">
-              <small>Estimacion rápida</small>
+        <div class="h-track-wrap">
+          <div class="h-track" id="hTrack">
+            <article class="h-card">
               <div>
-                <b id="leadCount">20</b>
-                <span>leads aproximados / mes</span>
+                <div class="h-card-top">
+                  <span class="h-card-num">01 / 04</span>
+                  <span class="h-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+                  </span>
+                </div>
+                <h3>Paid<br><em>Media</em></h3>
+                <p>Google Ads y Meta Ads pensados para intención y calidad — no volumen vacío. Diagnóstico, hipótesis, landing específica y lectura semanal de calidad de lead.</p>
               </div>
-              <div>
-                <b id="dealCount">4</b>
-                <span>cierres potenciales si el seguimiento acompaña.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="cases">
-        <div class="section-index">
-          <b>03</b>
-          <span>Case files<br>estructura nueva</span>
-        </div>
-        <div class="section-body">
-          <h2 class="section-title">Archivos, no tarjetas genéricas.</h2>
-          <p class="section-copy">Cada experiencia se abre como expediente: menos catálogo, más evidencia de criterio.</p>
-
-          <div class="case-files">
-            <details open>
-              <summary><span>File 001</span><b>Technogym Argentina</b><i>+</i></summary>
-              <div class="case-content">
-                <p>Gestión de Google Ads para una marca premium de fitness. Resultado destacado: más de 20 leads con USD 250 de pauta en un mes, priorizando intención y calidad sobre volumen vacío.</p>
-                <div class="chips"><span class="chip">Google Ads</span><span class="chip">Lead Gen</span><span class="chip">Premium</span></div>
-              </div>
-            </details>
-            <details>
-              <summary><span>File 002</span><b>Vantra</b><i>+</i></summary>
-              <div class="case-content">
-                <p>Agencia propia orientada a transformar negocios tradicionales en ecosistemas digitales con web, CRM, campañas, contenido y estrategia bajo una sola lógica operativa.</p>
-                <div class="chips"><span class="chip">Founder</span><span class="chip">CRM</span><span class="chip">Web</span><span class="chip">Ads</span></div>
-              </div>
-            </details>
-            <details>
-              <summary><span>File 003</span><b>ReplaceIT / DACH</b><i>+</i></summary>
-              <div class="case-content">
-                <p>Consultoría en alemán para proyectos de inversión generados mediante IA, conectando clientes internacionales con equipos técnicos locales y contexto de negocio.</p>
-                <div class="chips"><span class="chip">Alemán</span><span class="chip">IA</span><span class="chip">Inversión</span></div>
-              </div>
-            </details>
-            <details>
-              <summary><span>File 004</span><b>Universidad Austral</b><i>+</i></summary>
-              <div class="case-content">
-                <p>Formación en Negocios Digitales con foco en estrategia, tecnología, marketing, modelos digitales y lectura integral de sistemas comerciales.</p>
-                <div class="chips"><span class="chip">Digital Business</span><span class="chip">Strategy</span></div>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="section-index">
-          <b>04</b>
-          <span>Contact<br>copiar y enviar</span>
-        </div>
-        <div class="section-body">
-          <h2 class="section-title">Abrí una conversación con contexto.</h2>
-          <p class="section-copy">Podés escribir directo o copiar un mensaje armado con el brief generado arriba.</p>
-
-          <div class="contact-grid">
-            <article class="contact-card">
-              <div>
-                <h3>No quiero una web normal.</h3>
-                <p>Quiero una presencia digital con intención, una estrategia de anuncios con números y un sistema que no se caiga después del primer contacto.</p>
-              </div>
-              <button class="btn dark" type="button" id="copyGenerated">Copiar mensaje con brief</button>
+              <ul>
+                <li>Search · Performance Max · Demand Gen</li>
+                <li>Lead Ads · Advantage+ · Retargeting</li>
+                <li>GA4 + UTMs + scoring de lead</li>
+                <li>Reporte semanal con criterio, no dashboards muertos</li>
+              </ul>
             </article>
-            <div class="links-card">
-              <a class="contact-link" href="mailto:adsbythomas@gmail.com"><b>Email</b><span>adsbythomas@gmail.com</span></a>
-              <a class="contact-link" href="https://wa.me/5491170218400" target="_blank" rel="noopener"><b>WhatsApp</b><span>+54 9 11 7021-8400</span></a>
-              <a class="contact-link" href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/thomas-lehmann--</span></a>
+
+            <article class="h-card">
+              <div>
+                <div class="h-card-top">
+                  <span class="h-card-num">02 / 04</span>
+                  <span class="h-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+                  </span>
+                </div>
+                <h3>CRM &amp;<br><em>Automation</em></h3>
+                <p>Un CRM mínimo, ordenado y vivo: etapas, prioridad, recordatorios y respuestas automáticas. Ningún lead se pierde por falta de seguimiento.</p>
+              </div>
+              <ul>
+                <li>Pipeline + scoring + handoff comercial</li>
+                <li>Email · WhatsApp · workflows</li>
+                <li>Dashboard de conversión semanal</li>
+                <li>Integración con ads + landing + IA</li>
+              </ul>
+            </article>
+
+            <article class="h-card">
+              <div>
+                <div class="h-card-top">
+                  <span class="h-card-num">03 / 04</span>
+                  <span class="h-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/><path d="M4 9h2M4 15h2M18 9h2M18 15h2M9 4v2M15 4v2M9 18v2M15 18v2"/></svg>
+                  </span>
+                </div>
+                <h3>IA<br><em>aplicada</em></h3>
+                <p>Agentes y automatizaciones simples que reducen fricción real: clasificación de leads, follow-ups personalizados, asistentes internos en alemán/inglés/español.</p>
+              </div>
+              <ul>
+                <li>Lead qualification con LLM</li>
+                <li>Asistentes multi-idioma DACH</li>
+                <li>Procesos repetidos → flujos con IA</li>
+                <li>Prompts con criterio, no juguetes</li>
+              </ul>
+            </article>
+
+            <article class="h-card">
+              <div>
+                <div class="h-card-top">
+                  <span class="h-card-num">04 / 04</span>
+                  <span class="h-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+                  </span>
+                </div>
+                <h3>Web &amp;<br><em>Strategy</em></h3>
+                <p>Sitios y landings que existen para convertir, no para impresionar. Mensaje claro, oferta legible y un próximo paso evidente para el cliente correcto.</p>
+              </div>
+              <ul>
+                <li>Landing pages por audiencia / oferta</li>
+                <li>Mensaje + jerarquía + CTA</li>
+                <li>Tracking sano end-to-end</li>
+                <li>Web como motor, no como vidriera</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+        <div class="h-progress">
+          <span>SCROLL →</span>
+          <div class="bar"><i id="hBar"></i></div>
+          <span id="hCount">01 / 04</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENTO STACK ============ -->
+    <section id="stack">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag purple">02 · Stack</div>
+            <h2 class="section-title">Herramientas que <em>uso de verdad</em>.</h2>
+          </div>
+          <p class="section-sub">Listas finitas y opinadas. Si una herramienta no aporta a la métrica, no entra.</p>
+        </div>
+
+        <div class="bento reveal-stagger">
+          <div class="bento-item bento-feature bento-3x2">
+            <span class="lbl">Stack · 2026</span>
+            <div>
+              <div class="name" style="font-size: clamp(34px, 4vw, 52px); margin-bottom: 12px;">12 herramientas.<br>0 sin razón.</div>
+              <div class="desc">Cada tool del stack conecta a una métrica: costo por consulta, calidad de lead, velocidad de cierre o ahorro operativo. Si no mueve nada, sale.</div>
+            </div>
+          </div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Ads</span><span class="name">Google<br>Ads</span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Ads</span><span class="name">Meta<br>Ads</span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Data</span><span class="name">GA4</span></div>
+          <div class="bento-item bento-2x1 bento-dark"><span class="acc"></span><span class="lbl">CRM</span><span class="name">HubSpot · <em>Pipedrive</em></span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Tag</span><span class="name">GTM</span></div>
+          <div class="bento-item bento-2x1"><span class="acc"></span><span class="lbl">AI · LLM</span><span class="name">OpenAI · <em>Anthropic</em></span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Auto</span><span class="name">Make<br>n8n</span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Doc</span><span class="name">Notion</span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Web</span><span class="name">Framer</span></div>
+          <div class="bento-item bento-1x1"><span class="acc"></span><span class="lbl">Web</span><span class="name">Webflow</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASES ============ -->
+    <section id="casos">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag green">03 · Casos</div>
+            <h2 class="section-title">Expedientes, <em>no testimonios</em>.</h2>
+          </div>
+          <p class="section-sub">Cuatro proyectos abiertos como archivos: qué problema había, qué se hizo y qué métrica se movió.</p>
+        </div>
+
+        <div class="cases-grid reveal-stagger">
+          <article class="case-card" data-tilt data-glow="0deg">
+            <div class="case-head">
+              <span class="case-id">File · 001</span>
+              <span class="case-status"><i></i>Activo</span>
+            </div>
+            <h2 class="case-title">Technogym <em>Argentina</em></h2>
+            <p>Gestión de Google Ads para una marca premium de fitness. El reto no era volumen: era atraer la consulta correcta. Intención, mensaje y página de aterrizaje para que cada lead pesara más, no que hubiera más.</p>
+            <div class="case-chips">
+              <span class="chip">Google Ads</span>
+              <span class="chip">Lead Gen</span>
+              <span class="chip">Premium</span>
+              <span class="chip">Argentina</span>
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric"><b>20+</b><span>Leads cualificados / mes</span></div>
+              <div class="case-metric"><b>USD 250</b><span>Pauta mensual</span></div>
+            </div>
+          </article>
+
+          <article class="case-card" data-tilt data-glow="120deg">
+            <div class="case-head">
+              <span class="case-id">File · 002</span>
+              <span class="case-status"><i></i>Founder</span>
+            </div>
+            <h2 class="case-title">Vantra · <em>agencia propia</em></h2>
+            <p>Agencia propia orientada a convertir negocios tradicionales en ecosistemas digitales: web, CRM, campañas, contenido y estrategia bajo una sola lógica operativa. Foco en pymes ambiciosas.</p>
+            <div class="case-chips">
+              <span class="chip">Founder</span>
+              <span class="chip">CRM</span>
+              <span class="chip">Web</span>
+              <span class="chip">Ads</span>
+              <span class="chip">Estrategia</span>
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric"><b>360°</b><span>Stack integrado</span></div>
+              <div class="case-metric"><b>Pyme</b><span>Foco de cliente</span></div>
+            </div>
+          </article>
+
+          <article class="case-card" data-tilt data-glow="200deg">
+            <div class="case-head">
+              <span class="case-id">File · 003</span>
+              <span class="case-status"><i></i>DACH</span>
+            </div>
+            <h2 class="case-title">ReplaceIT · <em>DACH</em></h2>
+            <p>Consultoría en alemán para proyectos de inversión generados mediante IA, conectando clientes internacionales con equipos técnicos locales. Traducir contexto de negocio entre idiomas, culturas y stacks.</p>
+            <div class="case-chips">
+              <span class="chip">Alemán</span>
+              <span class="chip">IA</span>
+              <span class="chip">Inversión</span>
+              <span class="chip">DACH</span>
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric"><b>DACH</b><span>Mercado objetivo</span></div>
+              <div class="case-metric"><b>IA</b><span>Generación de proyectos</span></div>
+            </div>
+          </article>
+
+          <article class="case-card" data-tilt data-glow="300deg">
+            <div class="case-head">
+              <span class="case-id">File · 004</span>
+              <span class="case-status"><i></i>Academia</span>
+            </div>
+            <h2 class="case-title">Universidad <em>Austral</em></h2>
+            <p>Formación en Negocios Digitales con foco en estrategia, tecnología, marketing, modelos digitales y lectura integral de sistemas comerciales. La base teórica detrás del criterio operativo.</p>
+            <div class="case-chips">
+              <span class="chip">Digital Business</span>
+              <span class="chip">Estrategia</span>
+              <span class="chip">Formación</span>
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric"><b>Negocios</b><span>Digitales · Austral</span></div>
+              <div class="case-metric"><b>Strategy</b><span>Marco de trabajo</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS sticky ============ -->
+    <section class="process" id="proceso">
+      <div class="process-pin">
+        <div class="container">
+          <div class="process-grid">
+            <div class="process-text">
+              <div class="process-label">
+                <span class="num" id="processNum">01</span>
+                Cómo trabajo
+              </div>
+              <div class="process-steps">
+                <div class="process-step active" data-step="0">
+                  <h3>Diagnóstico <em>sin filtros</em>.</h3>
+                  <p>Primero entender: oferta, cliente, canal, fuga principal. Una llamada honesta antes de prometer nada. Si no hay caso, te lo digo.</p>
+                </div>
+                <div class="process-step" data-step="1">
+                  <h3>Sistema <em>mínimo viable</em>.</h3>
+                  <p>Diseño un primer sprint con la pieza que mueve la aguja — ads, CRM, landing o IA, según el cuello de botella real. No 12 entregables. Uno bueno.</p>
+                </div>
+                <div class="process-step" data-step="2">
+                  <h3>Métricas <em>que pesan</em>.</h3>
+                  <p>Costo por consulta cualificada, velocidad de cierre, ratio de retoma. Las métricas vanidad quedan en otro lado — acá importa el flujo comercial.</p>
+                </div>
+                <div class="process-step" data-step="3">
+                  <h3>Iteración <em>operativa</em>.</h3>
+                  <p>Reporte semanal con decisiones, no con dashboards muertos. La intuición ajusta, los datos confirman. Y todo queda documentado.</p>
+                </div>
+              </div>
+            </div>
+            <div class="process-visual">
+              <svg viewBox="0 0 480 480">
+                <defs>
+                  <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f0ff"/>
+                    <stop offset="100%" stop-color="#b026ff"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="240" cy="240" r="220" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <circle cx="240" cy="240" r="160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <circle cx="240" cy="240" r="100" fill="none" stroke="rgba(0,240,255,0.2)" stroke-width="1" stroke-dasharray="3 5"/>
+                <g id="processDots">
+                  <circle cx="240" cy="20" r="8" fill="#00f0ff" id="pd0"/>
+                  <circle cx="460" cy="240" r="6" fill="#b026ff" id="pd1"/>
+                  <circle cx="240" cy="460" r="6" fill="#00ff88" id="pd2"/>
+                  <circle cx="20" cy="240" r="6" fill="#ff3ec9" id="pd3"/>
+                </g>
+                <circle cx="240" cy="240" r="40" fill="url(#pg1)" opacity="0.3"/>
+                <circle cx="240" cy="240" r="14" fill="url(#pg1)"/>
+                <path id="processPath" d="M240,20 L240,240" stroke="url(#pg1)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              </svg>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+        <div class="process-nav">
+          <button data-step-btn="0" class="active" aria-label="Paso 1"></button>
+          <button data-step-btn="1" aria-label="Paso 2"></button>
+          <button data-step-btn="2" aria-label="Paso 3"></button>
+          <button data-step-btn="3" aria-label="Paso 4"></button>
+        </div>
+      </div>
+    </section>
 
-    <div class="palette-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-    <footer>
-      <span>Thomas Lehmann / Strategy Desk / Buenos Aires</span>
-      <span>Paid media · CRM · IA · Web · Negocios digitales</span>
-    </footer>
-  </div>
+    <!-- ============ CALCULATOR ============ -->
+    <section id="calculadora">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag purple">04 · Lead math</div>
+            <h2 class="section-title">Jugá con los <em>números</em>.</h2>
+          </div>
+          <p class="section-sub">Modelo teórico para pensar la economía mínima de adquisición. No es una proyección ni una promesa: son tus números, tus supuestos.</p>
+        </div>
+
+        <div class="calc-wrap reveal">
+          <div class="calc-panel">
+            <h4>Controles</h4>
+            <div class="calc-controls">
+              <div class="control-row">
+                <div class="control-top"><span>Presupuesto mensual</span><b id="budgetValue">USD 250</b></div>
+                <input id="budget" type="range" min="100" max="5000" step="50" value="250" />
+              </div>
+              <div class="control-row">
+                <div class="control-top"><span>Costo por lead supuesto</span><b id="cplValue">USD 12</b></div>
+                <input id="cpl" type="range" min="3" max="200" step="1" value="12" />
+              </div>
+              <div class="control-row">
+                <div class="control-top"><span>Tasa de cierre supuesta</span><b id="closeValue">18%</b></div>
+                <input id="closeRate" type="range" min="1" max="60" step="1" value="18" />
+              </div>
+            </div>
+            <p style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.6; letter-spacing: .04em;">
+              * Cada número depende de tu mercado, oferta, canal, calidad de creativo y velocidad de respuesta. Esto es matemática, no proyección.
+            </p>
+          </div>
+
+          <div class="calc-result">
+            <div>
+              <span class="lbl">Modelo teórico</span>
+              <div class="big" id="leadCount">20</div>
+              <span class="desc">leads / mes si el CPL real coincide con tu supuesto. No es una promesa — es la división de tu presupuesto por tu costo asumido.</span>
+            </div>
+            <div class="row-2">
+              <div>
+                <div class="num" id="dealCount">4</div>
+                <div class="lbl-2">Cierres si la tasa se cumple</div>
+              </div>
+              <div>
+                <div class="num" id="cac">USD 63</div>
+                <div class="lbl-2">Costo por cierre implícito</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag">05 · Contacto</div>
+            <h2 class="section-title">Abrí una conversación <em>con contexto</em>.</h2>
+          </div>
+          <p class="section-sub">Escribime directo. Si me das tres líneas sobre tu negocio y el cuello de botella, llego a la llamada con una hipótesis.</p>
+        </div>
+
+        <div class="contact-wrap reveal-stagger">
+          <article class="contact-big">
+            <div>
+              <h3>No quiero una web <em>normal</em>.</h3>
+              <p>Quiero una presencia digital con intención, una estrategia de anuncios con números y un sistema que no se caiga después del primer contacto.</p>
+            </div>
+            <div class="contact-big-actions">
+              <a class="btn btn-primary" href="https://wa.me/5491170218400" target="_blank" rel="noopener" data-cursor data-magnetic>
+                Escribir por WhatsApp
+                <svg class="btn-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11L11 3M11 3H5M11 3V9"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="mailto:adsbythomas@gmail.com" data-cursor data-magnetic>
+                Email
+                <svg class="btn-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h10v8H2zM2 3l5 4 5-4"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <div class="contact-list">
+            <a class="contact-link" href="mailto:adsbythomas@gmail.com" data-cursor>
+              <div class="l-info"><b>Email</b><span>adsbythomas@gmail.com</span></div>
+              <div class="arrow">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11L11 3M11 3H5M11 3V9"/></svg>
+              </div>
+            </a>
+            <a class="contact-link" href="https://wa.me/5491170218400" target="_blank" rel="noopener" data-cursor>
+              <div class="l-info"><b>WhatsApp</b><span>+54 9 11 7021-8400</span></div>
+              <div class="arrow">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11L11 3M11 3H5M11 3V9"/></svg>
+              </div>
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/thomas-lehmann--" target="_blank" rel="noopener" data-cursor>
+              <div class="l-info"><b>LinkedIn</b><span>linkedin.com/in/thomas-lehmann--</span></div>
+              <div class="arrow">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11L11 3M11 3H5M11 3V9"/></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-big">
+          Hecho con <em>criterio</em><br>
+          desde Buenos Aires.
+        </div>
+        <div class="footer-meta">
+          <span><b>BUE</b> · <span id="footerBue">--:--</span></span>
+          <span>Paid · CRM · IA · Web</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Thomas Lehmann</span>
+        <span>adsbythomas@gmail.com</span>
+        <span>v 1.0 · Strategy Desk</span>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const proposal = document.getElementById("proposal");
-    let lastBrief = "";
+    /* ============ Split letters in hero title ============ */
+    document.querySelectorAll(".hero-title .word").forEach((word, wi) => {
+      const text = word.dataset.text || word.textContent;
+      word.textContent = "";
+      [...text].forEach((c, i) => {
+        const span = document.createElement("span");
+        span.className = "char";
+        span.textContent = c === " " ? " " : c;
+        span.style.animationDelay = (0.15 + wi * 0.08 + i * 0.025) + "s";
+        word.appendChild(span);
+      });
+    });
 
-    const business = {
-      premium: "marca premium",
-      local: "negocio local",
-      startup: "producto digital",
-      international: "proyecto internacional"
-    };
-    const problem = {
-      demand: ["demanda", "Crear un experimento de adquisición con hipótesis clara, landing específica y lectura semanal de calidad de lead."],
-      clarity: ["claridad", "Reordenar la oferta para que una persona entienda en segundos qué se vende, para quién y cuál es el próximo paso."],
-      followup: ["seguimiento", "Diseñar un CRM mínimo con etapas, prioridad y recordatorios para que ningún lead quede flotando."],
-      automation: ["automatización", "Detectar tareas repetidas y armar una capa simple de IA o automatización que reduzca fricción operativa."]
-    };
+    /* ============ Cycling word ============ */
+    (function cycler() {
+      const track = document.getElementById("cyclerTrack");
+      if (!track) return;
+      const items = track.querySelectorAll(".cycler-item");
+      const itemH = () => track.children[0].getBoundingClientRect().height;
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % (items.length - 1);
+        track.style.transform = `translateY(${-itemH() * i}px)`;
+      }, 2400);
+    })();
 
-    function generateBrief() {
-      const businessType = document.getElementById("businessType").value;
-      const problemType = document.getElementById("problemType").value;
-      const context = document.getElementById("contextText").value.trim();
-      const [problemLabel, move] = problem[problemType];
-      const contextLine = context ? `Contexto recibido: ${context}` : "Contexto recibido: falta detalle, conviene empezar con una llamada de diagnóstico.";
-      lastBrief = `Hola Thomas, tengo un ${business[businessType]} con un problema de ${problemLabel}. ${move} ${contextLine}`;
-      document.getElementById("briefMood").textContent = problemLabel;
-      proposal.innerHTML = `
-        <h3>${business[businessType]} / ${problemLabel}</h3>
-        <p>${move}</p>
-        <div class="proposal-lines">
-          <div>01 · Diagnóstico: oferta, cliente, canal y fuga principal.</div>
-          <div>02 · Primer sprint: web/mensaje/campaña/CRM según el cuello de botella.</div>
-          <div>03 · Métrica: costo por consulta, calidad y siguiente paso comercial.</div>
-        </div>
-        <p>${contextLine}</p>
-      `;
+    /* ============ Live clocks ============ */
+    function fmt(d, tz) {
+      return new Intl.DateTimeFormat("es-AR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: tz,
+      }).format(d);
     }
-    document.getElementById("generateBrief").addEventListener("click", generateBrief);
-    ["businessType", "problemType"].forEach((id) => document.getElementById(id).addEventListener("change", generateBrief));
-    generateBrief();
+    function tickClocks() {
+      const now = new Date();
+      const bue = fmt(now, "America/Argentina/Buenos_Aires");
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      setText("clockBue", bue);
+      setText("footerBue", bue);
+    }
+    tickClocks();
+    setInterval(tickClocks, 30000);
 
-    function renderCalc() {
+    /* ============ Nav scroll state + mobile ============ */
+    const nav = document.getElementById("nav");
+    const navToggle = document.getElementById("navToggle");
+    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+    document.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    if (navToggle) navToggle.addEventListener("click", () => nav.classList.toggle("open"));
+
+    /* ============ Progress bar ============ */
+    const progress = document.getElementById("progressBar");
+    function updateProgress() {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const pct = total > 0 ? (h.scrollTop / total) * 100 : 0;
+      progress.style.width = pct + "%";
+    }
+    document.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    /* ============ Reveal on scroll ============ */
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    document.querySelectorAll(".reveal, .reveal-stagger").forEach((el) => io.observe(el));
+
+    /* ============ Custom cursor + spotlight ============ */
+    const cursorRing = document.getElementById("cursorRing");
+    const cursorDot = document.getElementById("cursorDot");
+    const spotlight = document.getElementById("spotlight");
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!isTouch && !prefersReduced) {
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let rx = mx, ry = my;
+      window.addEventListener("mousemove", (e) => {
+        mx = e.clientX; my = e.clientY;
+        cursorDot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+        spotlight.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      });
+      function loop() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        cursorRing.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        requestAnimationFrame(loop);
+      }
+      loop();
+      document.querySelectorAll("a, button, [data-cursor]").forEach((el) => {
+        el.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
+        el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
+      });
+    } else {
+      cursorRing.style.display = "none";
+      cursorDot.style.display = "none";
+      spotlight.style.display = "none";
+    }
+
+    /* ============ Magnetic buttons ============ */
+    if (!isTouch && !prefersReduced) {
+      document.querySelectorAll("[data-magnetic]").forEach((el) => {
+        const strength = 0.35;
+        el.addEventListener("mousemove", (e) => {
+          const r = el.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+        });
+        el.addEventListener("mouseleave", () => {
+          el.style.transform = "";
+        });
+      });
+    }
+
+    /* ============ 3D tilt cases + glow position ============ */
+    if (!isTouch && !prefersReduced) {
+      document.querySelectorAll("[data-tilt]").forEach((el) => {
+        el.addEventListener("mousemove", (e) => {
+          const r = el.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          const rx = (py - 0.5) * -8;
+          const ry = (px - 0.5) * 8;
+          el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+          el.style.setProperty("--glow", `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(0, 240, 255, 0.18), transparent 50%)`);
+        });
+        el.addEventListener("mouseleave", () => {
+          el.style.transform = "";
+        });
+      });
+    }
+
+    /* ============ Horizontal pinned services ============ */
+    (function horizontalScroll() {
+      const section = document.querySelector(".h-services");
+      const track = document.getElementById("hTrack");
+      const bar = document.getElementById("hBar");
+      const counter = document.getElementById("hCount");
+      if (!section || !track) return;
+      const isMobile = window.matchMedia("(pointer: coarse), (max-width: 900px)").matches;
+      if (isMobile) return;
+
+      function update() {
+        const r = section.getBoundingClientRect();
+        const scrolled = -r.top;
+        const scrollable = section.offsetHeight - window.innerHeight;
+        if (scrolled < 0 || scrolled > scrollable) {
+          // out of zone
+        }
+        const p = Math.max(0, Math.min(1, scrolled / scrollable));
+        const maxX = track.scrollWidth - track.parentElement.clientWidth + 56;
+        track.style.transform = `translateX(${-(p * maxX)}px)`;
+        if (bar) bar.style.width = (p * 100) + "%";
+        if (counter) {
+          const idx = Math.min(4, Math.floor(p * 4) + 1);
+          counter.textContent = String(idx).padStart(2, "0") + " / 04";
+        }
+      }
+      window.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener("resize", update);
+      update();
+    })();
+
+    /* ============ Process sticky step progression ============ */
+    (function process() {
+      const section = document.querySelector(".process");
+      if (!section) return;
+      const steps = section.querySelectorAll(".process-step");
+      const buttons = section.querySelectorAll("[data-step-btn]");
+      const numEl = document.getElementById("processNum");
+      const path = document.getElementById("processPath");
+      const dots = section.querySelectorAll("#processDots circle");
+      const isMobile = window.matchMedia("(pointer: coarse), (max-width: 900px)").matches;
+      if (isMobile) return;
+
+      let current = -1;
+      function setStep(i) {
+        if (i === current) return;
+        current = i;
+        steps.forEach((s) => s.classList.remove("active"));
+        steps[i] && steps[i].classList.add("active");
+        buttons.forEach((b, bi) => b.classList.toggle("active", bi === i));
+        if (numEl) numEl.textContent = String(i + 1).padStart(2, "0");
+        // rotate visual highlight
+        dots.forEach((d, di) => {
+          d.setAttribute("r", di === i ? "12" : (di === 0 ? "8" : "5"));
+        });
+        // draw path to current dot
+        const targets = [
+          "M240,240 L240,20",
+          "M240,240 L460,240",
+          "M240,240 L240,460",
+          "M240,240 L20,240",
+        ];
+        if (path) path.setAttribute("d", targets[i]);
+      }
+      function update() {
+        const r = section.getBoundingClientRect();
+        const scrolled = -r.top;
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const p = Math.max(0, Math.min(0.999, scrolled / scrollable));
+        const idx = Math.min(3, Math.floor(p * steps.length));
+        setStep(idx);
+      }
+      window.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+      buttons.forEach((b, i) => b.addEventListener("click", () => {
+        const r = section.getBoundingClientRect();
+        const top = window.scrollY + r.top + (section.offsetHeight - window.innerHeight) * (i / 4) + 20;
+        window.scrollTo({ top, behavior: "smooth" });
+      }));
+      update();
+    })();
+
+    /* ============ Scramble effect for big numbers (on viewport) ============ */
+    const scrambleChars = "█▓▒░!@#$%&*0123456789ABCDEF";
+    function scramble(el) {
+      const final = el.dataset.scramble;
+      const len = final.length;
+      let frame = 0;
+      const total = 24;
+      const id = setInterval(() => {
+        let out = "";
+        for (let i = 0; i < len; i++) {
+          const settled = i < Math.floor((frame / total) * len);
+          out += settled
+            ? final[i]
+            : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        }
+        el.textContent = out;
+        frame++;
+        if (frame > total) {
+          el.textContent = final;
+          clearInterval(id);
+        }
+      }, 40);
+    }
+    const scrambleIO = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          scramble(e.target);
+          scrambleIO.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.5 }
+    );
+    document.querySelectorAll("[data-scramble]").forEach((el) => scrambleIO.observe(el));
+
+    /* ============ Lead math calculator ============ */
+    const fmtUSD = (n) => {
+      if (n >= 1000000) return "USD " + (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+      if (n >= 1000) return "USD " + (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+      return "USD " + n;
+    };
+    const renderCalc = () => {
       const budget = Number(document.getElementById("budget").value);
       const cpl = Number(document.getElementById("cpl").value);
       const closeRate = Number(document.getElementById("closeRate").value);
-      const leads = Math.max(1, Math.round(budget / cpl));
-      const deals = Math.max(0, Math.round(leads * closeRate / 100));
+      const leads = Math.max(0, Math.round(budget / cpl));
+      const deals = Math.max(0, Math.round((leads * closeRate) / 100));
+      const cac = deals > 0 ? Math.round(budget / deals) : 0;
       document.getElementById("budgetValue").textContent = `USD ${budget}`;
       document.getElementById("cplValue").textContent = `USD ${cpl}`;
       document.getElementById("closeValue").textContent = `${closeRate}%`;
       document.getElementById("leadCount").textContent = leads;
       document.getElementById("dealCount").textContent = deals;
-    }
-    ["budget", "cpl", "closeRate"].forEach((id) => document.getElementById(id).addEventListener("input", renderCalc));
+      document.getElementById("cac").textContent = deals > 0 ? `USD ${cac}` : "—";
+    };
+    ["budget", "cpl", "closeRate"].forEach((id) =>
+      document.getElementById(id).addEventListener("input", renderCalc)
+    );
     renderCalc();
 
-    async function copyText(text, button) {
-      try {
-        await navigator.clipboard.writeText(text);
-        const old = button.textContent;
-        button.textContent = "Copiado";
-        setTimeout(() => button.textContent = old, 1400);
-      } catch {
-        alert(text);
-      }
-    }
-    document.getElementById("copyGenerated").addEventListener("click", (event) => copyText(lastBrief, event.currentTarget));
+    /* ============ Year ============ */
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    const command = document.getElementById("command");
-    const commandInput = document.getElementById("commandInput");
-    const commandList = document.getElementById("commandList");
-    const actions = [
-      ["Brief composer", "Armar una primera jugada", "#composer"],
-      ["Lead calculator", "Estimar leads y cierres", "#calculator"],
-      ["Case files", "Abrir expedientes de experiencia", "#cases"],
-      ["Contacto", "Email, WhatsApp y LinkedIn", "#contact"],
-      ["WhatsApp", "Escribir directo", "https://wa.me/5491170218400"]
-    ];
-    function renderCommands(query = "") {
-      const q = query.toLowerCase();
-      commandList.innerHTML = actions
-        .filter(([title, desc]) => `${title} ${desc}`.toLowerCase().includes(q))
-        .map(([title, desc, href]) => `<button class="command-item" type="button" data-href="${href}"><b>${title}</b><span>${desc}</span></button>`)
-        .join("");
-      commandList.querySelectorAll(".command-item").forEach((item) => {
-        item.addEventListener("click", () => {
-          const href = item.dataset.href;
-          command.classList.remove("open");
-          command.setAttribute("aria-hidden", "true");
-          if (href.startsWith("#")) document.querySelector(href).scrollIntoView({ behavior: "smooth" });
-          else window.open(href, "_blank", "noopener");
-        });
-      });
-    }
-    function openCommand() {
-      command.classList.add("open");
-      command.setAttribute("aria-hidden", "false");
-      renderCommands();
-      setTimeout(() => commandInput.focus(), 20);
-    }
-    document.getElementById("openCommand").addEventListener("click", openCommand);
-    commandInput.addEventListener("input", () => renderCommands(commandInput.value));
-    command.addEventListener("click", (event) => {
-      if (event.target === command) command.classList.remove("open");
-    });
-    addEventListener("keydown", (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        openCommand();
+    /* ============ Constellation background canvas ============ */
+    (function constellation() {
+      if (prefersReduced) return;
+      const canvas = document.getElementById("bgCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let w, h, dpr;
+      let pts = [];
+      const COUNT = window.innerWidth < 700 ? 36 : 70;
+      function resize() {
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.scale(dpr, dpr);
+        pts = Array.from({ length: COUNT }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+        }));
       }
-      if (event.key === "Escape") command.classList.remove("open");
-    });
-
-    document.getElementById("randomize").addEventListener("click", () => {
-      const businessKeys = Object.keys(business);
-      const problemKeys = Object.keys(problem);
-      document.getElementById("businessType").value = businessKeys[Math.floor(Math.random() * businessKeys.length)];
-      document.getElementById("problemType").value = problemKeys[Math.floor(Math.random() * problemKeys.length)];
-      document.getElementById("budget").value = String(100 + Math.floor(Math.random() * 58) * 50);
-      document.getElementById("cpl").value = String(5 + Math.floor(Math.random() * 35));
-      document.getElementById("closeRate").value = String(5 + Math.floor(Math.random() * 30));
-      generateBrief();
-      renderCalc();
-      document.querySelector("#composer").scrollIntoView({ behavior: "smooth" });
-    });
+      let mouseX = -9999, mouseY = -9999;
+      window.addEventListener("mousemove", (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+      window.addEventListener("resize", resize);
+      resize();
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const p of pts) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        // lines
+        for (let i = 0; i < pts.length; i++) {
+          for (let j = i + 1; j < pts.length; j++) {
+            const dx = pts[i].x - pts[j].x;
+            const dy = pts[i].y - pts[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 140) {
+              const alpha = 1 - d / 140;
+              ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 0.18})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.stroke();
+            }
+          }
+          // mouse attraction
+          const dxm = pts[i].x - mouseX;
+          const dym = pts[i].y - mouseY;
+          const dm = Math.sqrt(dxm * dxm + dym * dym);
+          if (dm < 180) {
+            const alpha = 1 - dm / 180;
+            ctx.strokeStyle = `rgba(176, 38, 255, ${alpha * 0.45})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(mouseX, mouseY);
+            ctx.stroke();
+          }
+        }
+        // points
+        for (const p of pts) {
+          ctx.fillStyle = "rgba(0, 240, 255, 0.5)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
   </script>
 </body>
 </html>
